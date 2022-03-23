@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div h1 {margin:0; padding:0; }
+
+join {width: 600px; height: 555px;}
+joinT {width: 480px; height: 55px;}
+join_core {width: 480}
+
+</style>
+</head>
+<body>
+
+<div class="join">
+	<h1> 회원가입 </h1>
+	
+	<div class="joinT">
+		<div class="join_core">
+		<input type="text" name="ID" id="ID" placeholder="아이디 입력">
+		</div>
+		<div class="join_core">
+		<input type="text" name="ID" id="ID" placeholder="비밀번호 입력">
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
