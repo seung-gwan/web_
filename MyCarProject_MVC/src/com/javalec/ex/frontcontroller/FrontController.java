@@ -8,10 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.javalec.ex.CommandCar.CommandCar;
 import com.javalec.ex.CommandCar.LoginCommandCar;
 import com.javalec.ex.CommandCar.joinCommandCar;
+
 
 
 
@@ -45,6 +47,7 @@ public class FrontController extends HttpServlet {
 	}
 	
 	protected void doAction(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
 		String viewPage = null;
 		CommandCar command = null;
 		
@@ -60,10 +63,18 @@ public class FrontController extends HttpServlet {
 			command = new LoginCommandCar();
 			command.execute(request, response);
 			viewPage = "index.jsp";
-		} else if(com.equals("/join.do")) {
+		}else if(com.equals("/join.do")) {
 			command = new joinCommandCar();
 			command.execute(request, response);
-			viewPage = "index.do";
+			viewPage = "index.jsp";
+		}else if(com.equals("/logout.do")) {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			viewPage = "index.jsp";
+		}else if(com.equals("/logout1.do")) {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			viewPage = "CustomerService.jsp";
 		}
 		
 		

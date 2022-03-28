@@ -14,6 +14,190 @@ public class BDto {
 	String member_gender;
 	String member_car;
 	
+	int bNum;
+	String bTitle;
+	String bContent;
+	String bName;
+	String bDate;
+	public BDto(String member_id, String member_pw, String member_name, String member_address,
+			String member_address_detail1, String member_address_detail2, int member_address_num, String member_email,
+			String member_gender, String member_car, int bNum, String bTitle, String bContent, String bName,
+			String bDate, int bHit) {
+		super();
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_name = member_name;
+		this.member_address = member_address;
+		this.member_address_detail1 = member_address_detail1;
+		this.member_address_detail2 = member_address_detail2;
+		this.member_address_num = member_address_num;
+		this.member_email = member_email;
+		this.member_gender = member_gender;
+		this.member_car = member_car;
+		this.bNum = bNum;
+		this.bTitle = bTitle;
+		this.bContent = bContent;
+		this.bName = bName;
+		this.bDate = bDate;
+		this.bHit = bHit;
+	}
+
+
+
+
+
+
+
+
+
+	public int getbNum() {
+		return bNum;
+	}
+
+
+
+
+
+
+
+
+
+	public void setbNum(int bNum) {
+		this.bNum = bNum;
+	}
+
+
+
+
+
+
+
+
+
+	public String getbTitle() {
+		return bTitle;
+	}
+
+
+
+
+
+
+
+
+
+	public void setbTitle(String bTitle) {
+		this.bTitle = bTitle;
+	}
+
+
+
+
+
+
+
+
+
+	public String getbContent() {
+		return bContent;
+	}
+
+
+
+
+
+
+
+
+
+	public void setbContent(String bContent) {
+		this.bContent = bContent;
+	}
+
+
+
+
+
+
+
+
+
+	public String getbName() {
+		return bName;
+	}
+
+
+
+
+
+
+
+
+
+	public void setbName(String bName) {
+		this.bName = bName;
+	}
+
+
+
+
+
+
+
+
+
+	public String getbDate() {
+		return bDate;
+	}
+
+
+
+
+
+
+
+
+
+	public void setbDate(String bDate) {
+		this.bDate = bDate;
+	}
+
+
+
+
+
+
+
+
+
+	public int getbHit() {
+		return bHit;
+	}
+
+
+
+
+
+
+
+
+
+	public void setbHit(int bHit) {
+		this.bHit = bHit;
+	}
+
+
+
+
+
+
+
+
+
+	int bHit;
+	
+	
+
 	public BDto() {
 		
 	}
@@ -26,23 +210,7 @@ public class BDto {
 
 
 
-	public BDto(String member_id, String member_pw, String member_name, String member_address,
-			String member_address_detail1, String member_address_detail2, int member_address_num, String member_email,
-			String member_gender, String member_car) {
-		super();
-		this.member_id = member_id;
-		this.member_pw = member_pw;
-		this.member_name = member_name;
-		this.member_address = member_address;
-		this.member_address_detail1 = member_address_detail1;
-		this.member_address_detail2 = member_address_detail2;
-		this.member_address_num = member_address_num;
-		this.member_email = member_email;
-		this.member_gender = member_gender;
-		this.member_car = member_car;
-	}
-
-
+	
 
 
 

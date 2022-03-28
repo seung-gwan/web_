@@ -16,7 +16,7 @@ public class joinCommandCar implements CommandCar {
 		String member_address = request.getParameter("roadAddrPart1");
 		String member_address_detail1 = request.getParameter("addrDetail");
 		String member_address_detail2 = request.getParameter("roadAddrPart2");
-		int member_address_num = Integer.parseInt(request.getParameter("zipNo"));
+		String member_address_num = request.getParameter("zipNo");
 		String member_email = request.getParameter("Email");
 		String member_gender = request.getParameter("gender");
 		String member_car = request.getParameter("Car");

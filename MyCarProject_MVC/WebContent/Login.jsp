@@ -67,12 +67,18 @@ input {
 </head>
 
 <body>
+    <c:if test="${ resultlogin == -1 || resultlogin == 0 }">
+		<script>
+			alert("아이디 혹은 비밀번호가 틀렸습니다.");
+		</script>
+	</c:if>
 	<c:if test="${sessionID != null }">
 		<script>
 			alert("이미 로그인 중입니다.");
 			location.href = "index.jsp";
 		</script>
 	</c:if>
+	
 	<div class="container">
         <div id="imail">
             <i class="material-icons">person_outline</i>
@@ -83,8 +89,8 @@ input {
         	<h5><span>로그인</span> 페이지입니다.</h5>
         <hr />
         <form action="login.do" method="post">
-            <input type="text" placeholder="아이디" name="id" required style="height:30px; width: 380px" /><br />
-            <input type="password" placeholder="비밀번호" name="pw" required style="height:30px; width: 380px" /><br />
+            <input type="text" placeholder="아이디" name="Id" required style="height:30px; width: 380px" /><br />
+            <input type="password" placeholder="비밀번호" name="Pw" required style="height:30px; width: 380px" /><br />
             <input type="submit" value="로그인" class="login"/>
             <button onclick="location.href='Index.jsp';" class="login" >HOME</button>
         </form>

@@ -124,7 +124,7 @@ body {
 
 	<div class="container">
 	  <h2>회원가입</h2>
-	  <form action="Index.jsp" method="Post" name="form" id="form">
+	  <form action="join.do" method="Post" name="form" id="form">
 	    <div class="inputBox">
 	      <input type="text" name="Id" id="Id" required>
 	      <span>아이디</span>

@@ -3,13 +3,11 @@ package com.javalec.ex.Dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-import com.javalec.ex.Dto.BDto;
 
 public class BDao {
 	
@@ -68,17 +66,19 @@ public class BDao {
 		
 		
 		return 0;
-	}
+}
+	
 	
 	public void join (String member_id, String member_pw, String member_name, String member_address,
-			String member_address_detail1, String member_address_detail2, int member_address_num, String member_email,
+			String member_address_detail1, String member_address_detail2, String member_address_num, String member_email,
 			String member_gender, String member_car)
 	{
-		String query = "insert into Car_member(member_id, member_pw, member_name, member_address, member_address_detail1,member_address_detail2, member_address_num"
-				+ ",memeber_email, member_gender, member_car_) value(?,?,?,?,?,?,?,?,?,?) ";
+		
 		
 		try {
 			conn = datasource.getConnection();
+			String query = "insert into Car_member(member_id, member_pw, member_name, member_address, member_address_detail1,member_address_detail2, member_address_num"
+					+ ",member_email, member_gender, member_car) value(?,?,?,?,?,?,?,?,?,?) ";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, member_id);
 			pstmt.setString(2, member_pw);
@@ -86,7 +86,7 @@ public class BDao {
 			pstmt.setString(4, member_address);
 			pstmt.setString(5, member_address_detail1);
 			pstmt.setString(6, member_address_detail2);
-			pstmt.setInt(7, member_address_num);
+			pstmt.setInt(7,  Integer.parseInt(member_address_num));
 			pstmt.setString(8, member_email);
 			pstmt.setString(9, member_gender);
 			pstmt.setString(10, member_car);
@@ -98,11 +98,18 @@ public class BDao {
 			e.printStackTrace();
 		} finally {
 			try {
+				if(rs!=null)
+					rs.close();
+				if(pstmt!=null)
+					pstmt.close();
+				if(conn!=null)
+					conn.close();
 				
 			}catch(Exception e2) {
 				e2.printStackTrace();
 			}
 		}
 	}
+	
 
 }
