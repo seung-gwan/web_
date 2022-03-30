@@ -32,7 +32,7 @@
         <ul>
           <li><a href="Sell.html">내차 팔기</a></li>
           <li><a href="Buy.html">내차 사기</a></li>
-          <li><a href="CustomerService.jsp">고객센터</a></li>
+          <li><a href="Notice.do">고객센터</a></li>
           <li><a href="#">브랜드인증관</a></li>
           <li><a href="#">전국직영점</a></li>
         </ul>

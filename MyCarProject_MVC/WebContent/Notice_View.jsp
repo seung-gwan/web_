@@ -48,38 +48,45 @@
           <h3>고객 센터<span class="hidden">submenu</span></h3>
           <ul>
             <li><a href="Notice.do">공지사항</a></li>
-            <li><a href="#">구매후기</a></li>
-            <li><a href="SellReview.do"">판매후기</a></li>
+            <li><a href="SellReview.jsp">구매후기</a></li>
+            <li><a href="#">판매후기</a></li>
             <li><a href="#">개인보호정책</a></li>
           </ul>
         </nav>
         <article id="subContent">
             <h3>공지사항</h3>
-            <table id="notice">
-              <caption class="hidden">공지사항</caption>
-              <thead>
-                <tr>
-                  <th scope="col" class="no">no.</th>
-                  <th scope="col" class="title">제목</th>
-                  <th scope="col" class="write">작성자</th>
-                  <th scope="col" class="date">작성일자</th>    
-                  <th scope="col" class="read">조회수</th>
-                </tr>
-              </thead>
-             <c:forEach items="${Notice}" var="dto"> 
-              <tbody>
-               
-                <tr>
-                  <td>${dto.bNum }</td>
-                  <td class="listTitle"><div><a href="Notice_view.do?bNum=${dto.bNum}">${dto.bTitle }</a></div></td>
-                  <td>${dto.bName }</td>
-                  <td><fmt:formatDate value="${dto.bDate }" pattern="yyyy.MM.dd"/></td>
-                  <td>${dto.bHit }</td>
-                </tr>
-                
-              </tbody> 
-              </c:forEach>
-            </table>
+            
+<table width="500" cellpadding ="0" cellspacing="0" border="1">
+   <form action="Noticeview.do">
+   <input type="hidden" name="bNum" value="${Notice_view.bNum }">
+		<tr>
+			<td>번호</td>
+			<td>${Notice_view.bNum }</td>
+		</tr>
+		<tr>
+			<td>조회수</td>
+			<td>${Notice_view.bHit } </td>
+		</tr>
+		<tr>
+			<td>글쓴이</td>
+			<td>${Notice_view.bName} </td>
+		</tr>
+		<tr>
+			<td>제목</td>
+			<td>${Notice_view.bTitle} </td>
+		</tr>
+		<tr>
+			<td>내용</td>
+			<td>${Notice_view.bContent}</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			&nbsp;&nbsp;<a href="Notice.do">목록보기</a>
+			
+		</tr>
+	
+	</form>
+</table>
             <form id="noticeSearch">
               <fieldset>
                 <legend class="hidden">공지사항검색</legend>

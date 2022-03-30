@@ -49,7 +49,7 @@
           <ul>
             <li><a href="Notice.do">공지사항</a></li>
             <li><a href="#">구매후기</a></li>
-            <li><a href="SellReview.do"">판매후기</a></li>
+            <li><a href="SellReview.do">판매후기</a></li>
             <li><a href="#">개인보호정책</a></li>
           </ul>
         </nav>
@@ -62,19 +62,21 @@
                   <th scope="col" class="no">no.</th>
                   <th scope="col" class="title">제목</th>
                   <th scope="col" class="write">작성자</th>
+                  <th scope="col" class="write">차종</th>
                   <th scope="col" class="date">작성일자</th>    
                   <th scope="col" class="read">조회수</th>
                 </tr>
               </thead>
-             <c:forEach items="${Notice}" var="dto"> 
+             <c:forEach items="${SellReview}" var="dto"> 
               <tbody>
                
                 <tr>
-                  <td>${dto.bNum }</td>
-                  <td class="listTitle"><div><a href="Notice_view.do?bNum=${dto.bNum}">${dto.bTitle }</a></div></td>
-                  <td>${dto.bName }</td>
-                  <td><fmt:formatDate value="${dto.bDate }" pattern="yyyy.MM.dd"/></td>
-                  <td>${dto.bHit }</td>
+                  <td>${dto.sRNum }</td>
+                  <td class="listTitle"><div>${dto.sRTitle }</div></td>
+                  <td>${dto.sRId }</td>
+                  <td>${dto.sRCar }</td>
+                  <td><fmt:formatDate value="${dto.sRDate }" pattern="yyyy.MM.dd"/></td>
+                  <td>${dto.sRHit }</td>
                 </tr>
                 
               </tbody> 

@@ -12,6 +12,9 @@ import javax.servlet.http.HttpSession;
 
 import com.javalec.ex.CommandCar.CommandCar;
 import com.javalec.ex.CommandCar.LoginCommandCar;
+import com.javalec.ex.CommandCar.NoticeListCommandCar;
+import com.javalec.ex.CommandCar.NoticeViewCommandCar;
+import com.javalec.ex.CommandCar.SellReviewListCommandCar;
 import com.javalec.ex.CommandCar.joinCommandCar;
 
 
@@ -55,10 +58,12 @@ public class FrontController extends HttpServlet {
 		String conPath = request.getContextPath();
 		String com = uri.substring(conPath.length());
 		
+		
 		System.out.println("uri="+uri);
 		System.out.println("conPath="+conPath);
 		System.out.println("com="+com);
 		
+	
 		if(com.equals("/login.do")) {
 			command = new LoginCommandCar();
 			command.execute(request, response);
@@ -75,9 +80,24 @@ public class FrontController extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.invalidate();
 			viewPage = "CustomerService.jsp";
+		}else if(com.equals("/Notice.do")) {
+			command = new NoticeListCommandCar();
+			command.execute(request, response);
+			viewPage = "CustomerService.jsp";
+		}else if(com.equals("/Notice_view.do")) {
+			System.out.println("start");
+			command = new NoticeViewCommandCar();
+			command.execute(request, response);
+			viewPage = "Notice_View.jsp";
+		}else if(com.equals("/SellReview.do")) {
+			command = new SellReviewListCommandCar();
+			command.execute(request, response);
+			viewPage="SellReview.jsp";
+			
 		}
 		
 		
+			
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage); 
 		dispatcher.forward(request, response);
