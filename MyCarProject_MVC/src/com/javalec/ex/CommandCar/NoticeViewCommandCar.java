@@ -10,10 +10,9 @@ public class NoticeViewCommandCar implements CommandCar {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("Notice_view");
+
 		
 		String bNum = request.getParameter("bNum");
-		System.out.println(bNum);
 		
 		BDao dao = new BDao();
 		BDto2 dto = dao.Notice_view(bNum);

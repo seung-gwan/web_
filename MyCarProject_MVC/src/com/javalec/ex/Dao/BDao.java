@@ -274,6 +274,164 @@ public class BDao {
 		
 		return dtos;
 	}
+	public BDto3 SellReview_view(String strId) {
+		upHit1(strId);
+		
+		BDto3 dto = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql="select*from Sell_Review where sRNum=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(strId)); //글번호
+			rs = pstmt.executeQuery();
+			//해당 글이 존재할 경우에만 dto에 값을 넣음
+			if(rs.next()) {
+				int sRNum = rs.getInt("sRNum");
+				String sRTitle = rs.getString("sRTitle");
+				String sRContent = rs.getString("sRContent");
+				String sRId = rs.getString("sRId");
+				Timestamp sRDate = rs.getTimestamp("sRDate");
+				int sRHit = rs.getInt("sRHit");
+				String sRCar = rs.getString("sRCar");
+				
+				dto = new BDto3(sRNum, sRTitle, sRContent,sRDate, sRHit, sRId, sRCar);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		return dto;
+	}
+	private void upHit1(String sRNum) {
+	     try {
+	    	 conn = datasource.getConnection();
+	    	 String sql = "update Sell_Review set sRHit = sRHit+1 where sRNum=?";
+	    	 pstmt = conn.prepareStatement(sql);
+	    	 pstmt.setString(1,sRNum);
+	    	 pstmt.executeUpdate();
+	    	 
+	     }catch(Exception e){
+	    	 e.printStackTrace();
+	    	 
+	     }finally {
+	    	 try {
+	    		 pstmt.close();
+	    		 conn.close();
+	    	 }catch(Exception e2) {
+	    		 e2.printStackTrace();
+	    	 }
+	     }
+	     
+	    
+	
+	     
+	     
+	}
+	
+	public BDto3 SellReview_Modify_view(String strId) {
+		upHit1(strId);
+		
+		BDto3 dto = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql="select*from Sell_Review where sRNum=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(strId)); //글번호
+			rs = pstmt.executeQuery();
+			//해당 글이 존재할 경우에만 dto에 값을 넣음
+			if(rs.next()) {
+				int sRNum = rs.getInt("sRNum");
+				String sRTitle = rs.getString("sRTitle");
+				String sRContent = rs.getString("sRContent");
+				String sRId = rs.getString("sRId");
+				Timestamp sRDate = rs.getTimestamp("sRDate");
+				int sRHit = rs.getInt("sRHit");
+				String sRCar = rs.getString("sRCar");
+				
+				dto = new BDto3(sRNum, sRTitle, sRContent,sRDate, sRHit, sRId, sRCar);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		return dto;
+	}
+	
+	public void SellReview_modify(String sRNum, String sRId, String sRTitle, String sRContent) {
+		try {
+			conn = datasource.getConnection();
+			
+			String sql = "update Sell_Review set sRId=?, sRTitle=?, sRContent=? where sRNum=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			System.out.println("sRId="+sRId);
+			System.out.println("sRTitle="+sRTitle);
+			System.out.println("sRContent="+sRContent);
+			System.out.println("sRNum="+sRNum);
+			
+			pstmt.setString(1,sRId);
+			pstmt.setString(2,sRTitle);
+			pstmt.setString(3,sRContent);
+			pstmt.setInt(4,Integer.parseInt(sRNum));
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+	}
+	
+	public void SellReview_delete(String sRNum) {
+		try {
+			conn = datasource.getConnection();
+			String sql = "delete from Sell_Review where sRNum=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, Integer.parseInt(sRNum));
+			System.out.println("sRNum="+sRNum);
+			
+			pstmt.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
 	     		
 
 }

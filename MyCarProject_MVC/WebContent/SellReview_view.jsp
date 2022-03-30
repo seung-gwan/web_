@@ -48,40 +48,48 @@
           <h3>고객 센터<span class="hidden">submenu</span></h3>
           <ul>
             <li><a href="Notice.do">공지사항</a></li>
-            <li><a href="#">구매후기</a></li>
-            <li><a href="SellReview.do">판매후기</a></li>
+            <li><a href="SellReview.jsp">구매후기</a></li>
+            <li><a href="#">판매후기</a></li>
             <li><a href="#">개인보호정책</a></li>
           </ul>
         </nav>
         <article id="subContent">
-            <h3>공지사항</h3>
-            <table id="notice">
-              <caption class="hidden">공지사항</caption>
-              <thead>
-                <tr>
-                  <th scope="col" class="no">no.</th>
-                  <th scope="col" class="title">제목</th>
-                  <th scope="col" class="write">작성자</th>
-                  <th scope="col" class="write">차종</th>
-                  <th scope="col" class="date">작성일자</th>    
-                  <th scope="col" class="read">조회수</th>
-                </tr>
-              </thead>
-             <c:forEach items="${SellReview}" var="dto"> 
-              <tbody>
-               
-                <tr>
-                  <td>${dto.sRNum }</td>
-                  <td class="listTitle"><div><a href="SellReview_view.do?sRNum=${dto.sRNum}">${dto.sRTitle }</a></div></td>
-                  <td>${dto.sRId }</td>
-                  <td>${dto.sRCar }</td>
-                  <td><fmt:formatDate value="${dto.sRDate }" pattern="yyyy.MM.dd"/></td>
-                  <td>${dto.sRHit }</td>
-                </tr>
-                
-              </tbody> 
-              </c:forEach>
-            </table>
+            <h3>판매후기</h3>
+            
+<table width="500" cellpadding ="0" cellspacing="0" border="1">
+   <form>
+   <input type="hidden" name="bNum" value="${SellReview_view.sRNum }">
+		<tr>
+			<td>번호</td>
+			<td>${SellReview_view.sRNum }</td>
+		</tr>
+		<tr>
+			<td>조회수</td>
+			<td>${SellReview_view.sRHit } </td>
+		</tr>
+		<tr>
+			<td>글쓴이</td>
+			<td>${SellReview_view.sRId} </td>
+		</tr>
+		<tr>
+			<td>제목</td>
+			<td>${SellReview_view.sRTitle} </td>
+		</tr>
+		<tr>
+			<td>차종</td>
+			<td>${SellReview_view.sRCar}</td>
+		</tr>
+		<tr>
+			<td>내용</td>
+			<td>${SellReview_view.sRContent}</td>
+		</tr>
+		<tr>
+			<td colspan="2"> <a href="SellReview_Modify_view.do?sRNum=${SellReview_view.sRNum}">수정</a>
+			&nbsp;&nbsp;<a href="SellReview.do">목록보기</a>
+		</tr>
+	
+	</form>
+</table>
             <form id="noticeSearch">
               <fieldset>
                 <legend class="hidden">공지사항검색</legend>

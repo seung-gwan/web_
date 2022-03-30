@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.javalec.ex.Dao.BDao;
 import com.javalec.ex.Dto.BDto3;
 
-public class SellReviewViewCommandCar implements CommandCar {
+public class SellReviewModfiyViewCommandCar implements CommandCar {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
@@ -17,5 +17,7 @@ public class SellReviewViewCommandCar implements CommandCar {
 		
 		request.setAttribute("SellReview_view", dto);
 	}
+
+	
 
 }

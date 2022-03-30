@@ -14,7 +14,11 @@ import com.javalec.ex.CommandCar.CommandCar;
 import com.javalec.ex.CommandCar.LoginCommandCar;
 import com.javalec.ex.CommandCar.NoticeListCommandCar;
 import com.javalec.ex.CommandCar.NoticeViewCommandCar;
+import com.javalec.ex.CommandCar.SellReviewDeleteCommandCar;
 import com.javalec.ex.CommandCar.SellReviewListCommandCar;
+import com.javalec.ex.CommandCar.SellReviewModfiyViewCommandCar;
+import com.javalec.ex.CommandCar.SellReviewModifyCommandCar;
+import com.javalec.ex.CommandCar.SellReviewViewCommandCar;
 import com.javalec.ex.CommandCar.joinCommandCar;
 
 
@@ -93,7 +97,23 @@ public class FrontController extends HttpServlet {
 			command = new SellReviewListCommandCar();
 			command.execute(request, response);
 			viewPage="SellReview.jsp";
-			
+		}else if(com.equals("/SellReview_view.do")) {
+			command = new SellReviewViewCommandCar();
+			command.execute(request, response);
+			viewPage="SellReview_view.jsp";
+		}else if(com.equals("/SellReview_Modify_view.do")) {
+			command = new SellReviewModfiyViewCommandCar();
+			command.execute(request, response);
+			viewPage="SellReview_modify.jsp";
+		} else if(com.equals("/SellReview_modify.do")) {
+			System.out.println("start");
+			command = new SellReviewModifyCommandCar();
+			command.execute(request, response);
+			viewPage="SellReview_view.do";
+		} else if(com.equals("/SellReview_delete.do")) {
+			command = new SellReviewDeleteCommandCar();
+			command.execute(request, response);
+			viewPage="SellReview.jsp";
 		}
 		
 		
