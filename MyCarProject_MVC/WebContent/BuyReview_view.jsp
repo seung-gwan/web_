@@ -54,40 +54,38 @@
           </ul>
         </nav>
         <article id="subContent">
-            <h3>판매후기</h3>
+            <h3>구매후기</h3>
             
 <table width="500" cellpadding ="0" cellspacing="0" border="1">
-   <form action="SellReview_modify.do">
-   <input type="hidden" name="sRNum" value="${SellReview_view.sRNum }">
+   <form>
+   <input type="hidden" name="bNum" value="${BuyReview_view.bRNum }">
 		<tr>
 			<td>번호</td>
-			<td>${SellReview_view.sRNum }</td>
+			<td>${BuyReview_view.bRNum }</td>
 		</tr>
 		<tr>
 			<td>조회수</td>
-			<td>${SellReview_view.sRHit } </td>
+			<td>${BuyReview_view.bRHit } </td>
 		</tr>
 		<tr>
 			<td>글쓴이</td>
-			<td><input tye="text" name="sRId" value="${SellReview_view.sRId}"> </td>
+			<td>${BuyReview_view.bRId} </td>
 		</tr>
 		<tr>
 			<td>제목</td>
-			<td><input tye="text" name="sRTitle" value="${SellReview_view.sRTitle}"> </td>
+			<td>${BuyReview_view.bRTitle} </td>
 		</tr>
 		<tr>
 			<td>차종</td>
-			<td>${SellReview_view.sRCar}</td>
+			<td>${BuyReview_view.bRCar}</td>
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td><textarea rows="10" name="sRContent">${SellReview_view.sRContent}</textarea>  </td>
+			<td>${BuyReview_view.bRContent}</td>
 		</tr>
 		<tr>
-			<td colspan="2"> <input type="submit" value="확인">
-			&nbsp;&nbsp;<a href="SellReview.do">목록보기</a>
-			&nbsp;&nbsp;<a href="SellReview_delete.do?sRNum=${SellReview_view.sRNum}">삭제</a>
-			
+			<td colspan="2"> <a href="BuyReview_Modify_view.do?bRNum=${BuyReview_view.bRNum}">수정</a>
+			&nbsp;&nbsp;<a href="BuyReview.do">목록보기</a>
 		</tr>
 	
 	</form>

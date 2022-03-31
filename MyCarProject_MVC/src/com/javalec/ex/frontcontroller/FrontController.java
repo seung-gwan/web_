@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.javalec.ex.CommandCar.BuyReviewDeleteCommandCar;
+import com.javalec.ex.CommandCar.BuyReviewListCommandCar;
+import com.javalec.ex.CommandCar.BuyReviewModifyCommandCar;
+import com.javalec.ex.CommandCar.BuyReviewModifyViewCommand;
+import com.javalec.ex.CommandCar.BuyReviewViewCommandCar;
+import com.javalec.ex.CommandCar.BuyReviewWriteCommandCar;
 import com.javalec.ex.CommandCar.CommandCar;
 import com.javalec.ex.CommandCar.LoginCommandCar;
 import com.javalec.ex.CommandCar.NoticeListCommandCar;
@@ -19,6 +25,7 @@ import com.javalec.ex.CommandCar.SellReviewListCommandCar;
 import com.javalec.ex.CommandCar.SellReviewModfiyViewCommandCar;
 import com.javalec.ex.CommandCar.SellReviewModifyCommandCar;
 import com.javalec.ex.CommandCar.SellReviewViewCommandCar;
+import com.javalec.ex.CommandCar.SellReviewWriteCommandCar;
 import com.javalec.ex.CommandCar.joinCommandCar;
 
 
@@ -106,7 +113,6 @@ public class FrontController extends HttpServlet {
 			command.execute(request, response);
 			viewPage="SellReview_modify.jsp";
 		} else if(com.equals("/SellReview_modify.do")) {
-			System.out.println("start");
 			command = new SellReviewModifyCommandCar();
 			command.execute(request, response);
 			viewPage="SellReview_view.do";
@@ -114,6 +120,35 @@ public class FrontController extends HttpServlet {
 			command = new SellReviewDeleteCommandCar();
 			command.execute(request, response);
 			viewPage="SellReview.jsp";
+		} else if(com.equals("/SellReview_write.do")) {
+			command = new SellReviewWriteCommandCar();
+			command.execute(request, response);
+			viewPage="SellReview.do";
+		} else if(com.equals("/BuyReview.do")) {
+			command = new BuyReviewListCommandCar();
+			command.execute(request, response);
+			viewPage="BuyReview.jsp";
+		} else if(com.equals("/BuyReview_view.do")) {
+			command = new BuyReviewViewCommandCar();
+			command.execute(request, response);
+			viewPage="BuyReview_view.jsp";
+		} else if(com.equals("/BuyReview_Modify_view.do")) {
+			command = new BuyReviewModifyViewCommand();
+			command.execute(request, response);
+			viewPage="BuyReview_modify.jsp";
+		} else if(com.equals("/BuyReview_modify.do")) {
+			System.out.println("start!");
+			command = new BuyReviewModifyCommandCar();
+			command.execute(request, response);
+			viewPage="BuyReview_view.do";
+		} else if(com.equals("/BuyReview_delete.do")) {
+			command = new BuyReviewDeleteCommandCar();
+			command.execute(request, response);
+			viewPage="BuyReview.jsp";
+		} else if(com.equals("/BuyReview_write.do")) {
+			command = new BuyReviewWriteCommandCar();
+			command.execute(request, response);
+			viewPage="BuyReview.do";
 		}
 		
 		

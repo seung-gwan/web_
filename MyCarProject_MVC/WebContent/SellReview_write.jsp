@@ -57,36 +57,26 @@
             <h3>판매후기</h3>
             
 <table width="500" cellpadding ="0" cellspacing="0" border="1">
-   <form action="SellReview_modify.do">
+   <form action="SellReview_write.do" method="POST">
    <input type="hidden" name="sRNum" value="${SellReview_view.sRNum }">
 		<tr>
-			<td>번호</td>
-			<td>${SellReview_view.sRNum }</td>
-		</tr>
-		<tr>
-			<td>조회수</td>
-			<td>${SellReview_view.sRHit } </td>
-		</tr>
-		<tr>
 			<td>글쓴이</td>
-			<td><input tye="text" name="sRId" value="${SellReview_view.sRId}"> </td>
+			<td><input tye="text" name="sRId"> </td>
 		</tr>
 		<tr>
 			<td>제목</td>
-			<td><input tye="text" name="sRTitle" value="${SellReview_view.sRTitle}"> </td>
+			<td><input tye="text" name="sRTitle"> </td>
 		</tr>
 		<tr>
 			<td>차종</td>
-			<td>${SellReview_view.sRCar}</td>
+			<td><input type="text"name="sRCar"></td>
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td><textarea rows="10" name="sRContent">${SellReview_view.sRContent}</textarea>  </td>
+			<td><textarea rows="10" name="sRContent"></textarea>  </td>
 		</tr>
 		<tr>
 			<td colspan="2"> <input type="submit" value="확인">
-			&nbsp;&nbsp;<a href="SellReview.do">목록보기</a>
-			&nbsp;&nbsp;<a href="SellReview_delete.do?sRNum=${SellReview_view.sRNum}">삭제</a>
 			
 		</tr>
 	

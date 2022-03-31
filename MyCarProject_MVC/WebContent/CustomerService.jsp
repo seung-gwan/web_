@@ -48,7 +48,7 @@
           <h3>고객 센터<span class="hidden">submenu</span></h3>
           <ul>
             <li><a href="Notice.do">공지사항</a></li>
-            <li><a href="#">구매후기</a></li>
+            <li><a href="BuyReview.do">구매후기</a></li>
             <li><a href="SellReview.do"">판매후기</a></li>
             <li><a href="#">개인보호정책</a></li>
           </ul>

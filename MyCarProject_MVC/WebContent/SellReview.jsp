@@ -48,13 +48,13 @@
           <h3>고객 센터<span class="hidden">submenu</span></h3>
           <ul>
             <li><a href="Notice.do">공지사항</a></li>
-            <li><a href="#">구매후기</a></li>
+            <li><a href="BuyReview.do">구매후기</a></li>
             <li><a href="SellReview.do">판매후기</a></li>
             <li><a href="#">개인보호정책</a></li>
           </ul>
         </nav>
         <article id="subContent">
-            <h3>공지사항</h3>
+            <h3>판매리뷰</h3>
             <table id="notice">
               <caption class="hidden">공지사항</caption>
               <thead>
@@ -84,11 +84,13 @@
             </table>
             <form id="noticeSearch">
               <fieldset>
+                <a href="SellReview_write.jsp">글작성</a>
                 <legend class="hidden">공지사항검색</legend>
                 <label for="searchBox" class="hidden">검색어입력창</label>
                 <input type="text" id="searchBox">
                 <label for="searchBtn" class="hidden">검색버튼</label>
                 <input type="button"id="searchBtn" value="Search">
+                <label for="writeBtn" class="hidden">글작성</label>
               </fieldset>
             </form>
             <div id="pageControl">

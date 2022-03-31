@@ -30,8 +30,8 @@
         <nav id="gnb">
           <h2 class="hidden">중고차주요이용메뉴</h2>
           <ul>
-            <li><a href="Sell.html">내차 팔기</a></li>
-          <li><a href="Buy.html">내차 사기</a></li>
+            <li><a href="CarSell.jsp">내차 팔기</a></li>
+          <li><a href="CarBuy.jsp">내차 사기</a></li>
           <li><a href="Notice.do">고객센터</a></li>
           <li><a href="#">브랜드인증관</a></li>
           <li><a href="#">전국직영점</a></li>
@@ -54,51 +54,43 @@
           </ul>
         </nav>
         <article id="subContent">
-            <h3>판매후기</h3>
-            
-<table width="500" cellpadding ="0" cellspacing="0" border="1">
-   <form action="SellReview_modify.do">
-   <input type="hidden" name="sRNum" value="${SellReview_view.sRNum }">
-		<tr>
-			<td>번호</td>
-			<td>${SellReview_view.sRNum }</td>
-		</tr>
-		<tr>
-			<td>조회수</td>
-			<td>${SellReview_view.sRHit } </td>
-		</tr>
-		<tr>
-			<td>글쓴이</td>
-			<td><input tye="text" name="sRId" value="${SellReview_view.sRId}"> </td>
-		</tr>
-		<tr>
-			<td>제목</td>
-			<td><input tye="text" name="sRTitle" value="${SellReview_view.sRTitle}"> </td>
-		</tr>
-		<tr>
-			<td>차종</td>
-			<td>${SellReview_view.sRCar}</td>
-		</tr>
-		<tr>
-			<td>내용</td>
-			<td><textarea rows="10" name="sRContent">${SellReview_view.sRContent}</textarea>  </td>
-		</tr>
-		<tr>
-			<td colspan="2"> <input type="submit" value="확인">
-			&nbsp;&nbsp;<a href="SellReview.do">목록보기</a>
-			&nbsp;&nbsp;<a href="SellReview_delete.do?sRNum=${SellReview_view.sRNum}">삭제</a>
-			
-		</tr>
-	
-	</form>
-</table>
+            <h3>구매리뷰</h3>
+            <table id="notice">
+              <caption class="hidden">공지사항</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="no">no.</th>
+                  <th scope="col" class="title">제목</th>
+                  <th scope="col" class="write">작성자</th>
+                  <th scope="col" class="write">차종</th>
+                  <th scope="col" class="date">작성일자</th>    
+                  <th scope="col" class="read">조회수</th>
+                </tr>
+              </thead>
+             <c:forEach items="${BuyReview}" var="dto"> 
+              <tbody>
+               
+                <tr>
+                  <td>${dto.bRNum }</td>
+                  <td class="listTitle"><div><a href="BuyReview_view.do?bRNum=${dto.bRNum}">${dto.bRTitle }</a></div></td>
+                  <td>${dto.bRId }</td>
+                  <td>${dto.bRCar }</td>
+                  <td><fmt:formatDate value="${dto.bRDate }" pattern="yyyy.MM.dd"/></td>
+                  <td>${dto.bRHit }</td>
+                </tr>
+                
+              </tbody> 
+              </c:forEach>
+            </table>
             <form id="noticeSearch">
               <fieldset>
+                <a href="BuyReview_write.jsp">글작성</a>
                 <legend class="hidden">공지사항검색</legend>
                 <label for="searchBox" class="hidden">검색어입력창</label>
                 <input type="text" id="searchBox">
                 <label for="searchBtn" class="hidden">검색버튼</label>
                 <input type="button"id="searchBtn" value="Search">
+                <label for="writeBtn" class="hidden">글작성</label>
               </fieldset>
             </form>
             <div id="pageControl">

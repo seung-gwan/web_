@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 import com.javalec.ex.Dto.BDto2;
 import com.javalec.ex.Dto.BDto3;
+import com.javalec.ex.Dto.BDto4;
 
 
 
@@ -432,6 +433,262 @@ public class BDao {
 			}
 		}
 	}
+	
+	public void SellReview_write(String sRId, String sRTitle, String sRContent , String sRCar) {
+		try {
+			conn=datasource.getConnection();
+			String sql = "insert into Sell_Review(sRNum,sRTitle,sRContent,sRHit,sRCar,sRId) values(nextval('Sell_Review'),?,?,0,?,?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, sRTitle);
+			pstmt.setString(2, sRContent);
+			pstmt.setString(3, sRCar);
+			pstmt.setString(4, sRId);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	public ArrayList<BDto4> BuyReview() {
+
+		ArrayList<BDto4> dtos = new ArrayList<BDto4>();
+		
+		
+		try {
+
+			conn = datasource.getConnection();
+			
+			String sql = "select bRNum, bRTitle, bRContent, bRId, bRDate, bRHit, bRCar from Buy_Review order by bRNum asc";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery(); 
+			while(rs.next()) {
+				
+				String bRId = rs.getString("bRId");
+				String bRTitle = rs.getString("bRTitle");
+				String bRContent = rs.getString("bRContent");
+				String bRCar = rs.getString("bRCar");
+				int bRNum = rs.getInt("bRNum");
+				int bRHit = rs.getInt("bRHit");
+				Timestamp bRDate = rs.getTimestamp("bRDate");
+				
+				
+				
+				BDto4 dto = new BDto4(bRId, bRTitle, bRContent, bRCar, bRNum, bRHit, bRDate);
+				dtos.add(dto);
+			}
+			
+			System.out.println(dtos);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+		}
+		}
+		
+		
+
+		
+		
+		
+		return dtos;
+	}
+	public BDto4 BuyReview_view(String strId) {
+		upHit2(strId);
+		
+		BDto4 dto = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql="select*from Buy_Review where bRNum=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(strId)); //글번호
+			rs = pstmt.executeQuery();
+			//해당 글이 존재할 경우에만 dto에 값을 넣음
+			if(rs.next()) {
+				int bRNum = rs.getInt("bRNum");
+				String bRTitle = rs.getString("bRTitle");
+				String bRContent = rs.getString("bRContent");
+				String bRId = rs.getString("bRId");
+				Timestamp bRDate = rs.getTimestamp("bRDate");
+				int bRHit = rs.getInt("bRHit");
+				String bRCar = rs.getString("bRCar");
+				
+				dto = new BDto4(bRId, bRTitle, bRContent, bRCar, bRNum, bRHit, bRDate);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		return dto;
+	}
+	private void upHit2(String bRNum) {
+	     try {
+	    	 conn = datasource.getConnection();
+	    	 String sql = "update Buy_Review set bRHit = bRHit+1 where bRNum=?";
+	    	 pstmt = conn.prepareStatement(sql);
+	    	 pstmt.setString(1,bRNum);
+	    	 pstmt.executeUpdate();
+	    	 
+	     }catch(Exception e){
+	    	 e.printStackTrace();
+	    	 
+	     }finally {
+	    	 try {
+	    		 pstmt.close();
+	    		 conn.close();
+	    	 }catch(Exception e2) {
+	    		 e2.printStackTrace();
+	    	 }
+	     }
+	     
+	    
+	
+	     
+	     
+	}
+	
+	public BDto4 BuyReview_Modify_view(String strId) {
+		upHit2(strId);
+		
+		BDto4 dto = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql="select*from Buy_Review where bRNum=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, Integer.parseInt(strId)); //글번호
+			rs = pstmt.executeQuery();
+			//해당 글이 존재할 경우에만 dto에 값을 넣음
+			if(rs.next()) {
+				int bRNum = rs.getInt("bRNum");
+				String bRTitle = rs.getString("bRTitle");
+				String bRContent = rs.getString("bRContent");
+				String bRId = rs.getString("bRId");
+				Timestamp bRDate = rs.getTimestamp("bRDate");
+				int bRHit = rs.getInt("bRHit");
+				String bRCar = rs.getString("bRCar");
+				
+				dto = new BDto4(bRId, bRTitle, bRContent, bRCar, bRNum, bRHit, bRDate);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		return dto;
+	}
+	
+	public void BuyReview_modify(String bRId, String bRTitle, String bRContent, String bRNum) {
+		try {
+			conn = datasource.getConnection();
+			
+			String sql = "update Buy_Review set bRId=?, bRTitle=?, bRContent=? where bRNum=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			
+			
+			
+			pstmt.setString(1,bRId);
+			pstmt.setString(2,bRTitle);
+			pstmt.setString(3,bRContent);
+			pstmt.setInt(4,Integer.parseInt(bRNum));
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+	}
+	
+	public void BuyReview_delete(String bRNum) {
+		try {
+			conn = datasource.getConnection();
+			String sql = "delete from Buyy_Review where bRNum=?";
+			pstmt = conn.prepareStatement(sql);
+			
+			pstmt.setInt(1, Integer.parseInt(bRNum));
+			
+			
+			pstmt.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	
+	public void BuyReview_write(String bRId, String bRTitle, String bRContent , String bRCar) {
+		try {
+			conn=datasource.getConnection();
+			String sql = "insert into Buy_Review(bRNum,bRTitle,bRContent,bRHit,bRCar,bRId) values(nextval('Buy_Review'),?,?,0,?,?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, bRTitle);
+			pstmt.setString(2, bRContent);
+			pstmt.setString(3, bRCar);
+			pstmt.setString(4, bRId);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+	     		
 	     		
 
 }
