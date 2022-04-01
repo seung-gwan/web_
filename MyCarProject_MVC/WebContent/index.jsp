@@ -29,7 +29,7 @@
             	<a href="info_view.do?member_id=${sessionID}">개인정보</a>
             </c:if>
             <c:if test="${sessionID ==null }">
-            	<a href="join.do">회원가입</a>
+            	<a href="join.jsp">회원가입</a>
             </c:if>
           </li>
         </ul>

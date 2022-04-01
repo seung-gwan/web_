@@ -14,6 +14,7 @@ import com.javalec.ex.Dto.BDto;
 import com.javalec.ex.Dto.BDto2;
 import com.javalec.ex.Dto.BDto3;
 import com.javalec.ex.Dto.BDto4;
+import com.javalec.ex.Dto.BDto5;
 
 
 
@@ -768,6 +769,7 @@ public class BDao {
 				String member_car = rs.getString("member_car");
 				System.out.println("member_address_detail1="+member_address_detail1);
 				System.out.println("member_address_detail2="+member_address_detail2);
+				System.out.println("member_address_num="+member_address_num);
 				
 				dto = new BDto(member_id1, member_pw, member_name, member_address, member_address_detail1, member_address_detail2, member_address_num,member_email,member_gender,member_car);
 			}
@@ -811,6 +813,8 @@ public BDto info_modify_view(String member_id) {
 				String member_car = rs.getString("member_car");
 				System.out.println("member_address_detail1="+member_address_detail1);
 				System.out.println("member_address_detail2="+member_address_detail2);
+				System.out.println("member_address_num="+member_address_num);
+				System.out.println("member_gender="+member_gender);
 				
 				dto = new BDto(member_id1, member_pw, member_name, member_address, member_address_detail1, member_address_detail2, member_address_num,member_email,member_gender,member_car);
 			}
@@ -829,25 +833,28 @@ public BDto info_modify_view(String member_id) {
 		return dto;
 	}
 		
-	public void info_modify(String member_id, String member_pw, String member_name, String member_address,
-			String member_address_detail1, String member_address_detail2, int member_address_num, String member_email,
-			String member_gender, String member_car) {
+	public void info_modify(String member_pw, String member_name, String member_address,
+			String member_address_detail1, String member_address_detail2, String member_address_num, String member_email,
+			String member_gender, String member_car,String member_id) {
 		try {
 			conn=datasource.getConnection();
-			String sql = "insert into Car_member(member_id,member_pw,member_name,member_address,member_address_detail1,member_address_detail2"
-					+ ",member_address_num, member_email, member_gender, member_car) values(?,?,?,?,?,?,?,?,?,?)";
-			
+			String sql = "update Car_member set member_pw=?, member_name=?, member_address=?, member_address_detail1=?,member_address_detail2=?, member_address_num=?, member_email=?,member_gender=?,member_car=? where member_id=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, member_id);
-			pstmt.setString(2, member_pw);
-			pstmt.setString(3, member_name);
-			pstmt.setString(4, member_address);
-			pstmt.setString(5, member_address_detail1);
-			pstmt.setString(6, member_address_detail2);
-			pstmt.setInt(7, member_address_num);
-			pstmt.setString(8, member_email);
-			pstmt.setString(9, member_gender);
-			pstmt.setString(10, member_car);
+			
+			pstmt.setString(1, member_pw);
+			pstmt.setString(2, member_name);
+			pstmt.setString(3, member_address);
+			pstmt.setString(4, member_address_detail1);
+			pstmt.setString(5, member_address_detail2);
+			pstmt.setString(6,member_address_num);
+			pstmt.setString(7, member_email);
+			pstmt.setString(8, member_gender);
+			pstmt.setString(9, member_car);
+			pstmt.setString(10, member_id);
+			System.out.println("member_address_detail1="+member_address_detail1);
+			System.out.println("member_address_detail2="+member_address_detail2);
+			System.out.println("member_address_num="+member_address_num);
+			System.out.println("member_gender="+member_gender);
 			
 			
 			
@@ -865,6 +872,58 @@ public BDto info_modify_view(String member_id) {
 		}
 		
 		
+		
+	}
+	public ArrayList<BDto5> Carinfo(){
+		ArrayList<BDto5> dtos = new ArrayList<BDto5>();
+		
+		try {
+
+			conn = datasource.getConnection();
+			
+			String sql = "select*from Car_info";
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery(); 
+			while(rs.next()) {
+				
+				String member_id = rs.getString("member_id");
+				String member_pw = rs.getString("member_pw");
+				String Car_kM = rs.getString("Car_kM");
+				String Car_Num = rs.getString("Car_Num");
+				int Car_ProductY = rs.getInt("Car_ProductY");
+				String Car_color = rs.getString("Car_color");
+				String Car_brand = rs.getString("Car_brand");
+				String Car_type = rs.getString("Car_type");
+				String Car_Accident = rs.getString("Car_Accident");
+				
+				
+				
+				
+				BDto5 dto = new BDto5(member_id, member_pw, Car_kM, Car_Num, Car_ProductY, Car_color, Car_brand,Car_type,Car_Accident);
+				dtos.add(dto);
+			}
+			
+			System.out.println(dtos);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+		}
+		}
+		
+		
+
+		
+		
+		
+		return dtos;
 		
 	}
 	     		

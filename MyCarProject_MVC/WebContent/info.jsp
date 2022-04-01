@@ -45,7 +45,7 @@
 		</tr>
 		<tr>
 			<td>차종</td>
-			<td>${infoList_view.member_car}</td>
+			<td>${infoList_view.member_car}<a href ="CarInfo_insert.jsp">내차량 등록</a></td>
 		</tr>
 		<tr>
 			<td>이메일주소</td>

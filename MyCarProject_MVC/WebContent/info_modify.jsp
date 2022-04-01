@@ -43,30 +43,30 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
    <input type="hidden" name="member_id" value="${infoList_view.member_id }">
 		<tr>
 			<td>아이디</td>
-			<td><input type="text" value="${infoList_view.member_id }"></td>
+			<td>${infoList_view.member_id }</td>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
-			<td><input type="text" value="${infoList_view.member_pw }"></td>
+			<td><input type="text" name="member_pw" value="${infoList_view.member_pw }"></td>
 		</tr>
 		<tr>
 			<td>이름</td>
-			<td><input type="text" value="${infoList_view.member_name }"></td>
+			<td><input type="text" name="member_name" value="${infoList_view.member_name }"></td>
 		</tr>
 		<tr>
-			<td>차종</td>
-			<td><input type="text" value="${infoList_view.member_car }"></td>
+			<td>차종</td> 
+			<td><input type="text" name="member_car" value="${infoList_view.member_car }"></td>
 		</tr>
 		<tr>
 			<td>이메일주소</td>
-			<td><input type="text" value="${infoList_view.member_email }"></td>
+			<td><input type="text" name="member_email" value="${infoList_view.member_email }"></td>
 		</tr>
 		 <div class="form-check" style="height: 50px">
-	  <input class="form-check-input" type="radio" name="gender"  value="남자" id="Man"checked>
+	  <input class="form-check-input" type="radio" name="member_gender""  value="남자" id="Man"checked>
 	  <label class="form-check-label" for="flexRadioDefault1">
 	    Man
 	  </label>	
-	  <input class="form-check-input" type="radio" name="gender" value="여자" id="Woman">
+	  <input class="form-check-input" type="radio" name="member_gender" value="여자" id="Woman">
 	  <label class="form-check-label" for="flexRadioDefault2">
 	    Woman
 	  </label>
@@ -82,19 +82,19 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 					<th>우편번호</th>
 					<td>
 					    <input type="hidden" id="confmKey" name="confmKey" value=""  >
-						<input type="text" id="zipNo" name="zipNo" readonly style="width:100px" value="${infoList_view.member_address_num }">
+						<input type="text" id="zipNo" name="member_address_num"" readonly style="width:100px" value="${infoList_view.member_address_num }">
 						<input type="button"  value="주소검색" onclick="goPopup();">
 					</td>
 				</tr>
 				<tr  style="height: 30px">
 					<th>도로명주소</th>
-					<td><input type="text" id="roadAddrPart1" name="roadAddrPart1"style="width:85%" value="${infoList_view.member_address }"></td>
+					<td><input type="text" id="roadAddrPart1" name="member_address" style="width:85%" value="${infoList_view.member_address }"></td>
 				</tr>
 				<tr  style="height: 30px">
 					<th>상세주소</th>
 					<td>
-						<input type="text" id="addrDetail" name="addrDetail" style="width:40%" value="${infoList_view.member_address_detail1 }">
-						<input type="text" id="roadAddrPart2" name="roadAddrPart2"  style="width:40%" value="${infoList_view.member_address_detail2 }">
+						<input type="text" id="addrDetail" name="member_address_detail1" style="width:40%" value="${infoList_view.member_address_detail1 }">
+						<input type="text" id="roadAddrPart2" name="member_address_detail2"  style="width:40%" value="${infoList_view.member_address_detail2 }">
 					</td>
 				</tr>
 			</tbody>
