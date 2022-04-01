@@ -18,6 +18,7 @@ public class LoginCommandCar implements CommandCar {
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
 	   
 		String member_id = request.getParameter("Id");
+		System.out.println(member_id);
 		String member_pw = request.getParameter("Pw");
 		BDao dao = new BDao();
 		

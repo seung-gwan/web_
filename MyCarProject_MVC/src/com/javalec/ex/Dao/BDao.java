@@ -10,7 +10,7 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
-
+import com.javalec.ex.Dto.BDto;
 import com.javalec.ex.Dto.BDto2;
 import com.javalec.ex.Dto.BDto3;
 import com.javalec.ex.Dto.BDto4;
@@ -688,7 +688,185 @@ public class BDao {
 			}
 		}
 	}
-	     		
+    
+	public ArrayList<BDto> info(){
+		ArrayList<BDto> dtos = new ArrayList<BDto>();
+		
+		try {
+
+			conn = datasource.getConnection();
+			
+			String sql = "select*from Car_member";
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery(); 
+			while(rs.next()) {
+				
+				String member_id = rs.getString("member_id");
+				String member_pw = rs.getString("member_pw");
+				String member_name = rs.getString("member_name");
+				String member_address = rs.getString("member_address");
+				String member_address_detail1 = rs.getString("member_address_detail1");
+				String member_address_detail2 = rs.getString("member_address_detail2");
+				int member_address_num = rs.getInt("member_address_num");
+				String member_email = rs.getString("member_email");
+				String member_gender = rs.getString("member_gender");
+				String member_car = rs.getString("member_car");
+				
+				
+				
+				BDto dto = new BDto(member_id, member_pw, member_name, member_address, member_address_detail1, member_address_detail2, member_address_num,member_email,member_gender,member_car);
+				dtos.add(dto);
+			}
+			
+			System.out.println(dtos);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+		}
+		}
+		
+		
+
+		
+		
+		
+		return dtos;
+		
+	}
+	
+	
+	public BDto info_view(String member_id) {
+		
+		BDto dto = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql="select*from Car_member where member_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_id); 
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String member_id1 = rs.getString("member_id");
+				String member_pw = rs.getString("member_pw");
+				String member_name = rs.getString("member_name");
+				String member_address = rs.getString("member_address");
+				String member_address_detail1 = rs.getString("member_address_detail1");
+				String member_address_detail2 = rs.getString("member_address_detail2");
+				int member_address_num = rs.getInt("member_address_num");
+				String member_email = rs.getString("member_email");
+				String member_gender = rs.getString("member_gender");
+				String member_car = rs.getString("member_car");
+				System.out.println("member_address_detail1="+member_address_detail1);
+				System.out.println("member_address_detail2="+member_address_detail2);
+				
+				dto = new BDto(member_id1, member_pw, member_name, member_address, member_address_detail1, member_address_detail2, member_address_num,member_email,member_gender,member_car);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		return dto;
+	}
+	
+public BDto info_modify_view(String member_id) {
+		
+		BDto dto = null;
+		
+		try {
+			conn = datasource.getConnection();
+			String sql="select*from Car_member where member_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_id); 
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				String member_id1 = rs.getString("member_id");
+				String member_pw = rs.getString("member_pw");
+				String member_name = rs.getString("member_name");
+				String member_address = rs.getString("member_address");
+				String member_address_detail1 = rs.getString("member_address_detail1");
+				String member_address_detail2 = rs.getString("member_address_detail2");
+				int member_address_num = rs.getInt("member_address_num");
+				String member_email = rs.getString("member_email");
+				String member_gender = rs.getString("member_gender");
+				String member_car = rs.getString("member_car");
+				System.out.println("member_address_detail1="+member_address_detail1);
+				System.out.println("member_address_detail2="+member_address_detail2);
+				
+				dto = new BDto(member_id1, member_pw, member_name, member_address, member_address_detail1, member_address_detail2, member_address_num,member_email,member_gender,member_car);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		return dto;
+	}
+		
+	public void info_modify(String member_id, String member_pw, String member_name, String member_address,
+			String member_address_detail1, String member_address_detail2, int member_address_num, String member_email,
+			String member_gender, String member_car) {
+		try {
+			conn=datasource.getConnection();
+			String sql = "insert into Car_member(member_id,member_pw,member_name,member_address,member_address_detail1,member_address_detail2"
+					+ ",member_address_num, member_email, member_gender, member_car) values(?,?,?,?,?,?,?,?,?,?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_id);
+			pstmt.setString(2, member_pw);
+			pstmt.setString(3, member_name);
+			pstmt.setString(4, member_address);
+			pstmt.setString(5, member_address_detail1);
+			pstmt.setString(6, member_address_detail2);
+			pstmt.setInt(7, member_address_num);
+			pstmt.setString(8, member_email);
+			pstmt.setString(9, member_gender);
+			pstmt.setString(10, member_car);
+			
+			
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		
+	}
 	     		
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -113,20 +114,33 @@
   </head>
   <body>
     <header id="header">
-        <h1><a href="index.html">RentCar</a></h1>
+        <h1><a href="index.jsp">RentCar</a></h1>
         <nav id="membership">
           <h2 class="hidden">멤버쉽네비게이션</h2>
           <ul>
-            <li class="goLogin"><a href="#">로그인</a></li>
-            <li class="goJoin"><a href="#">회원가입</a></li>
+            <li class="goLogin"><c:if test="${sessionID != null }">
+	        ${sessionID }
+	        <a href="logout1.do">로그아웃</a>
+            </c:if>
+           <c:if test="${sessionID == null }">
+          	<a href="Login.jsp">로그인</a>
+          </c:if></li>
+            <li class="goJoin">
+            <c:if test="${sessionID != null }">
+            	<a href="info.do">개인정보</a>
+            </c:if>
+            <c:if test="${sessionID ==null }">
+            	<a href="join.do">회원가입</a>
+            </c:if>
+            </li>
           </ul>
         </nav>
         <nav id="gnb">
           <h2 class="hidden">중고차주요이용메뉴</h2>
           <ul>
-            <li><a href="Sell.html">내차 팔기</a></li>
-            <li><a href="Buy.html">내차 사기</a></li>
-            <li><a href="CustomerService.html">고객센터</a></li>
+            <li><a href="CarSell.jsp">내차 팔기</a></li>
+            <li><a href="CarBuy.jsp">내차 사기</a></li>
+            <li><a href="Notice.do">고객센터</a></li>
             <li><a href="#">브랜드인증관</a></li>
             <li><a href="#">전국직영점</a></li>
           </ul>

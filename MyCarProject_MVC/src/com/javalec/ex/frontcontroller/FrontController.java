@@ -17,6 +17,9 @@ import com.javalec.ex.CommandCar.BuyReviewModifyViewCommand;
 import com.javalec.ex.CommandCar.BuyReviewViewCommandCar;
 import com.javalec.ex.CommandCar.BuyReviewWriteCommandCar;
 import com.javalec.ex.CommandCar.CommandCar;
+import com.javalec.ex.CommandCar.InfoMemberCommandCar;
+import com.javalec.ex.CommandCar.InfoMemberModifyViewCommandCar;
+import com.javalec.ex.CommandCar.InfoMemberViewCommandCar;
 import com.javalec.ex.CommandCar.LoginCommandCar;
 import com.javalec.ex.CommandCar.NoticeListCommandCar;
 import com.javalec.ex.CommandCar.NoticeViewCommandCar;
@@ -149,6 +152,18 @@ public class FrontController extends HttpServlet {
 			command = new BuyReviewWriteCommandCar();
 			command.execute(request, response);
 			viewPage="BuyReview.do";
+		} else if(com.equals("/info.do")) {
+			command = new InfoMemberCommandCar();
+			command.execute(request, response);
+			viewPage="info.jsp";
+		} else if(com.equals("/info_view.do")) {
+			command = new InfoMemberViewCommandCar();
+			command.execute(request, response);
+			viewPage="info.jsp";
+		} else if(com.equals("/info_modfiy_view.do")) {
+			command = new InfoMemberModifyViewCommandCar();
+			command.execute(request, response);
+			viewPage="info_modify.jsp";
 		}
 		
 		

@@ -24,14 +24,21 @@
           	<a href="Login.jsp">로그인</a>
           </c:if>
           </li>
-          <li class="goJoin"><a href="join.jsp">회원가입</a></li>
+          <li class="goJoin">
+          <c:if test="${sessionID != null }">
+            	<a href="info_view.do?member_id=${sessionID}">개인정보</a>
+            </c:if>
+            <c:if test="${sessionID ==null }">
+            	<a href="join.do">회원가입</a>
+            </c:if>
+          </li>
         </ul>
       </nav>
       <nav id="gnb">
         <h2 class="hidden">펀웹주요이용메뉴</h2>
         <ul>
-          <li><a href="Sell.html">내차 팔기</a></li>
-          <li><a href="Buy.html">내차 사기</a></li>
+          <li><a href="CarSell.jsp">내차 팔기</a></li>
+          <li><a href="CarBuy.jsp">내차 사기</a></li>
           <li><a href="Notice.do">고객센터</a></li>
           <li><a href="#">브랜드인증관</a></li>
           <li><a href="#">전국직영점</a></li>

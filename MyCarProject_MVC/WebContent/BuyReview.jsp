@@ -24,7 +24,14 @@
            <c:if test="${sessionID == null }">
           	<a href="Login.jsp">로그인</a>
           </c:if></li>
-            <li class="goJoin"><a href="join.jsp">회원가입</a></li>
+            <li class="goJoin">
+            <c:if test="${sessionID != null }">
+            	<a href="info.do">개인정보</a>
+            </c:if>
+            <c:if test="${sessionID ==null }">
+            	<a href="join.do">회원가입</a>
+            </c:if>
+            </li>
           </ul>
         </nav>
         <nav id="gnb">

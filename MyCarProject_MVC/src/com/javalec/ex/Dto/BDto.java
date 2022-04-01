@@ -1,6 +1,6 @@
 package com.javalec.ex.Dto;
 
-import java.sql.Timestamp;
+
 
 public class BDto {
 	
@@ -29,8 +29,7 @@ public class BDto {
 	
 	public BDto(String member_id, String member_pw, String member_name, String member_address,
 			String member_address_detail1, String member_address_detail2, int member_address_num, String member_email,
-			String member_gender, String member_car,int bNum, String bTitle, String bContent, String bName,
-			Timestamp bDate, int bHit ) {
+			String member_gender, String member_car) {
 		super();
 		this.member_id = member_id;
 		this.member_pw = member_pw;
