@@ -7,7 +7,7 @@
 <title>차량 정보</title>
 </head>
 <body>
-<form action ="Carinfo_insert.do" method="post">
+<form action ="Carinfo_modify.do" method="post">
 <table>
         
 	<tr>

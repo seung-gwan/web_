@@ -19,10 +19,10 @@ public class BDto5 {
 	
 	
 	
-	public BDto5(String member_id, String member_car, String car_kM, String car_Num, int car_ProductY, String car_color,
-			String car_brand, String car_type, String car_Accident) {
+	public BDto5(String member_car, String car_kM, String car_Num, int car_ProductY, String car_color,
+			String car_brand, String car_type, String car_Accident, String member_id) {
 		super();
-		this.member_id = member_id;
+		
 		this.member_car = member_car;
 		Car_kM = car_kM;
 		Car_Num = car_Num;
@@ -31,11 +31,6 @@ public class BDto5 {
 		Car_brand = car_brand;
 		Car_type = car_type;
 		Car_Accident = car_Accident;
-	}
-	public String getMember_id() {
-		return member_id;
-	}
-	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
 	public String getMember_car() {
@@ -86,7 +81,12 @@ public class BDto5 {
 	public void setCar_Accident(String car_Accident) {
 		Car_Accident = car_Accident;
 	}
-	
+	public String setMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
 	
 
 }

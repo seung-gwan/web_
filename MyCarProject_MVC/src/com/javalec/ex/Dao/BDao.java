@@ -888,7 +888,7 @@ public BDto info_modify_view(String member_id) {
 			while(rs.next()) {
 				
 				String member_id = rs.getString("member_id");
-				String member_pw = rs.getString("member_pw");
+				String member_car = rs.getString("member_car");
 				String Car_kM = rs.getString("Car_kM");
 				String Car_Num = rs.getString("Car_Num");
 				int Car_ProductY = rs.getInt("Car_ProductY");
@@ -900,7 +900,7 @@ public BDto info_modify_view(String member_id) {
 				
 				
 				
-				BDto5 dto = new BDto5(member_id, member_pw, Car_kM, Car_Num, Car_ProductY, Car_color, Car_brand,Car_type,Car_Accident);
+				BDto5 dto = new BDto5(member_car, Car_kM, Car_Num, Car_ProductY, Car_color, Car_brand,Car_type,Car_Accident, member_id);
 				dtos.add(dto);
 			}
 			
@@ -926,6 +926,113 @@ public BDto info_modify_view(String member_id) {
 		return dtos;
 		
 	}
+	public void Carinfo_insert(String member_car, String car_kM, String car_Num, String car_ProductY, String car_color, String car_brand, String car_type, String car_Accident, String member_id  ){
+		try {
+			conn=datasource.getConnection();
+			String sql = "insert into Car_info(member_car,car_kM,car_Num,car_ProductY,car_color,car_brand,car_type,car_Accident,member_id) values(?,?,?,?,?,?,?,?,?)";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_car);
+			pstmt.setString(2, car_kM);
+			pstmt.setString(3, car_Num);
+			pstmt.setString(4, car_ProductY);
+			pstmt.setString(5, car_color);
+			pstmt.setString(6, car_brand);
+			pstmt.setString(7, car_type);
+			pstmt.setString(8, car_Accident);
+			pstmt.setString(9, member_id);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+	}
+	
+	public BDto5 Carinfo_view(String strID) {
+	
+		BDto5 dto = null;
+		try {
+			conn = datasource.getConnection();
+			String sql="select*from Car_info where member_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, strID); 
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				String member_car = rs.getString("member_car");
+				String car_kM = rs.getString("car_kM");
+				String car_Num = rs.getString("car_Num");
+				int car_ProductY = rs.getInt("car_ProductY");
+				String car_color = rs.getString("car_color");
+				String car_brand = rs.getString("car_brand");
+				String car_type = rs.getString("car_type");
+				String car_Accident = rs.getString("car_Accident");
+				String member_id = rs.getString("member_id");
+				System.out.println("member_id="+member_id);
+				System.out.println("car_Accident="+car_Accident);
+				System.out.println("end!");
+				
+				
+				dto = new BDto5(member_car, car_kM, car_Num, car_ProductY, car_color, car_brand, car_type,car_Accident, member_id);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				
+			}catch(Exception e2){
+				e2.printStackTrace();
+			}
+		}
+		
+		
+		return dto;
+	}
+	
+	public void Carinfo_modify(String member_car, String car_kM, String car_Num, String car_ProductY, String car_color, String car_brand, String car_type, String car_Accident, String member_id ) {
+		try {
+			conn=datasource.getConnection();
+			String sql = "update Car_info set member_car=?,car_kM =?,car_Num = ?,car_ProductY =?,car_color= ?,car_brand= ?,car_type= ?,car_Accident= ? where member_id=?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, member_car);
+			pstmt.setString(2, car_kM);
+			pstmt.setString(3, car_Num);
+			pstmt.setString(4, car_ProductY);
+			pstmt.setString(5, car_color);
+			pstmt.setString(6, car_brand);
+			pstmt.setString(7, car_type);
+			pstmt.setString(8, car_Accident);
+			pstmt.setString(9, member_id);
+			
+			pstmt.executeUpdate();
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				conn.close();
+			}catch(Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		
+	}
+		
+	
 	     		
 
 }

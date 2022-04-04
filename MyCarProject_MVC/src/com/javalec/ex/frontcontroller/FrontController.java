@@ -16,6 +16,10 @@ import com.javalec.ex.CommandCar.BuyReviewModifyCommandCar;
 import com.javalec.ex.CommandCar.BuyReviewModifyViewCommand;
 import com.javalec.ex.CommandCar.BuyReviewViewCommandCar;
 import com.javalec.ex.CommandCar.BuyReviewWriteCommandCar;
+import com.javalec.ex.CommandCar.CarInfoListCommandCar;
+import com.javalec.ex.CommandCar.CarInfoListInsertCommandCar;
+import com.javalec.ex.CommandCar.CarInfoListViewCommandCar;
+import com.javalec.ex.CommandCar.CarinfoModifyCommandCar;
 import com.javalec.ex.CommandCar.CommandCar;
 import com.javalec.ex.CommandCar.InfoMemberCommandCar;
 import com.javalec.ex.CommandCar.InfoMemberModifyCommandCar;
@@ -167,6 +171,24 @@ public class FrontController extends HttpServlet {
 			viewPage="info_modify.jsp";
 		} else if(com.equals("/info_modify.do")) {
 			command = new InfoMemberModifyCommandCar();
+			command.execute(request, response);
+			viewPage="index.jsp";
+		} else if(com.equals("/Carinfo.do")) {
+			command = new CarInfoListCommandCar();
+			command.execute(request, response);
+			viewPage="CarInfo.jsp";
+			
+		} else if(com.equals("/Carinfo_insert.do")) {
+			command = new CarInfoListInsertCommandCar();
+			command.execute(request, response);
+			viewPage="index.jsp";
+		} else if(com.equals("/Carinfo_view.do")) {
+			System.out.println("start!");
+			command = new CarInfoListViewCommandCar();
+			command.execute(request, response);
+			viewPage="Carinfo.do";
+		} else if(com.equals("/Carinfo_modify.do")) {
+			command = new CarinfoModifyCommandCar();
 			command.execute(request, response);
 			viewPage="index.jsp";
 		}
