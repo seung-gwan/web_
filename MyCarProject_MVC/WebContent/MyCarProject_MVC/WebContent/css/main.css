@@ -1,0 +1,55 @@
+
+@charset "UTF-8";
+#contactUs { position: relative; height: 363px;
+            background: url(../images/slider1.jpg) no-repeat center / cover; }
+#contactUs::before { content: "";
+                    position: absolute; top: 0; left: 0;
+                    width: 100%; height: 363px;
+                    background: rgba(0, 0, 0, 0.5); }
+#contactUs p { position: relative; padding-top: 70px;
+              font-weight: bold; font-size: 50px;
+              text-transform: uppercase; text-align: center;
+              text-shadow: 0 1px 5px #000;
+              letter-spacing: 0.02em;
+              color: #fff; }
+#contactUs a { position: relative; display: block;  width: 160px; height: 40px; float :left;
+              margin: 30px auto 0;
+              text-transform: capitalize;
+              text-align: center; line-height: 40px;
+              background: #ec2e2e; color: #fff; }
+#contactUs a:hover { background: #2253fe; }
+/* solution */
+/* 전체넓이 930px */
+#solutionWrap { padding: 50px 0; background: #ebebeb; }
+#solution { width: 930px; margin: 0 auto; }
+#solution::after { content: ""; display: block; clear: both;}
+#solution .solution { width: 310px; height : 200px;
+                    padding: 0 34px 0 100px; box-sizing: border-box;
+                    background: url(../images/bgSolution.png) no-repeat;}
+#solution .security { background-position-x: center; }
+#solution .payment { background-position-x: right; }
+#solution .solution a { color: #333; }
+#solution .solution a h3 { font-size: 16px; }
+#solution .solution a p { font-size: 14px; }
+/* 게시판 board */
+/* 전체넓이 1000px */
+#board { overflow: hidden; width: 1000px; margin: 35px auto 0;  }
+#board > section { width: 410px; float: left; margin: 0 40px; }
+#board > section > h3 { height: 21px;
+        font-weight: normal; font-size: 14px; text-indent: 24px;
+        background: url(../images/bgBoard.png) no-repeat; }
+/* security news */
+#sec_news h3 span { color: #d9580f;  }
+#sec_news dl { margin-top: 20px; font-size: 14px; }
+#sec_news dl dt a { color: #ff0f0f }
+#sec_news dl dd { margin-bottom: 5px; line-height: 16px; }
+#sec_news dl dd a { color: #333; }
+
+/* news & notice */
+#notice h3 { margin-bottom: 22px; color: #827b00; }
+#notice ul li { overflow: hidden; height: 26px; border-bottom: 1px dotted #999;
+              background: url(../images/bulletNotice.gif) no-repeat left center;
+              line-height: 26px; text-indent: 15px;
+              font-size: 14px; }
+#notice ul li a { float: left; color: #333; }
+#notice ul li span { float: right; margin-right: 14px; color: #333; font-size: 13px; }
