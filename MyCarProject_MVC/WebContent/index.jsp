@@ -4,8 +4,10 @@
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
   <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <meta charset="utf-8">
-    <title>RentCarMain</title>
+    <title>RentCarMain</title> 
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/main.css">
   </head>
@@ -47,16 +49,36 @@
     </header>
     <hr>
     <main>
-      <section id="contactUs">
+      <section id="contactUs"style="width:100%; height: 363px">
         <h2 class="hidden">contact us</h2>
         
-        <ul>
-            <li><a>내차팔기</a></li>
-            <li><a>내차사기</a></li>
-            <li><a>고객센터</a></li>
-            <li><a>브랜드인증관</a></li>
-            <li><a>전국직영점</a></li>
-        </ul>
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width:100%; height: 363px">
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+ <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://ifh.cc/g/z38w0A.jpg" class="d-block w-100" alt="유재석사진1">
+    </div>
+    <div class="carousel-item">
+       <img src="https://ifh.cc/g/PTo2TJ.jpg" class="d-block w-100" alt="유재석사진2">
+    </div>
+  </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+
+</div>
       </section>
       <div id="solutionWrap">
         <section id="solution">
