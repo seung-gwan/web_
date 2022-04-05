@@ -36,10 +36,94 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 
 </script>
 <title>Insert title here</title>
+	
+	<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+.container {
+  position: relative;
+  padding: 70px 40px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+}
+.container h2{
+  color: #111;
+  margin-bottom: 45px;
+  line-height: 1em;
+  font-weight: 500;
+  padding-left: 10px;
+  border-left: 5px solid #e91e63;
+}
+.container .inputBox {
+  position: relative;
+  width: 300px;
+  height: 46px;
+  margin-bottom: 35px;
+}
+.container .inputbox:last-child {
+  margin-bottom: 0;
+}
+.container .inputBox input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border: 1px solid #111;
+  background: transparent;
+  padding: 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  outline: none;
+  font-size: 16px;
+  color: #111;
+  font-weight: 300;
+  
+
+}
+.container .inputBox  span {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  padding: 10px;
+  display: inline-block;
+  font-size: 16px;
+  color: #111;
+  font-weight: 300;
+  transition: 0.5s;
+  pointer-events: none;
+}
+.container .inputBox input:focus ~ span,
+.container .inputBox input:valid ~ span{
+  transform: translate(-10px, -32px);
+  font-size: 12px;
+}
+.container .inputBox input[type="submit"] {
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  max-width: 120px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.container .inputBox input[type="submit"]:hover {
+  background: #e91e63;
+}
+
+</style>
+
 </head>
 <body>
  <table width="500" cellpadding ="0" cellspacing="0" border="1">
-   <form action="info_modify.do" method="POST">
+   <form action="info_modify.do" method="POST" name="form" id="form">
    <input type="hidden" name="member_id" value="${infoList_view.member_id }">
 		<tr>
 			<td>아이디</td>
