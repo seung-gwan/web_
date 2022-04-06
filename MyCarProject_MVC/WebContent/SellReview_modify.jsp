@@ -62,10 +62,14 @@
         </nav>
         <article id="subContent">
             <h3>판매후기</h3>
-            
-<table width="500" cellpadding ="0" cellspacing="0" border="1">
+<section style="display: flex;
+  align-items: center;
+  min-height: 10vh; ">  
+
    <form action="SellReview_modify.do">
    <input type="hidden" name="sRNum" value="${SellReview_view.sRNum }">
+   <table>
+   
 		<tr>
 			<td>번호</td>
 			<td>${SellReview_view.sRNum }</td>
@@ -88,17 +92,24 @@
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td><textarea rows="10" name="sRContent">${SellReview_view.sRContent}</textarea>  </td>
+			<td><textarea rows="9" name="sRContent" style="width: 170px;">${SellReview_view.sRContent}</textarea>  </td>
 		</tr>
 		<tr>
-			<td colspan="2"> <input type="submit" value="확인">
+			<td colspan="2"> <input style="
+  color: #fff;
+  border: none;
+  max-width: 120px;
+  cursor: pointer;
+  font-weight: 500; background: #e91e63;" type="submit" value="확인">
 			&nbsp;&nbsp;<a href="SellReview.do">목록보기</a>
 			&nbsp;&nbsp;<a href="SellReview_delete.do?sRNum=${SellReview_view.sRNum}">삭제</a>
 			
 		</tr>
-	
+	</table>
 	</form>
-</table>
+
+</section>  
+<section>
             <form id="noticeSearch">
               <fieldset>
                 <legend class="hidden">공지사항검색</legend>
@@ -122,6 +133,7 @@
               <a href="#">10</a>
               <a href="#">Next</a>
             </div>
+</section>
         </article>
         </div>
       </section>
