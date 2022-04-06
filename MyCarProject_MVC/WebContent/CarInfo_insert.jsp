@@ -2,12 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
-  <head>
+<html>
+<style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</style>
+<head>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <meta charset="utf-8">
-    <title>RentCarMain</title> 
+<meta charset="UTF-8">
+<title>차량 정보</title>
+
+
+
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/main.css">
   </head>
@@ -76,39 +84,93 @@
     <span class="visually-hidden">Next</span>
   </button>
 </div>
-
-
 </div>
-      </section>
-      <div id="solutionWrap">
-        <section id="solution">
-            <h2 class="hidden">solutions</h2>
-            <article class="hosting solution">
-              <a href="#">
-                <h3>원하는 차가 있어요</h3>
-              </a>
-            </article>
-            <article class="security solution">
-              <a href="#">
-                <h3>예산이 정해져 있어요</h3>
-              </a>
-            </article>
-        </section>
-      </div>
-      <section id="board">
-        <h2 class="hidden">customer center</h2>
-        <section id="sec_news">
-          <h3>공지사항</h3>
-          
-        </section>
-        <section id="notice">
-          <h3>판매&amp;구매 후기</h3>
-          
-        </section>
-      </section>
-    </main>
-    <hr>
-    <div id="footerWrap">
+</section>
+
+
+
+
+
+<section style="display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 50vh;">
+<form action ="Carinfo_insert.do" method="post">
+<div>
+<table>
+    
+	<tr>
+	   
+		<td>차종<input type="hidden" name="member_id" value="${sessionID}" style="width: 200px; height: 30px;"></td>
+		<td><input type="text" name="member_car" style="width: 200px; height: 30px;"></td>
+	
+	
+
+	</tr>
+	
+	<tr>
+		<td>차량 번호</td>
+		<td><input type="text" name="car_Num"style="width: 200px; height: 30px;"></td>
+	</tr>
+	<tr>
+		<td>주행거리</td>
+		<td><input type="text" name="car_kM" style="width: 200px; height: 30px;"></td>
+	</tr>	
+	<tr>
+		<td>생산년도</td>
+		<td><input type="text" name="car_ProductY" style="width: 200px; height: 30px;"></td>
+	</tr>
+	<tr>
+		<td>색상</td>
+		<td><input type="text" name="car_color" style="width: 200px; height: 30px;"></td>
+	</tr>
+	<tr>
+		<td>제조사</td>
+		<td><input type="text" name="car_brand" style="width: 200px; height: 30px;"></td>
+	</tr>
+	<tr>
+	<td style="width: 70px; height: 34px;">타입</td>
+	</tr>
+	<tr>
+	</tr>
+	
+	</table>
+	</div>
+	
+	<div style="width: 45px; height: 21px;"><table style="width: 45px; height: 21px;">
+	<tr style="width: 45px; height: 21px;">
+		
+		<td style="width: 45px; height: 21px;"><input style="width: 45px; height: 21px;" type="radio" name="car_type" value="경차" id="SS">경차</td>
+	    <td style="width: 45px; height: 21px;"><input style="width: 45px; height: 21px;" type="radio" name="car_type" value="소형" id="S">소형</td>
+   	    <td style="width: 45px; height: 21px;"><input style="width: 45px; height: 21px;" type="radio" name="car_type" value="중형" id="M">중형</td>
+  	    <td style="width: 45px; height: 21px;"><input style="width: 45px; height: 21px;" type="radio" name="car_type" value="대형" id="L">대형</td>
+	  
+	</tr>
+	</table></div>
+	<div style="margin:50px 30px 0 0">
+	<table>
+	<tr>
+		<td>사고 유/무</td>
+		<td><input  style="margin: 0 0 0 30px " type="radio" name="car_Accident" value="Yes" id="yes">Y</td>
+		<td><input style="margin: 0 0 0 30px "type="radio" name="car_Accident" value="No" id="no">N</td>
+	</tr>
+	</table></div>
+	<div>
+	<table>
+	<tr>
+		<td><input style="width: 200px; height: 30px; margin:30px 0 0 50px;
+  color: #fff;
+  border: none;
+  max-width: 120px;
+  cursor: pointer;
+  font-weight: 500; background: #e91e63;" type="submit" value="확인" > </td>
+	</tr>
+</table>
+</div>
+</form>
+</section>
+</main>
+ <div id="footerWrap">
       <footer id="footer">
         <div class="info">
           <small class="copyright">All contents Copyright 2011 FunWeb Inc. all rights reserved</small>
@@ -120,5 +182,4 @@
         </ul>
       </footer>
     </div>
-  </body>
 </html>
