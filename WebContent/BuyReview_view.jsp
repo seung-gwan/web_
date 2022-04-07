@@ -63,10 +63,8 @@
         </nav>
         <article id="subContent">
             <h3>구매후기</h3>
-            
-<table width="500" cellpadding ="0" cellspacing="0" border="1">
-   <form>
-   <input type="hidden" name="bNum" value="${BuyReview_view.bRNum }">
+            <input type="hidden" name="bNum" value="${BuyReview_view.bRNum }">
+<table style="min-height: 20vh; justify-content: center;">
 		<tr>
 			<td>번호</td>
 			<td>${BuyReview_view.bRNum }</td>
@@ -89,14 +87,23 @@
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td>${BuyReview_view.bRContent}</td>
+			
 		</tr>
+		</table  style="min-height: 20vh; justify-content: center;">
+		<table style="height: 100px top: 0;
+  left: 0;
+  width: 500px	 ">
 		<tr>
-			<td colspan="2"> <a href="BuyReview_Modify_view.do?bRNum=${BuyReview_view.bRNum}">수정</a>
+	   <td><textarea type="text" name="Car" id="Car" required style="height: 100px; width: 100%">${BuyReview_view.bRContent}</textarea></td>
+		</tr>
+		</table>
+		<table  style="min-height: 10vh; justify-content: center;">
+		<tr>
+			<td colspan="1"> <a href="BuyReview_Modify_view.do?bRNum=${BuyReview_view.bRNum}">수정</a>
 			&nbsp;&nbsp;<a href="BuyReview.do">목록보기</a>
 		</tr>
-	
-	</form>
+
+
 </table>
             <form id="noticeSearch">
               <fieldset>
