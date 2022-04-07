@@ -64,7 +64,7 @@
         <article id="subContent">
             <h3>구매후기</h3>
             <input type="hidden" name="bNum" value="${BuyReview_view.bRNum }">
-<table style="min-height: 20vh; justify-content: center;">
+<table style="min-height: 15vh; justify-content: center;">
 		<tr>
 			<td>번호</td>
 			<td>${BuyReview_view.bRNum }</td>
