@@ -1,23 +1,20 @@
-
 @charset "UTF-8";
-#contactUs { position: relative; height: 363px;
-            background: url(../images/slider1.jpg) no-repeat center / cover; }
-#contactUs::before { content: "";
+/*#contactUs { position: relative; height: 363px;}
+ #contactUs::before { content: ""; 
                     position: absolute; top: 0; left: 0;
-                    width: 100%; height: 363px;
-                    background: rgba(0, 0, 0, 0.5); }
+                    width: 100%; height: 363px;}
 #contactUs p { position: relative; padding-top: 70px;
               font-weight: bold; font-size: 50px;
               text-transform: uppercase; text-align: center;
               text-shadow: 0 1px 5px #000;
               letter-spacing: 0.02em;
-              color: #fff; }
-#contactUs a { position: relative; display: block;  width: 160px; height: 40px; float :left;
+              color: #fff; }*/
+#contactUs a { position: relative; /*display: block;*/  width: 160px; height: 40px; float :left;
               margin: 30px auto 0;
               text-transform: capitalize;
               text-align: center; line-height: 40px;
               background: #ec2e2e; color: #fff; }
-#contactUs a:hover { background: #2253fe; }
+#contactUs a:hover { background: #2253fe;}
 /* solution */
 /* 전체넓이 930px */
 #solutionWrap { padding: 50px 0; background: #ebebeb; }
