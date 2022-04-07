@@ -63,10 +63,11 @@
         </nav>
         <article id="subContent">
             <h3>구매후기</h3>
-            
-<table width="500" cellpadding ="0" cellspacing="0" border="1">
-   <form action="BuyReview_modify.do">
-   <input type="hidden" name="bRNum" value="${BuyReview_view.bRNum }">
+  <form action="BuyReview_modify.do">         
+  <input type="hidden" name="bRNum" value="${BuyReview_view.bRNum }"> 
+<table style="min-height: 15vh; justify-content: center;">
+   
+   
 		<tr>
 			<td>번호</td>
 			<td>${BuyReview_view.bRNum }</td>
@@ -89,17 +90,27 @@
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td><textarea rows="10" name="bRContent">${BuyReview_view.bRContent}</textarea>  </td>
+			
 		</tr>
+		</table  style="min-height: 20vh; justify-content: center;">
+		<table style="height: 100px top: 0;
+  left: 0;
+  width: 500px	 ">
 		<tr>
-			<td colspan="2"> <input type="submit" value="확인">
+	   <td><textarea type="text" name="Car" id="Car" required style="height: 100px; width: 100%">${BuyReview_view.bRContent}</textarea></td>
+		</tr>
+		</table>
+		<table  style="min-height: 10vh; justify-content: center;">
+		<tr>
+			<td colspan="1"> <input type="submit" value="확인">
 			&nbsp;&nbsp;<a href="BuyReview.do">목록보기</a>
 			&nbsp;&nbsp;<a href="BuyReview_delete.do?bRNum=${BuyReview_view.bRNum}">삭제</a>
 			
 		</tr>
 	
-	</form>
+	
 </table>
+</form>
             <form id="noticeSearch">
               <fieldset>
                 <legend class="hidden">공지사항검색</legend>
