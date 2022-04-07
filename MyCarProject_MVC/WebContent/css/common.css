@@ -18,11 +18,11 @@ hr { display: none; }
 body { position: relative; min-width: 1200px; font-family: 'Segoe UI', sejoe, sans-serif;
  overflow-y: scroll; }
 
-#header { position: relative; width: 1200px; height: 187px; margin: 0 auto; }
-#header h1 { width: 249px; padding: 90px 0 0 50px; }
-#header h1 a { display: block; height: 50px;
+#header { position: relative; width: 1200px; height: 180px; margin: 0 auto; }
+#header h1 { width: 100px; padding: 50px 0 50px 100px; }
+#header h1 a { display: block; height: 80px; width: 100px;
               text-indent: -5000px;
-              background: url(../images/logo2.png) no-repeat; }
+              background: url("https://ifh.cc/g/Cmpfmc.jpg") no-repeat; }
 
 #membership { position: absolute; top: 20px; right: 100px; }
 #membership ul li { position: relative; float: left; }
