@@ -99,13 +99,13 @@
 
 }
 #notice thead th{
-  line-height: 30px;
+  line-height: 20px;
   text-align: center;
   text-transform: capitalize;
   font-weight: normal;
   letter-spacing: 0.1em;
-  color: #fff;
-  background: linear-gradient(180deg, #1874b6 0%, #3828ba 100%);
+  color: #000;
+  border:3px solid black;
 
 
 
@@ -113,18 +113,23 @@
 #notice thead th.no{
   width: 56px;
   border-radius: 5px 0 0 5px;
+  height: 10px;
 }
 #notice thead th.title{
   width: 376px;
+  height: 10px;
 }
 #notice thead th.write{
   width: 100px;
+  height: 10px;
 }
 #notice thead th.date{
-  width: 72px;
+  width: 90px;
+  height: 10px;
 }
 #notice thead th.read{
-  width: 56px;
+  width: 70px;
+  height: 10px;
   border-radius: 0 5px  5px 0;
 }
 #notice tbody td{
