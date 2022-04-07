@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+body, h1, h2, h3, h4, h5, h6, p, ul, dl, dd, figure, td, th, fieldset { margin: 0; padding: 0; }
+ul li { list-style: none; }
+a { text-decoration: none; }
+table { border-collapse: collapse;}
+fieldset{ border : 0;}
+address { font-style: normal; }
+small { font-size: 1em; }
+hr { display: none; }
+.hidden { position: absolute; left: -9999px; }
+
+@font-face { font-family: sejoe;
+  src: url(../webfont/segoeui.ttf),
+      url(../webfont/segoeui.eot),
+      url(../webfont/segoeui.woff)
+}
+body { position: relative; min-width: 1200px; font-family: 'Segoe UI', sejoe, sans-serif;
+ overflow-y: scroll; }
+
+#header { position: relative; width: 1200px; height: 180px; margin: 0 auto; }
+#header h1 { width: 100px; padding: 50px 0 50px 100px; }
+#header h1 a { display: block; height: 80px; width: 100px;
+              text-indent: -5000px;
+              background: url("https://ifh.cc/g/Cmpfmc.jpg") no-repeat; }
+
+#membership { position: absolute; top: 20px; right: 100px; }
+#membership ul li { position: relative; float: left; }
+#membership ul .goLogin { padding-right: 10px; }
+#membership ul .goLogin::after { content: "";
+                                position: absolute; top: 6px; right: 0;
+                                height: 11px; border-right: 1px solid #4a93c8; }
+#membership ul .goJoin { padding-left: 10px; }
+#membership ul .goJoin::before { content: "";
+                                position: absolute; top: 6px; left: 0;
+                                height: 11px; border-left: 1px solid #37b95b; }
+#membership ul li a { font-size: 14px; color: #333; }
+
+#gnb { position: absolute; top: 106px; right: 100px; }
+#gnb ul li { float: left; margin-left: 20px;}
+#gnb ul li a { padding: 0 10px 10px;
+              text-transform: uppercase; color: #333; }
+#gnb ul li a:hover { border-bottom: 3px solid #0087b9; }
+
+#footerWrap { margin-top: 55px; border-top: 1px solid #a0a0a0; }
+#footer { overflow: hidden; width: 1000px; margin: 0 auto;
+          padding: 24px 76px 20px 204px;
+          box-sizing: border-box;
+          background: url(../images/logoFooter.png) no-repeat 55px 23px; }
+#footer .info { float: left; font-size: 13px; }
+#footer .sns { float: right; }
+#footer .sns li { width: 33px; float: left; }
+#footer .sns li.twitter { margin-left: 17px; }
+#footer .sns li a { display: block; height: 33px;
+                    background: url(../images/bgSns.png) no-repeat;
+                    text-indent: -5000px; }
+#footer .sns li.twitter a { background-position: right; }
