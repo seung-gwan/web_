@@ -138,14 +138,17 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 			<td>이메일주소</td>
 			<td><input type="text" name="member_email" value="${infoList_view.member_email }"></td>
 		</tr>
-		 <tr class="form-check" style="height: 50px">
+		 <tr class="form-check">
 		 <td>
-	 <input class="form-check-input" type="radio" name="member_gender"  value="남자" id="Man"checked>
-	  <label class="form-check-label" for="flexRadioDefault1">
+	 <input  class="form-check-input" type="radio" name="member_gender"  value="남자" id="Man"checked>
+	  <label style="height: 20px; width: 80px" class="form-check-label1" for="flexRadioDefault1">
 	    Man
 	  </label>	
+	  </td>
+	  
+	  <td>
 	  <input class="form-check-input" type="radio" name="member_gender" value="여자" id="Woman">
-	  <label class="form-check-label" for="flexRadioDefault2">
+	  <label style="height: 20px;  width: 80px" class="form-check-label2" for="flexRadioDefault2">
 	    Woman
 	  </label>	
 	   </td> 
