@@ -63,10 +63,10 @@
         </nav>
         <article id="subContent">
             <h3>구매후기</h3>
-            
-<table width="500" cellpadding ="0" cellspacing="0" border="1">
+      <input type="hidden" name="sRNum" value="${BuyReview_view.bRNum }">      
+
    <form action="BuyReview_write.do" method="POST">
-   <input type="hidden" name="sRNum" value="${BuyReview_view.bRNum }">
+   <table>
 		<tr>
 			<td>글쓴이</td>
 			<td><input tye="text" name="bRId"> </td>
@@ -81,15 +81,23 @@
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td><textarea rows="10" name="bRContent"></textarea>  </td>
 		</tr>
+		</table  style="min-height: 20vh; justify-content: center;">
+		<table style="height: 100px top: 0;
+  left: 0;
+  width: 500px	 ">
 		<tr>
-			<td colspan="2"> <input type="submit" value="확인">
+	   <td><textarea type="text" name="Car" id="Car" required style="height: 100px; width: 100%"></textarea></td>
+		</tr>
+		</table>
+		<table>
+		<tr>
+			<td colspan="1"> <input type="submit" value="확인">
 			
 		</tr>
-	
+		</table>
 	</form>
-</table>
+
             <form id="noticeSearch">
               <fieldset>
                 <legend class="hidden">공지사항검색</legend>
