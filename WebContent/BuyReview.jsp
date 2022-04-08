@@ -62,49 +62,43 @@
           </ul>
         </nav>
         <article id="subContent">
-            <h3>구매후기</h3>
-      <input type="hidden" name="sRNum" value="${BuyReview_view.bRNum }">      
-
-   <form action="BuyReview_write.do" method="POST">
-   <table>
-		<tr>
-			<td>글쓴이</td>
-			<td><input tye="text" name="bRId"> </td>
-		</tr>
-		<tr>
-			<td>제목</td>
-			<td><input tye="text" name="bRTitle"> </td>
-		</tr>
-		<tr>
-			<td>차종</td>
-			<td><input type="text"name="bRCar"></td>
-		</tr>
-		<tr>
-			<td>내용</td>
-		</tr>
-		</table  style="min-height: 20vh; justify-content: center;">
-		<table style="height: 100px top: 0;
-  left: 0;
-  width: 500px	 ">
-		<tr>
-	   <td><textarea type="text" name="Car" id="Car" required style="height: 100px; width: 100%"></textarea></td>
-		</tr>
-		</table>
-		<table>
-		<tr>
-			<td colspan="1"> <input type="submit" value="확인">
-			
-		</tr>
-		</table>
-	</form>
-
+            <h3>구매리뷰</h3>
+            <table id="notice">
+              <caption class="hidden">공지사항</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="no">no.</th>
+                  <th scope="col" class="title">제목</th>
+                  <th scope="col" class="write">작성자</th>
+                  <th scope="col" class="write">차종</th>
+                  <th scope="col" class="date">작성일자</th>    
+                  <th scope="col" class="read">조회수</th>
+                </tr>
+              </thead>
+             <c:forEach items="${BuyReview}" var="dto"> 
+              <tbody>
+               
+                <tr>
+                  <td>${dto.bRNum }</td>
+                  <td class="listTitle"><div><a href="BuyReview_view.do?bRNum=${dto.bRNum}">${dto.bRTitle }</a></div></td>
+                  <td>${dto.bRId }</td>
+                  <td>${dto.bRCar }</td>
+                  <td><fmt:formatDate value="${dto.bRDate }" pattern="yyyy.MM.dd"/></td>
+                  <td>${dto.bRHit }</td>
+                </tr>
+                
+              </tbody> 
+              </c:forEach>
+            </table>
             <form id="noticeSearch">
               <fieldset>
+                <a href="BuyReview_write.jsp">글작성</a>
                 <legend class="hidden">공지사항검색</legend>
                 <label for="searchBox" class="hidden">검색어입력창</label>
                 <input type="text" id="searchBox">
                 <label for="searchBtn" class="hidden">검색버튼</label>
                 <input type="button"id="searchBtn" value="Search">
+                <label for="writeBtn" class="hidden">글작성</label>
               </fieldset>
             </form>
             <div id="pageControl">
