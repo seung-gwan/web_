@@ -32,7 +32,7 @@
   border-radius: 20px;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
    width: 640px;
-  height: 820px;
+  
   
   
 }
@@ -161,7 +161,7 @@
         
         </div>
       </section>
-      <div style="text-align:center; padding:70px 0 -30px 0;">
+      <div style="text-align:center; padding:0 0 70px 0;">
       <h1>내차팔기 신청하기</h1>
       <span>간편하게 접수하고, 간편하게 판매신청 해보세요.</span>
       </div>
@@ -177,18 +177,17 @@
 	      <span id="span">차량명<span style="color:red;">*</span></span>
 	    </div>
 	    <div class="inputBox">
-	      <input class="input2" type="text" name="sCar_kM" id="car_kM" value="${Carinfo_view.car_kM}KM"required>
-	      <span id="span">주행거리<span style="color:red">*</span></span>
+	      <input class="input2" type="text" name="sCar_kM" id="car_kM" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' value="${Carinfo_view.car_kM}"required>
+	      <span id="span">주행거리(km)<span style="color:red">*</span></span>
 	    </div>
 	    <div class="inputBox">
-	      <input class="input2" type="text" name="sCar_Num" id="sCar_Num" value="${Carinfo_view.car_Num}" required>
+	      <input class="input2" type="text"  maxlength="8" name="sCar_Num" id="sCar_Num" value="${Carinfo_view.car_Num}" required>
 	      <span id="span">차량번호<span style="color:red">*</span></span>
 	    </div>
 	     <div class="inputBox">
-	      <input class="input2" type="text" maxlength="11" onkeydown='return onlyNumber(event)' value="${Carinfo_view.car_ProductY }" onkeyup='removeChar(event)' name="sCar_ProductY" id="car_ProductY" required>
+	      <input class="input2" type="text" maxlength="4" onkeydown='return onlyNumber(event)' value="${Carinfo_view.car_ProductY }" onkeyup='removeChar(event)' name="sCar_ProductY" id="car_ProductY" required>
 	      <span id="span">생산년도<span style="color:red">*</span></span>
-	    </div>
-	    
+	    </div>	    
 	    <div class="inputBox">
 	      <input class="input2" type="text" name="sCar_brand" id="car_brand" value="${Carinfo_view.car_brand }" required>
 	      <span id="span">브랜드<span style="color:red">*</span></span>
@@ -199,35 +198,35 @@
 	    </div>
 	    <div class="inputBox">
 	      <input class="input2" type="text" name="sCar_Accident" id="sCar_Accident" value="${Carinfo_view.car_Accident }" required>
-	      <span id="span">사고 유/무<span style="color:red">*</span></span>
+	      <span id="span">사고유무 Yes/No<span style="color:red">*</span></span>
 	    </div>
 	    <div class="inputBox">
 	      <input class="input2" type="text" name="sCar_color" id="sCar_color" value="${Carinfo_view.car_color }" required>
 	      <span id="span">색상<span style="color:red">*</span></span>
 	    </div>
 	    
-	     <div class="form-check_privacy" style="height: 70px">
+	     <div class="form-check_privacy, inputBox" style="height: 70px">
 	  <input class="form-check-input" type="checkbox" name="ok"  value="개인정보" id="privacy" required>
 	  <label class="form-check-label" for="flexcheckboxDefault1">
 	    [필수] 개인정보 수집/이용 동의
 	  </label>
-	  	<div class="form-check_marketing" style="height: 70px">
+	  <br>
 	  <input class="form-check-input" type="checkbox" name="ok" value="마케팅" id="marketing">
 	  <label class="form-check-label" for="flexcheckboxDefault2">
 	    [선택] 마케팅활용 동의(문자메세지)<br>
-<span style="color:red">(※ 이벤트 참여 시 필수!)</span>
+	  <span style="color:red">(※ 이벤트 참여 시 필수!)</span>
 	  </label>
 	  </div>
-	</div>
 	  <div class="inputBox"  style="height: 30px; margin:10px">
       <input class="input2" type="submit" value="판매신청">
     </div>
-    </div>
+      </form>
+	    </div>
 	  <div class="inputBox"  style="height: 30px; margin:10px">
      <input class="input2" type="button" value="내 판매 목록" onClick="location.href='SellList.do';">
     </div>
-	
-    </form>
+
+
     <script>
     function onlyNumber(event){
       event = event || window.event;
@@ -245,12 +244,9 @@
       else
         event.target.value = event.target.value.replace(/[^0-9]/g, "");
     }
-  </script>
-	</div>
-    
+  </script>  
     </main>
     <main>
-    
     <div id="footerWrap">
       <footer id="footer">
         <div class="info">
@@ -263,8 +259,6 @@
         </ul>
       </footer>
     </div>
-    
-
 </main>
   </body>
 </html>
