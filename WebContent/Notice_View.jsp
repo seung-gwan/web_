@@ -63,10 +63,9 @@
         </nav>
         <article id="subContent">
             <h3>공지사항</h3>
-            
-<table width="500" cellpadding ="0" cellspacing="0" border="1">
-   <form action="Noticeview.do">
-   <input type="hidden" name="bNum" value="${Notice_view.bNum }">
+      <form  style="padding:0 0 0 10px" action="Noticeview.do">     
+      <input type="hidden" name="bNum" value="${Notice_view.bNum }"> 
+<table>
 		<tr>
 			<td>번호</td>
 			<td>${Notice_view.bNum }</td>
@@ -93,8 +92,9 @@
 			
 		</tr>
 	
-	</form>
+
 </table>
+	</form>
             <form id="noticeSearch">
               <fieldset>
                 <legend class="hidden">공지사항검색</legend>
