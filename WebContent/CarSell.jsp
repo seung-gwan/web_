@@ -55,23 +55,23 @@
   margin-bottom: 0;
  
 }
-.container .inputBox .input2   {
+.container  .input2   {
   position: absolute;
-  top: 0;
   left: 0;
   width: 100%;
-  border: 1px solid #111;
-  background: transparent;
   padding: 10px;
   border-radius: 4px;
   box-sizing: border-box;
   outline: none;
   font-size: 16px;
-  color: #111;
   font-weight: 300;
 
   
 
+}
+.inputBox .container
+{
+border: 1px solid #111;
 }
 .container .inputBox  #span {
   position: absolute;
@@ -101,8 +101,22 @@
   font-weight: 500;
 
 }
+.input2[type="button"] {
+  background: #2196f3;
+  color: #fff;
+  border: none;
+  max-width: 120px;
+  cursor: pointer;
+  font-weight: 500;
+}
 .container .inputBox .input2[type="submit"]:hover {
   background: #e91e63;
+
+}
+.input2[type="button"]:hover
+{
+ background: #e91e63;
+
 
 }
 
@@ -220,13 +234,13 @@
 	  <div class="inputBox"  style="height: 30px; margin:10px">
       <input class="input2" type="submit" value="판매신청">
     </div>
-      </form>
-	    </div>
-	  <div class="inputBox"  style="height: 30px; margin:10px">
+     
+	    
+	  <div class="inputBox"  style="height: 30px; margin:10px; padding:10px 0 0 0">
      <input class="input2" type="button" value="내 판매 목록" onClick="location.href='SellList.do';">
     </div>
-
-
+ </form>
+</div>
     <script>
     function onlyNumber(event){
       event = event || window.event;
