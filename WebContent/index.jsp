@@ -52,10 +52,10 @@
     </header>
     <hr>
     <main>
-      <section id="contactUs"style="width:100%; height: 363px">
+      <section id="contactUs"style="width:100%; height: 286px">
         <h2 class="hidden">contact us</h2>
         
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width:100%; height: 363px">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width:100%; height: 363px;">
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
  <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -86,31 +86,37 @@
       <div id="solutionWrap">
         <section id="solution">
             <h2 class="hidden">solutions</h2>
-            <article class="hosting solution">
+            <article class="hosting" style="width: 100%; margin:250px 0 0 0">
               <a href="#">
                 <h3>원하는 차가 있어요</h3>
               </a>
-              <form action="SellList_select.do" method="post">
-              	<select name="Car_brand">
-              		<option value="">제조사 선택</option>
+              <form action="SellList_select.do" method="post" style="display: flex;">
+             <div style=" margin: 20px" class="col-sm-2">
+              	<select style="display: flex;" name="Car_brand">
+              		<option style="height: 100px" value="">제조사 선택</option>
               		<option value="대우">대우</option>
               		<option value="아우디">아우디</option>
               		<option value="폭스바겐">폭스바겐</option>
               	</select>
-              	<select name="Car_type">
+              	</div>
+              	<div style=" margin: 20px" class="col-sm-2">
+              	<select style="display: flex;" name="Car_type">
               		<option value="">타입 선택</option>
               		<option value="경차">경차</option>
               		<option value="소형">소형</option>
               		<option value="중형">중형</option>
               		<option value="대형">대형</option>
               	</select>
-              	<select name="Car_color">
+              	</div>
+              	<div style=" margin: 20px" class="col-sm-2">
+              	<select style="display: flex;" name="Car_color">
               		<option value="">컬러 선택</option>
               		<option value="white">white</option>
               		<option value="red">red</option>
               		<option value="black">black</option>
               		<option value="blue">blue</option>
               	</select>
+              	</div>
               	<c:if test= "${sessionID != null }">
               	<input type="submit" value="검색">
               	</c:if>
@@ -118,11 +124,11 @@
               	</c:if>
               </form>
             </article>
-            <article class="security solution">
+            <article class="security">
               <a href="#">
                 <h3>예산이 정해져 있어요</h3>
               </a>
-                <form action="SellList_selectPrice.do" method="post">
+                <form action="SellList_selectPrice.do" method="post"  style="margin: 20px auto">
               	<input type="text" name="sCar_salePrice1">~<input type="text" name="sCar_salePrice2">
               	<c:if test= "${sessionID != null }">
               	<input type="submit" value="검색">
@@ -169,7 +175,7 @@
       </section>
     </main>
     <hr>
-    <div id="footerWrap">
+    <div style="display: flex;" id="footerWrap">
       <footer id="footer">
         <div class="info">
           <small class="copyright">All contents Copyright 2011 FunWeb Inc. all rights reserved</small>
