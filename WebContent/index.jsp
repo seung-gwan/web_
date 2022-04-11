@@ -12,6 +12,10 @@
     <title>RentCarMain</title> 
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/main.css">
+    <style>
+    #notice thead th{border:2px solid black;
+      text-align: left;
+    </style>
     
   </head>
   <body>
@@ -140,39 +144,46 @@
             </article>
         </section>
       </div>
-      <section id="board">
+      <section id="vv" style=" align-items: center;  width: 100%;">
         <h2 class="hidden">customer center</h2>
-        <section id="sec_news">
-          <h3>공지사항</h3>
-         	 <thead>
-                <tr>
+        <section id="sec_news" style="width: 300px;  margin: 0 0 0 300px "  >
+          <article id="subContent">
+            <h3>판매리뷰</h3>
+            <table id="notice">
+              <caption class="hidden">공지사항</caption>
+              <thead style="margin:35px 200px 35px 500px;">
+                <tr  style="width: 30px">
                   <th scope="col" class="no">no.</th>
                   <th scope="col" class="title">제목</th>
                   <th scope="col" class="write">작성자</th>
+                  <th scope="col" class="write">차종</th>
                   <th scope="col" class="date">작성일자</th>    
                   <th scope="col" class="read">조회수</th>
                 </tr>
               </thead>
-              <c:forEach items="${Notice}" var="dto"> 
-              <tbody>
+            
+              <tbody style="width: 30px">
                
                 <tr>
-                  <td>${dto.bNum }</td>
-                  <td class="listTitle"><div><a href="Notice_view.do?bNum=${dto.bNum}">${dto.bTitle }</a></div></td>
-                  <td>${dto.bName }</td>
-                  <td><fmt:formatDate value="${dto.bDate }" pattern="MM.dd"/></td>
-                  <td>${dto.bHit }</td>
-                </tr>
-                
+                  <td>asdf</td>
+                  <td class="listTitle"><div>asdf</div></td>
+                  <td>asdf</td>
+                  <td>asdf</td>
+                  <td>asdf</td>
+                  <td>asdf</td>
+                </tr>               
               </tbody> 
-              </c:forEach>
-          
-        </section>
-        <section id="notice">
+
+            </table>        
+              </article> 
+       
+       <section id="notice" style="align:right ;margin: -45px 0 45px 1100px;align-items: top; display: flex; width: 250px">
           <h3>판매&amp;구매 후기</h3>
           
         </section>
+         </section>
       </section>
+       
     </main>
     <hr>
     <div style="display: flex;" id="footerWrap">
