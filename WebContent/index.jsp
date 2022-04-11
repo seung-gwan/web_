@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="ko" dir="ltr">
   <head>
@@ -10,10 +12,11 @@
     <title>RentCarMain</title> 
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/main.css">
+    
   </head>
   <body>
     <header id="header">
-      <h1><a href="index.jsp">RentCar</a></h1>
+      <h1><a href="index.do">RentCar</a></h1>
       <nav id="membership">
         <h2 class="hidden">멤버쉽네비게이션</h2>
         <ul>
@@ -87,11 +90,47 @@
               <a href="#">
                 <h3>원하는 차가 있어요</h3>
               </a>
+              <form action="SellList_select.do" method="post">
+              	<select name="Car_brand">
+              		<option value="">제조사 선택</option>
+              		<option value="대우">대우</option>
+              		<option value="아우디">아우디</option>
+              		<option value="폭스바겐">폭스바겐</option>
+              	</select>
+              	<select name="Car_type">
+              		<option value="">타입 선택</option>
+              		<option value="경차">경차</option>
+              		<option value="소형">소형</option>
+              		<option value="중형">중형</option>
+              		<option value="대형">대형</option>
+              	</select>
+              	<select name="Car_color">
+              		<option value="">컬러 선택</option>
+              		<option value="white">white</option>
+              		<option value="red">red</option>
+              		<option value="black">black</option>
+              		<option value="blue">blue</option>
+              	</select>
+              	<c:if test= "${sessionID != null }">
+              	<input type="submit" value="검색">
+              	</c:if>
+              	<c:if test= "${sessionID == null }">
+              	</c:if>
+              </form>
             </article>
             <article class="security solution">
               <a href="#">
                 <h3>예산이 정해져 있어요</h3>
               </a>
+                <form action="SellList_selectPrice.do" method="post">
+              	<input type="text" name="sCar_salePrice1">~<input type="text" name="sCar_salePrice2">
+              	<c:if test= "${sessionID != null }">
+              	<input type="submit" value="검색">
+              	</c:if>
+              	<c:if test= "${sessionID == null }">
+              	</c:if>
+              </form>
+            
             </article>
         </section>
       </div>
@@ -99,6 +138,28 @@
         <h2 class="hidden">customer center</h2>
         <section id="sec_news">
           <h3>공지사항</h3>
+         	 <thead>
+                <tr>
+                  <th scope="col" class="no">no.</th>
+                  <th scope="col" class="title">제목</th>
+                  <th scope="col" class="write">작성자</th>
+                  <th scope="col" class="date">작성일자</th>    
+                  <th scope="col" class="read">조회수</th>
+                </tr>
+              </thead>
+              <c:forEach items="${Notice}" var="dto"> 
+              <tbody>
+               
+                <tr>
+                  <td>${dto.bNum }</td>
+                  <td class="listTitle"><div><a href="Notice_view.do?bNum=${dto.bNum}">${dto.bTitle }</a></div></td>
+                  <td>${dto.bName }</td>
+                  <td><fmt:formatDate value="${dto.bDate }" pattern="MM.dd"/></td>
+                  <td>${dto.bHit }</td>
+                </tr>
+                
+              </tbody> 
+              </c:forEach>
           
         </section>
         <section id="notice">
