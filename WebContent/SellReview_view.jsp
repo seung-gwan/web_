@@ -63,10 +63,11 @@
         </nav>
         <article id="subContent">
             <h3>판매후기</h3>
-            
-<table width="500" cellpadding ="0" cellspacing="0" border="1">
-   <form>
-   <input type="hidden" name="bNum" value="${SellReview_view.sRNum }">
+    <form>     
+    <input type="hidden" name="bNum" value="${SellReview_view.sRNum }">     
+<table>
+ 
+   
 		<tr>
 			<td>번호</td>
 			<td>${SellReview_view.sRNum }</td>
@@ -96,8 +97,9 @@
 			&nbsp;&nbsp;<a href="SellReview.do">목록보기</a>
 		</tr>
 	
-	</form>
+
 </table>
+	</form>
             <form id="noticeSearch">
               <fieldset>
                 <legend class="hidden">공지사항검색</legend>
