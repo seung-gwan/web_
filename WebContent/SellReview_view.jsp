@@ -91,7 +91,16 @@
 		<tr>
 			<td>내용</td>
 			<td>${SellReview_view.sRContent}</td>
+			</table  style="min-height: 20vh; justify-content: center;">
+		<table style="height: 100px top: 0;
+  left: 0;
+  width: 500px	 ">
+		<tr>
+	   <td><textarea type="text" name="Car" id="Car" required style="height: 100px; width: 100%">${BuyReview_view.bRContent}</textarea></td>
 		</tr>
+		</table>
+		<table>
+		
 		<tr>
 			<td colspan="2"> <a href="SellReview_Modify_view.do?sRNum=${SellReview_view.sRNum}">수정</a>
 			&nbsp;&nbsp;<a href="SellReview.do">목록보기</a>
