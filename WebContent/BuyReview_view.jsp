@@ -94,7 +94,7 @@
   left: 0;
   width: 500px	 ">
 		<tr>
-	   <td><textarea type="text" name="Car" id="Car" required style="height: 100px; width: 100%">${BuyReview_view.bRContent}</textarea></td>
+	   <td><textarea type="text" name="Car" id="Car" required style="height: 100px; width: 100%" disabled>${BuyReview_view.bRContent}</textarea></td>
 		</tr>
 		</table>
 		<table  style="min-height: 10vh; justify-content: center;">
