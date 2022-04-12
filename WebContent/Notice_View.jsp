@@ -12,7 +12,7 @@
   </head>
   <body>
      <header id="header">
-      <h1><a href="index.jsp">RentCar</a></h1>
+      <h1><a href="index.do">RentCar</a></h1>
       <nav id="membership">
         <h2 class="hidden">멤버쉽네비게이션</h2>
         <ul>
@@ -84,8 +84,16 @@
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td>${Notice_view.bContent}</td>
+			<td></td>
+		
+		
+</table>	
+<table style="height: 100px;top: 0;left: 0;width: 500px">
+		<tr>
+	   <td><textarea type="text" name="Car" id="Car" required style="height: 100px; width: 100%" disabled>${Notice_view.bContent}asdfsadf</textarea></td>
 		</tr>
+
+
 		<tr>
 			<td colspan="2">
 			&nbsp;&nbsp;<a href="Notice.do">목록보기</a>
