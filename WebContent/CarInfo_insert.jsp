@@ -106,8 +106,8 @@ background: #e91e63;
 
 <section style="display: flex;
   justify-content: center;
-  align-items: top;
-  min-height: 50vh;">
+  align-items: center;
+ width: 100%; height: 500px">
 <form action ="Carinfo_insert.do" method="post">
 <div>
 <table>
