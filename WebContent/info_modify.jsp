@@ -111,7 +111,7 @@ function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAdd
 <form action="info_modify.do" method="POST" name="form" id="form"  style="display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 50vh; ">
+   height: 400px;">
 
 
  
