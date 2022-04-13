@@ -62,12 +62,11 @@
         </div>
       </section>
 
-    </main>
-    <main>
-<form action="???" method="Post" style="width:100px; margin:0 30%" >
    
-<c:forEach items="${SellList}" var="dto">      
-<div class="card" style="width: 1000px; height: 200px">
+<form action="???" method="Post" style="width:100px; margin: 0 auto;" >
+   
+     
+<div class="card" style="width: 800px; height: 200px;  margin: 0 auto;">
   <img src='https://ifh.cc/g/T089YJ.jpg' class="card-img-top" alt="car4" style="width: 285px; position:relative; "  > 
   <div class="card-body" style=" width:500px; position:absolute; margin:0 350px;" >
     <h5 class="card-title">${dto.sCar }, ${dto.sCar_brand }</h5>
@@ -80,7 +79,7 @@
   </div>
   
 </div>
-</c:forEach>
+
 
 
 </form>
