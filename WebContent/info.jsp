@@ -85,8 +85,8 @@
    <section>
 <form style="display: flex;
   justify-content: center;
-  align-items: top;
-  min-height: 50vh; ">
+  align-items: center;
+ height: 400px">
    <input type="hidden" name="member_id" value="${infoList_view.member_id }">
    <table>
 		<tr>
