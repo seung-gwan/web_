@@ -56,23 +56,23 @@
       </nav>
     </header>
     <hr>
-    <main>
-      <section id="contactUs"style="width:100%; height: 363px">
+    <main style="width: auto; height: auto; position: static;" >
+      <section id="contactUs"style="width:100%; height: 100%;position: static;">
         <h2 class="hidden">contact us</h2>
         
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width:100%; height: 363px">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width:100%; height: 100%;position: static;">
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
- <div class="carousel-indicators">
+ <div class="carousel-indicators" style="position: static;" >
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
     
   </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://ifh.cc/g/z38w0A.jpg" class="d-block w-100" alt="유재석사진1">
+  <div class="carousel-inner" style="width:100%; height: auto;position: static;">
+    <div class="carousel-item active" style="width:100%; height: auto;position: static;">
+      <img src="https://ifh.cc/g/z38w0A.jpg" class="d-block" style="width:100%; height:auto; position: static;" alt="유재석사진1">
     </div>
-    <div class="carousel-item">
-       <img src="https://ifh.cc/g/PTo2TJ.jpg" class="d-block w-100" alt="유재석사진2">
+    <div class="carousel-item" style="width:100%; height: auto;position: static;">
+       <img src="https://ifh.cc/g/PTo2TJ.jpg" class="d-block" style="width:100%; height:auto; position: static;"  alt="유재석사진2">
     </div>
   </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
