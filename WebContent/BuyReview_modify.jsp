@@ -65,7 +65,7 @@
             <h3>구매후기</h3>
   <form action="BuyReview_modify.do">         
   <input type="hidden" name="bRNum" value="${BuyReview_view.bRNum }"> 
-<table style="min-height: 15vh; justify-content: center;">
+<table style=" justify-content: center;">
    
    
 		<tr>
@@ -92,7 +92,7 @@
 			<td>내용</td>
 			
 		</tr>
-		</table  style="min-height: 20vh; justify-content: center;">
+		</table  style=" justify-content: center;">
 		<table style="height: 100px top: 0;
   left: 0;
   width: 500px	 ">
@@ -100,7 +100,7 @@
 	   <td><textarea type="text" name="Car" id="Car" required style="height: 100px; width: 100%">${BuyReview_view.bRContent}</textarea></td>
 		</tr>
 		</table>
-		<table  style="min-height: 10vh; justify-content: center;">
+		<table  style=" justify-content: center;">
 		<tr>
 			<td colspan="1"> <input type="submit" value="확인">
 			&nbsp;&nbsp;<a href="BuyReview.do">목록보기</a>
