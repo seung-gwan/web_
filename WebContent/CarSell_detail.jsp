@@ -90,8 +90,8 @@
 <form action="SellList_update.do?sNum=${SellList_detail.sNum }" method="post">
 	<table style="display: flex;
   justify-content: center;
-  align-items: top;
-  min-height: 50vh;">
+  align-items: center;
+   height: 400px">
 	
 	<tr>
 		<td>차종</td>
