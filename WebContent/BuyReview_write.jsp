@@ -82,7 +82,7 @@
 		<tr>
 			<td>내용</td>
 		</tr>
-		</table  style="min-height: 20vh; justify-content: center;">
+		</table  style=" justify-content: center;">
 		<table style="height: 100px top: 0;
   left: 0;
   width: 500px	 ">
