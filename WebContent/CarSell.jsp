@@ -19,8 +19,8 @@
 #main2 {
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  align-items: top;
+  min-height: 10vh;
   width: 100%;
   height: 100%
 
