@@ -65,7 +65,7 @@
             <h3>판매후기</h3>
 <section style="display: flex;
   align-items: center;
-  min-height: 10vh; ">  
+   ">  
 
    <form action="SellReview_modify.do">
    <input type="hidden" name="sRNum" value="${SellReview_view.sRNum }">
