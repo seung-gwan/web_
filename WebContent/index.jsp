@@ -117,7 +117,8 @@
                 <h3>원하는 차가 있어요</h3>
               </a>
                </article>
-              <form action="SellList_select.do" method="post" style="display: flex;">
+              <form action="SellList_select.do" method="post">
+              <section style="display: flex; ">
              <div style="display: flex; " class="col-sm-2">
               	<select style="width: 152px;height: 30px;" name="Car_brand">
               		<option style="height: 100px" value="">제조사 선택</option>
@@ -146,8 +147,11 @@
               	 	 </div>
               </div>
               </div>
-              	</form>            	
-              	<input type="submit" value="검색">           
+              <input type="submit" value="검색">    
+              </section>
+              	</form>   
+              	  	
+              	       
              <div style="display: flex; align-items: bottom; height: 100%;flex-direction: column;">
                <article class="hosting" style="width: 300px;height: 200px; display: flex; align-items: bottom;">
               <a href="#" style="display: flex;width: 300px;height: 200px; flex-direction:column;">
