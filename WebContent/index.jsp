@@ -119,8 +119,8 @@
                </article>
               <form action="SellList_select.do" method="post" style="height: 30px; display: flex;">
              
-             <div style="display: flex; " class="col-sm-2">
-              	<select style="width: 152px;height: 30px;" name="Car_brand">
+             <div style="display: flex; " class="col-sm-2;">
+              	<select style="width: 152px;height: 30px; z-index:9999" name="Car_brand">
               		<option style="height: 100px" value="">제조사 선택</option>
               		<option value="대우">대우</option>
               		<option value="아우디">아우디</option>
@@ -128,7 +128,7 @@
               	</select>
               	
               	<div style="display: flex; " class="col-sm-2">
-              	<select style="width: 152px;height: 30px;" name="Car_type">
+              	<select style="width: 152px;height: 30px;z-index:9998" name="Car_type">
               		<option value="">타입 선택</option>
               		<option value="경차">경차</option>
               		<option value="소형">소형</option>
@@ -137,7 +137,7 @@
               	</select>
               	
               	<div style="display: flex; " class="col-sm-2;">
-              	<select style="width: 152px;height: 30px;" name="Car_color">
+              	<select style="width: 152px;height: 30px;z-index:9997" name="Car_color">
               		<option value="">컬러 선택</option>
               		<option value="white">white</option>
               		<option value="red">red</option>
