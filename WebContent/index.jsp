@@ -109,7 +109,7 @@
 </div>
 </section>
       <section id="ssolution" style=height:500px;">
-      <div id="solutionWrap"  style="width:100%; height: 100%; ">
+      <div id="solutionWrap"  style="width:100%; height: 100%;padding: 50px 150px; ">
         
             <h2 class="hidden">solutions</h2>
             <article class="hosting" style="width: 250px;height: 30px;">
