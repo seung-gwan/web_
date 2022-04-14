@@ -78,7 +78,7 @@
       </nav>
     </header>
     <hr>
-    <main style="width: auto; height: auto; position: static;" >
+ <main style="width: auto; height: auto; position: static;" >
       <section id="contactUs"style="width:100%; height: 100%;position: static;">
         <h2 class="hidden">contact us</h2>
         
@@ -108,17 +108,18 @@
 </div>
 </div>
 </section>
-      <section id="ssolution" style="position: static;">
-      <div id="solutionWrap"  style="width:100%; height: auto; position: static;">
+      <section id="ssolution" style=height:500px;">
+      <div id="solutionWrap"  style="width:100%; height: 100%; ">
         
             <h2 class="hidden">solutions</h2>
-            <article class="hosting" style="width: 100%;  margin: 0 135px 0px 135px">
+            <article class="hosting" style="width: 250px;height: 30px;">
               <a href="#">
                 <h3>원하는 차가 있어요</h3>
               </a>
+               </article>
               <form action="SellList_select.do" method="post" style="display: flex;">
              <div style="display: flex; " class="col-sm-2">
-              	<select style="position: static;" name="Car_brand">
+              	<select style="width: 152px;height: 30px;" name="Car_brand">
               		<option style="height: 100px" value="">제조사 선택</option>
               		<option value="대우">대우</option>
               		<option value="아우디">아우디</option>
@@ -126,7 +127,7 @@
               	</select>
               	
               	<div style="display: flex; " class="col-sm-2">
-              	<select style="position: static;" name="Car_type">
+              	<select style="width: 152px;height: 30px;" name="Car_type">
               		<option value="">타입 선택</option>
               		<option value="경차">경차</option>
               		<option value="소형">소형</option>
@@ -135,39 +136,34 @@
               	</select>
               	
               	<div style="display: flex; " class="col-sm-2;">
-              	<select style="position: static;" name="Car_color">
+              	<select style="width: 152px;height: 30px;" name="Car_color">
               		<option value="">컬러 선택</option>
               		<option value="white">white</option>
               		<option value="red">red</option>
               		<option value="black">black</option>
               		<option value="blue">blue</option>
               	</select>
-              	</div>
-              	</div>
-              	</div>
-              	<c:if test= "${sessionID != null }">
-              	<input type="submit" value="검색">
-              	</c:if>
-              	<c:if test= "${sessionID == null }">
-              	</c:if>
-              </form>
-            </article>
-            <article class="security"style=" margin: 0 135px 0px 135px">
-              <a href="#">
-                <h3>예산이 정해져 있어요</h3>
+              	 	 </div>
+              </div>
+              </div>
+              	</form>            	
+              	<input type="submit" value="검색">           
+             <div style="display: flex; align-items: bottom; height: 100%;flex-direction: column;">
+               <article class="hosting" style="width: 300px;height: 200px; display: flex; align-items: bottom;">
+              <a href="#" style="display: flex;width: 300px;height: 200px; flex-direction:column;">
+                <h3 style="display: flex;width: 300px;height: 200px; flex-direction:column-reverse;">예산이 정해져 있어요</h3>
               </a>
-                <form action="SellList_selectPrice.do" method="post"  style="margin: 20px auto">
-              	<input type="text" name="sCar_salePrice1">~<input type="text" name="sCar_salePrice2">
-              	<c:if test= "${sessionID != null }">
-              	<input type="submit" value="검색">
-              	</c:if>
-              	<c:if test= "${sessionID == null }">
-              	</c:if>
+              </article>
+                <form action="SellList_select.do" method="post" style="display: flex;display: flex; align-items: bottom; ">
+              	<input style="height: 30px" type="text" name="sCar_salePrice1">~<input style="height: 30px" type="text" name="sCar_salePrice2">             	
+              	
+              
               </form>
-            
-            </article>
-        
-      </div>
+             <input style="width:48px; height: 30px; " type="submit" value="검색">
+              </div>
+               
+              </div>
+              
       </section>
       <section id="vv" style=" align-items: center;  width: 100%; margin:100px 0 0 0 ;height: auto">
         <h2 class="hidden">customer center</h2>
