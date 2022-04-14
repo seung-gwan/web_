@@ -17,7 +17,7 @@
 #contactUs a:hover { background: #2253fe;}
 /* solution */
 /* 전체넓이 930px */
-#solutionWrap { padding: 50px 0; background: #ebebeb; }
+#solutionWrap { padding: 50px 150px; background: #ebebeb; }
 #solution { width: 930px; margin: 0 auto; }
 #solution::after { content: ""; display: block; clear: both;}
 #solution .solution { width: 310px; height : 200px;
