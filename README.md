@@ -19,7 +19,7 @@ Tomcat 10 이상은 `jakarta.servlet` 네임스페이스를 사용하므로 이 
 4. `target/rentcar.war`를 Tomcat 9의 `webapps` 폴더에 복사합니다.
 5. Tomcat을 실행하고 `http://localhost:8080/rentcar/`에 접속합니다.
 
-개발용 데모 계정은 `demo` / `demo1234`입니다. `WebContent/META-INF/context.xml`의 DB 계정도 로컬 개발 전용입니다. 운영 환경에서는 반드시 별도 비밀번호와 안전한 비밀번호 해시를 사용해야 합니다.
+로그인 확인용 계정은 `1234` / `1234`이며, 기존 데모 계정은 `demo` / `demo1234`입니다. 새 회원의 비밀번호는 PBKDF2 해시로 저장되고, 초기 데이터의 기존 평문 비밀번호도 첫 로그인 때 자동으로 해시로 전환됩니다. `WebContent/META-INF/context.xml`의 DB 계정은 로컬 개발 전용입니다.
 
 ## 프로젝트 구조
 

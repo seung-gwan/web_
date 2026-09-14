@@ -312,3 +312,24 @@ body { background: #fff; }
   .home-actions__heading h2 { font-size: 28px; }
   .home-action-card { min-height: 210px; padding: 26px; }
 }
+/* 로그인/회원가입 완료 안내 */
+.home-toast {
+  position: fixed;
+  z-index: 20;
+  top: 20px;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  max-width: calc(100% - 32px);
+  padding: 13px 18px;
+  border: 1px solid rgba(0, 142, 232, .18);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, .96);
+  color: #17314f;
+  font-size: 13px;
+  box-shadow: 0 14px 38px rgba(17, 67, 104, .18);
+  transform: translateX(-50%);
+}
+.home-toast strong { color: #0878e8; }
+.home-toast span { color: #617389; }

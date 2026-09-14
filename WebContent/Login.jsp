@@ -10,9 +10,6 @@
     <link rel="stylesheet" href="css/blue-pages.css">
   </head>
   <body class="auth-page">
-    <c:if test="${resultlogin == -1 || resultlogin == 0}">
-      <script>alert('아이디 혹은 비밀번호가 맞지 않습니다.');</script>
-    </c:if>
     <c:if test="${sessionID != null}">
       <script>alert('이미 로그인 중입니다.'); location.href = 'index.jsp';</script>
     </c:if>
@@ -32,10 +29,13 @@
           <span class="blue-eyebrow">MEMBER LOGIN</span>
           <h2>로그인</h2>
           <p class="auth-card__description">RentCar 계정 정보를 입력해 주세요.</p>
+          <c:if test="${resultlogin == -1 || resultlogin == 0}">
+            <div class="auth-message auth-message--error" role="alert">아이디 또는 비밀번호를 다시 확인해 주세요.</div>
+          </c:if>
           <form class="auth-form" action="login.do" method="post">
             <div class="blue-field">
               <label for="login-id">아이디</label>
-              <input type="text" id="login-id" name="Id" placeholder="아이디를 입력해 주세요" autocomplete="username" required>
+              <input type="text" id="login-id" name="Id" value="<c:out value='${loginId}'/>" placeholder="아이디를 입력해 주세요" autocomplete="username" required autofocus>
             </div>
             <div class="blue-field">
               <label for="login-password">비밀번호</label>
@@ -43,6 +43,12 @@
             </div>
             <button class="auth-submit" type="submit">로그인</button>
           </form>
+          <div class="demo-account" aria-label="테스트 계정">
+            <span>테스트 계정</span>
+            <strong>1234</strong>
+            <span>/</span>
+            <strong>1234</strong>
+          </div>
           <div class="auth-switch">
             <span>아직 계정이 없으신가요?</span>
             <a href="join.jsp">회원가입</a>

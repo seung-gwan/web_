@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
+    <c:if test="${loginSuccess || joinSuccess}">
+      <div class="home-toast" role="status">
+        <strong><c:out value="${sessionID}" /></strong>님, 반갑습니다.
+        <span>${joinSuccess ? '회원가입과 로그인이 완료되었습니다.' : '로그인되었습니다.'}</span>
+      </div>
+    </c:if>
     <header id="header">
       <h1><a href="index.jsp">RentCar</a></h1>
       <nav id="membership" aria-label="회원 메뉴">

@@ -91,11 +91,11 @@ public class FrontController extends HttpServlet {
 		if(com.equals("/login.do")) {
 			command = new LoginCommandCar();
 			command.execute(request, response);
-			viewPage = "index.jsp";
+			viewPage = Integer.valueOf(1).equals(request.getAttribute("resultlogin")) ? "index.jsp" : "Login.jsp";
 		}else if(com.equals("/join.do")) {
 			command = new joinCommandCar();
 			command.execute(request, response);
-			viewPage = "index.jsp";
+			viewPage = Integer.valueOf(1).equals(request.getAttribute("joinResult")) ? "index.jsp" : "join.jsp";
 		}else if(com.equals("/logout.do")) {
 			HttpSession session = request.getSession();
 			session.invalidate();

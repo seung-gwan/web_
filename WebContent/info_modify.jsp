@@ -47,8 +47,8 @@
                 <input type="text" id="member_name" name="member_name" value="${infoList_view.member_name}" required>
               </div>
               <div class="blue-field">
-                <label for="member_pw">비밀번호 <span>*</span></label>
-                <input type="password" id="member_pw" name="member_pw" value="${infoList_view.member_pw}" required>
+                <label for="member_pw">새 비밀번호</label>
+                <input type="password" id="member_pw" name="member_pw" minlength="4" autocomplete="new-password" placeholder="변경할 때만 입력해 주세요">
               </div>
               <div class="blue-field">
                 <label for="member_email">이메일 <span>*</span></label>

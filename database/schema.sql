@@ -87,6 +87,12 @@ VALUES
   ('demo', 'demo1234', '데모 사용자', '제주특별자치도 제주시', '테스트로 1', '', 63000,
    'demo@example.com', '남자', '아반떼');
 
+INSERT IGNORE INTO Car_member
+  (member_id, member_pw, member_name, member_address, member_address_detail1,
+   member_address_detail2, member_address_num, member_email, member_gender, member_car)
+VALUES
+  ('1234', '1234', '테스트 회원', '', '', '', 0, '1234@example.com', '', '');
+
 INSERT IGNORE INTO Car_info
   (member_id, member_car, car_kM, car_Num, car_ProductY, car_color, car_brand, car_type, car_Accident)
 VALUES

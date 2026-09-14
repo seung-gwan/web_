@@ -3,6 +3,7 @@ package com.javalec.ex.Dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -16,6 +17,7 @@ import com.javalec.ex.Dto.BDto3;
 import com.javalec.ex.Dto.BDto4;
 import com.javalec.ex.Dto.BDto5;
 import com.javalec.ex.Dto.BDto6;
+import com.javalec.ex.util.PasswordUtil;
 
 
 
@@ -49,13 +51,21 @@ public class BDao {
 			pstmt.setString(1, member_id);
 			rs = pstmt.executeQuery();
 			
-			if(rs.next())
-			{
-				if(rs.getString("member_pw").equals(member_pw)) {
-					return 1;
-				} else {
+			if(rs.next()) {
+				String storedPassword = rs.getString("member_pw");
+				if (!PasswordUtil.matches(member_pw, storedPassword)) {
 					return -1;
 				}
+				if (!PasswordUtil.isHashed(storedPassword)) {
+					rs.close();
+					rs = null;
+					pstmt.close();
+					pstmt = conn.prepareStatement("update Car_member set member_pw=? where member_id=?");
+					pstmt.setString(1, PasswordUtil.hash(member_pw));
+					pstmt.setString(2, member_id);
+					pstmt.executeUpdate();
+				}
+				return 1;
 			}
 			
 			
@@ -79,31 +89,31 @@ public class BDao {
 }
 	
 	
-	public void join (String member_id, String member_pw, String member_name, String member_address,
+	public int join (String member_id, String member_pw, String member_name, String member_address,
 			String member_address_detail1, String member_address_detail2, String member_address_num, String member_email,
 			String member_gender, String member_car)
 	{
-		
-		
+		int result = 0;
 		try {
 			conn = datasource.getConnection();
 			String query = "insert into Car_member(member_id, member_pw, member_name, member_address, member_address_detail1,member_address_detail2, member_address_num"
 					+ ",member_email, member_gender, member_car) values(?,?,?,?,?,?,?,?,?,?) ";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, member_id);
-			pstmt.setString(2, member_pw);
+			pstmt.setString(2, PasswordUtil.hash(member_pw));
 			pstmt.setString(3, member_name);
 			pstmt.setString(4, member_address);
 			pstmt.setString(5, member_address_detail1);
 			pstmt.setString(6, member_address_detail2);
-			pstmt.setInt(7,  Integer.parseInt(member_address_num));
+			pstmt.setInt(7, member_address_num == null || member_address_num.trim().isEmpty()
+					? 0 : Integer.parseInt(member_address_num));
 			pstmt.setString(8, member_email);
 			pstmt.setString(9, member_gender);
 			pstmt.setString(10, member_car);
 			pstmt.executeUpdate();
-			
-			
-			
+			result = 1;
+		} catch(SQLIntegrityConstraintViolationException duplicateException) {
+			result = -1;
 		} catch(Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -119,6 +129,7 @@ public class BDao {
 				e2.printStackTrace();
 			}
 		}
+		return result;
 	}
 	
 	public ArrayList<BDto2> Notice() {
@@ -854,19 +865,24 @@ public BDto info_modify_view(String member_id) {
 			String member_gender, String member_car,String member_id) {
 		try {
 			conn=datasource.getConnection();
-			String sql = "update Car_member set member_pw=?, member_name=?, member_address=?, member_address_detail1=?,member_address_detail2=?, member_address_num=?, member_email=?,member_gender=?,member_car=? where member_id=?";
+			boolean updatePassword = member_pw != null && !member_pw.trim().isEmpty();
+			String sql = updatePassword
+					? "update Car_member set member_pw=?, member_name=?, member_address=?, member_address_detail1=?,member_address_detail2=?, member_address_num=?, member_email=?,member_gender=?,member_car=? where member_id=?"
+					: "update Car_member set member_name=?, member_address=?, member_address_detail1=?,member_address_detail2=?, member_address_num=?, member_email=?,member_gender=?,member_car=? where member_id=?";
 			pstmt = conn.prepareStatement(sql);
-			
-			pstmt.setString(1, member_pw);
-			pstmt.setString(2, member_name);
-			pstmt.setString(3, member_address);
-			pstmt.setString(4, member_address_detail1);
-			pstmt.setString(5, member_address_detail2);
-			pstmt.setString(6,member_address_num);
-			pstmt.setString(7, member_email);
-			pstmt.setString(8, member_gender);
-			pstmt.setString(9, member_car);
-			pstmt.setString(10, member_id);
+			int parameterIndex = 1;
+			if (updatePassword) {
+				pstmt.setString(parameterIndex++, PasswordUtil.hash(member_pw));
+			}
+			pstmt.setString(parameterIndex++, member_name);
+			pstmt.setString(parameterIndex++, member_address);
+			pstmt.setString(parameterIndex++, member_address_detail1);
+			pstmt.setString(parameterIndex++, member_address_detail2);
+			pstmt.setString(parameterIndex++, member_address_num);
+			pstmt.setString(parameterIndex++, member_email);
+			pstmt.setString(parameterIndex++, member_gender);
+			pstmt.setString(parameterIndex++, member_car);
+			pstmt.setString(parameterIndex, member_id);
 			System.out.println("member_address_detail1="+member_address_detail1);
 			System.out.println("member_address_detail2="+member_address_detail2);
 			System.out.println("member_address_num="+member_address_num);

@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -18,6 +19,12 @@
         document.form.addrDetail.value = addrDetail || '';
         document.form.zipNo.value = zipNo || '';
       }
+
+      function validatePasswords() {
+        var password = document.getElementById('Pw');
+        var confirmPassword = document.getElementById('PwConfirm');
+        confirmPassword.setCustomValidity(password.value === confirmPassword.value ? '' : '비밀번호가 일치하지 않습니다.');
+      }
     </script>
   </head>
   <body class="auth-page auth-page--join">
@@ -36,26 +43,33 @@
           <span class="blue-eyebrow">CREATE ACCOUNT</span>
           <h2>회원가입</h2>
           <p class="auth-card__description"><span>*</span> 표시는 필수 입력 항목입니다.</p>
+          <c:if test="${joinResult != null && joinResult != 1}">
+            <div class="auth-message auth-message--error" role="alert"><c:out value="${joinMessage}" /></div>
+          </c:if>
           <form class="auth-form auth-form--grid" action="join.do" method="post" name="form" id="form">
             <div class="blue-field">
               <label for="Id">아이디 <span>*</span></label>
-              <input type="text" name="Id" id="Id" autocomplete="username" required>
+              <input type="text" name="Id" id="Id" value="<c:out value='${joinId}'/>" autocomplete="username" minlength="4" maxlength="50" pattern="[A-Za-z0-9_]+" title="영문, 숫자, 밑줄만 사용할 수 있습니다." required autofocus>
             </div>
             <div class="blue-field">
               <label for="Pw">비밀번호 <span>*</span></label>
-              <input type="password" name="Pw" id="Pw" autocomplete="new-password" required>
+              <input type="password" name="Pw" id="Pw" autocomplete="new-password" minlength="4" required oninput="validatePasswords();">
+            </div>
+            <div class="blue-field">
+              <label for="PwConfirm">비밀번호 확인 <span>*</span></label>
+              <input type="password" name="PwConfirm" id="PwConfirm" autocomplete="new-password" minlength="4" required oninput="validatePasswords();">
             </div>
             <div class="blue-field">
               <label for="Name">이름 <span>*</span></label>
-              <input type="text" name="Name" id="Name" required>
+              <input type="text" name="Name" id="Name" value="<c:out value='${joinName}'/>" required>
             </div>
             <div class="blue-field">
               <label for="Email">이메일 <span>*</span></label>
-              <input type="email" name="Email" id="Email" autocomplete="email" required>
+              <input type="email" name="Email" id="Email" value="<c:out value='${joinEmail}'/>" autocomplete="email" required>
             </div>
             <div class="blue-field auth-form__wide">
-              <label for="Car">보유 차량 <span>*</span></label>
-              <input type="text" name="Car" id="Car" placeholder="예: 아반떼" required>
+              <label for="Car">보유 차량</label>
+              <input type="text" name="Car" id="Car" value="<c:out value='${joinCar}'/>" placeholder="예: 아반떼">
             </div>
             <fieldset class="choice-field auth-form__wide">
               <legend>성별</legend>
@@ -71,7 +85,7 @@
                 <input type="text" id="zipNo" name="zipNo" placeholder="우편번호" readonly>
                 <button type="button" onclick="goPopup();">주소 검색</button>
               </div>
-              <input type="text" id="roadAddrPart1" name="roadAddrPart1" placeholder="도로명주소" required>
+              <input type="text" id="roadAddrPart1" name="roadAddrPart1" placeholder="도로명주소">
               <div class="address-field__detail">
                 <input type="text" id="addrDetail" name="addrDetail" placeholder="상세주소">
                 <input type="text" id="roadAddrPart2" name="roadAddrPart2" placeholder="참고항목" readonly>
