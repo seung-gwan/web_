@@ -63,10 +63,10 @@
   </div>
   <div class="carousel-inner" style="width:100%; height: auto;position: static;">
     <div class="carousel-item active" style="width:100%; height: auto;position: static;">
-      <img src="https://ifh.cc/g/z38w0A.jpg" class="d-block" style="width:100%; height:auto; position: static;" alt="유재석사진1">
+      <img src="images/mobility-hero.webp" class="d-block" style="width:100%; height:auto; position: static;" alt="바닷가 도로를 달리는 흰색 전기차">
     </div>
     <div class="carousel-item" style="width:100%; height: auto;position: static;">
-       <img src="https://ifh.cc/g/PTo2TJ.jpg" class="d-block" style="width:100%; height:auto; position: static;"  alt="유재석사진2">
+       <img src="images/car-suv.webp" class="d-block" style="width:100%; height:auto; position: static;" alt="밝은 스튜디오의 하늘색 SUV">
     </div>
   </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

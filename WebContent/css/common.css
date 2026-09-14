@@ -15,16 +15,19 @@ hr { display: none; }
       url(../webfont/segoeui.eot),
       url(../webfont/segoeui.woff)
 }
-body { position: relative; min-width: 1200px; font-family: 'Segoe UI', sejoe, sans-serif;
- overflow-y: scroll; }
+* { box-sizing: border-box; }
+body { position: relative; min-width: 0; font-family: 'Segoe UI', sejoe, sans-serif;
+ overflow-x: hidden; overflow-y: scroll; color: #172238; }
 
-#header { position: relative; width: 1200px; height: 180px; margin: 0 auto; }
-#header h1 { width: 100px; padding: 50px 0 50px 100px; }
-#header h1 a { display: block; height: 80px; width: 100px;
-              text-indent: -5000px;
-              background: url("https://ifh.cc/g/Cmpfmc.jpg") no-repeat; }
+#header { position: relative; width: min(1200px, calc(100% - 40px)); height: 180px; margin: 0 auto; }
+#header h1 { position: absolute; top: 54px; left: 0; margin: 0; }
+#header h1 a { display: inline-flex; align-items: center; gap: 9px;
+              font-size: 28px; font-weight: 800; letter-spacing: -0.04em; color: #172238; }
+#header h1 a::before { content: ""; width: 13px; height: 34px;
+                       border-radius: 7px; background: #00a8ff; transform: skew(-12deg); }
 
 #membership { position: absolute; top: 20px; right: 100px; }
+#membership ul { display: flex; align-items: center; }
 #membership ul li { position: relative; float: left; }
 #membership ul .goLogin { padding-right: 10px; }
 #membership ul .goLogin::after { content: "";
@@ -43,7 +46,7 @@ body { position: relative; min-width: 1200px; font-family: 'Segoe UI', sejoe, sa
 #gnb ul li a:hover { border-bottom: 3px solid #0087b9; }
 
 #footerWrap { margin-top: 55px; border-top: 1px solid #a0a0a0; }
-#footer { overflow: hidden; width: 1000px; margin: 0 auto;
+#footer { overflow: hidden; width: min(1000px, calc(100% - 40px)); margin: 0 auto;
           padding: 24px 76px 20px 204px;
           box-sizing: border-box;
           background: url(../images/logoFooter.png) no-repeat 55px 23px; }
@@ -55,3 +58,19 @@ body { position: relative; min-width: 1200px; font-family: 'Segoe UI', sejoe, sa
                     background: url(../images/bgSns.png) no-repeat;
                     text-indent: -5000px; }
 #footer .sns li.twitter a { background-position: right; }
+
+@media (max-width: 760px) {
+  #header { width: calc(100% - 32px); height: 142px; }
+  #header h1 { top: 28px; }
+  #header h1 a { font-size: 24px; }
+  #header h1 a::before { width: 11px; height: 29px; }
+  #membership { top: 28px; right: 0; }
+  #membership ul li { float: none; }
+  #membership ul li a { font-size: 12px; }
+  #gnb { top: 91px; right: auto; left: 0; width: 100%; overflow-x: auto; padding-bottom: 8px; }
+  #gnb ul { display: flex; width: max-content; }
+  #gnb ul li { float: none; margin: 0 18px 0 0; }
+  #gnb ul li a { display: block; padding: 0 0 8px; font-size: 14px; white-space: nowrap; }
+  #footer { padding: 24px 0; }
+  #footer .sns { display: none; }
+}

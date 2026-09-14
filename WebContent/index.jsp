@@ -9,6 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RentCarMain</title> 
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/main.css">
@@ -69,8 +70,8 @@
       <nav id="gnb">
         <h2 class="hidden">펀웹주요이용메뉴</h2>
         <ul>
-          <li><a href="CarSell.jsp">내차 팔기</a></li>
-          <li><a href="CarBuy.jsp">내차 사기</a></li>
+          <li><a href="CarSell.do?member_id=${sessionID}">내차 팔기</a></li>
+          <li><a href="CarBuy.do">내차 사기</a></li>
           <li><a href="Notice.do">고객센터</a></li>
           <li><a href="#">브랜드인증관</a></li>
           <li><a href="#">전국직영점</a></li>
@@ -79,35 +80,16 @@
     </header>
     <hr>
  <main style="width: auto; height: auto; position: static;" >
-      <section id="contactUs"style="width:100%; height: 100%;position: static;">
-        <h2 class="hidden">contact us</h2>
-        
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width:100%; height: 100%;position: static;">
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
- <div class="carousel-indicators" style="position: static;" >
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    
-  </div>
-  <div class="carousel-inner" style="width:100%; height: auto;position: static;">
-    <div class="carousel-item active" style="width:100%; height: auto;position: static;">
-      <img src="https://ifh.cc/g/z38w0A.jpg" class="d-block" style="width:100%; height:auto; position: static;" alt="유재석사진1">
-    </div>
-    <div class="carousel-item" style="width:100%; height: auto;position: static;">
-       <img src="https://ifh.cc/g/PTo2TJ.jpg" class="d-block" style="width:100%; height:auto; position: static;"  alt="유재석사진2">
-    </div>
-  </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-</div>
-</section>
+      <section id="contactUs">
+        <img src="images/mobility-hero.webp" class="home-hero-image" alt="바닷가 도로를 달리는 흰색 전기차">
+        <div class="home-hero-shade" aria-hidden="true"></div>
+        <div class="home-hero-copy">
+          <span>MOVE BETTER</span>
+          <h2>좋은 차를 만나는<br>가장 가벼운 방법</h2>
+          <p>등록된 차량을 확인하고 내게 맞는 선택을 시작해 보세요.</p>
+          <a href="CarBuy.do">차량 둘러보기</a>
+        </div>
+      </section>
       <section id="ssolution" style=height:500px;">
       <div id="solutionWrap"  style="width:100%; height: 100%;padding: 50px 150px; ">
         
