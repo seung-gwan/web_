@@ -58,6 +58,18 @@
           <p><strong>${SellList.size()}</strong>대의 차량이 등록되어 있습니다.</p>
         </div>
 
+        <c:if test="${searchApplied}">
+          <div class="search-result-note">
+            <p>
+              <c:choose>
+                <c:when test="${not empty searchKeyword}"><strong>‘${searchKeyword}’</strong> 검색 결과입니다.</c:when>
+                <c:otherwise>선택한 조건의 검색 결과입니다.</c:otherwise>
+              </c:choose>
+            </p>
+            <a href="index.jsp#car-search">검색 조건 다시 선택</a>
+          </div>
+        </c:if>
+
         <c:choose>
           <c:when test="${empty SellList}">
             <div class="empty-cars">

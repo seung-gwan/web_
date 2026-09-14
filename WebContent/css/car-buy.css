@@ -76,6 +76,23 @@
 .buy-catalog__heading p { color: var(--mobility-muted); white-space: nowrap; }
 .buy-catalog__heading strong { color: var(--mobility-blue-dark); }
 
+.search-result-note {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 0 0 24px;
+  padding: 17px 20px;
+  border: 1px solid #d8ebf7;
+  border-radius: 14px;
+  background: #f2faff;
+  color: #52677d;
+  font-size: 14px;
+}
+
+.search-result-note strong { color: var(--mobility-blue-dark); }
+.search-result-note a { color: var(--mobility-blue-dark); font-weight: 800; white-space: nowrap; }
+
 .car-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -208,6 +225,7 @@
   .buy-hero p { max-width: 310px; font-size: 15px; }
   .buy-catalog { width: min(100% - 28px, 1120px); padding-top: 54px; }
   .buy-catalog__heading { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .search-result-note { align-items: flex-start; flex-direction: column; gap: 8px; }
   .car-grid { grid-template-columns: 1fr; }
   .car-card { border-radius: 19px; }
   .car-card__body { padding: 21px; }

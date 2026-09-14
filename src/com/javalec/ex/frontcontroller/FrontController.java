@@ -30,6 +30,7 @@ import com.javalec.ex.CommandCar.NoticeListCommandCar;
 import com.javalec.ex.CommandCar.NoticeViewCommandCar;
 import com.javalec.ex.CommandCar.SellListCommandCar;
 import com.javalec.ex.CommandCar.SellListInsertCommandCar;
+import com.javalec.ex.CommandCar.SellListSelectCommandCar;
 import com.javalec.ex.CommandCar.SellListUpdateCommandCar;
 import com.javalec.ex.CommandCar.SellListViewCommandCar;
 import com.javalec.ex.CommandCar.SellReviewDeleteCommandCar;
@@ -218,6 +219,10 @@ public class FrontController extends HttpServlet {
 			viewPage="SellList.do";
 		} else if(com.equals("/CarBuy.do")) {
 			command = new SellListCommandCar();
+			command.execute(request, response);
+			viewPage="CarBuy.jsp";
+		} else if(com.equals("/SellList_select.do")) {
+			command = new SellListSelectCommandCar();
 			command.execute(request, response);
 			viewPage="CarBuy.jsp";
 		}

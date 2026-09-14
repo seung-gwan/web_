@@ -1080,6 +1080,81 @@ public BDto info_modify_view(String member_id) {
 		return dtos;
 		
 	}
+
+	public ArrayList<BDto6> SellList_select(String keyword, String brand, String type, String color,
+			Integer minPrice, Integer maxPrice) {
+		ArrayList<BDto6> dtos = new ArrayList<BDto6>();
+		ArrayList<Object> parameters = new ArrayList<Object>();
+		StringBuilder sql = new StringBuilder("select * from Car_SellList where 1=1");
+
+		if (keyword != null) {
+			sql.append(" and (sCar like ? or sCar_brand like ?)");
+			String keywordPattern = "%" + keyword + "%";
+			parameters.add(keywordPattern);
+			parameters.add(keywordPattern);
+		}
+		if (brand != null) {
+			sql.append(" and sCar_brand = ?");
+			parameters.add(brand);
+		}
+		if (type != null) {
+			sql.append(" and sCar_type = ?");
+			parameters.add(type);
+		}
+		if (color != null) {
+			sql.append(" and sCar_color = ?");
+			parameters.add(color);
+		}
+		if (minPrice != null || maxPrice != null) {
+			sql.append(" and coalesce(nullif(sCar_salePrice, 0), sCar_Price) > 0");
+		}
+		if (minPrice != null) {
+			sql.append(" and coalesce(nullif(sCar_salePrice, 0), sCar_Price) >= ?");
+			parameters.add(minPrice);
+		}
+		if (maxPrice != null) {
+			sql.append(" and coalesce(nullif(sCar_salePrice, 0), sCar_Price) <= ?");
+			parameters.add(maxPrice);
+		}
+		sql.append(" order by sNum desc");
+
+		try {
+			conn = datasource.getConnection();
+			pstmt = conn.prepareStatement(sql.toString());
+			for (int index = 0; index < parameters.size(); index++) {
+				pstmt.setObject(index + 1, parameters.get(index));
+			}
+
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				dtos.add(new BDto6(
+					rs.getInt("sNum"),
+					rs.getString("sCar"),
+					rs.getString("sCar_Num"),
+					rs.getString("sCar_kM"),
+					rs.getInt("sCar_ProductY"),
+					rs.getString("sCar_color"),
+					rs.getString("sCar_brand"),
+					rs.getString("sCar_type"),
+					rs.getString("sCar_Accident"),
+					rs.getInt("sCar_Price"),
+					rs.getInt("sCar_salePrice")
+				));
+			}
+		} catch (Exception exception) {
+			exception.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception closeException) {
+				closeException.printStackTrace();
+			}
+		}
+
+		return dtos;
+	}
 	
 	public void SellList_insert(String sCar, String sCar_Num, String sCar_kM, String sCar_ProductY, String sCar_color, String sCar_brand, String sCar_type, String sCar_Accident) {
 		
