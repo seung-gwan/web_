@@ -1,0 +1,8 @@
+<%@ page pageEncoding="UTF-8" %>
+<section class="blue-page-hero blue-page-hero--compact">
+  <div class="blue-page-hero__content">
+    <span><c:out value="${pageEyebrow}" /></span>
+    <h2><c:out value="${pageTitle}" /></h2>
+    <p><c:out value="${pageDescription}" /></p>
+  </div>
+</section>

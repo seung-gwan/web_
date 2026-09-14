@@ -1,174 +1,42 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<c:set var="navSection" value="sell" />
+<c:set var="pageEyebrow" value="EDIT MY CAR" />
+<c:set var="pageTitle" value="차량 정보 수정" />
+<c:set var="pageDescription" value="변경되었거나 잘못 입력된 차량 정보를 수정해 주세요." />
 <!DOCTYPE html>
-<html>
-<head>
-<style>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-</style>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-
-<meta charset="UTF-8">
-<title>차량 정보</title>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>차량 정보 수정 | RentCar</title>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/blue-pages.css">
   </head>
-  <body>
-    <header id="header">
-      <h1><a href="index.jsp">RentCar</a></h1>
-      <nav id="membership">
-        <h2 class="hidden">멤버쉽네비게이션</h2>
-        <ul>
-          <li class="goLogin">
-          <c:if test="${sessionID != null }">
-	        ${sessionID }
-	        <a href="logout.do">로그아웃</a>
-            </c:if>
-          <c:if test="${sessionID == null }">
-          	<a href="Login.jsp">로그인</a>
-          </c:if>
-          </li>
-          <li class="goJoin">
-          <c:if test="${sessionID != null }">
-            	<a href="info_view.do?member_id=${sessionID}">개인정보</a>
-            </c:if>
-            <c:if test="${sessionID ==null }">
-            	<a href="join.jsp">회원가입</a>
-            </c:if>
-          </li>
-        </ul>
-      </nav>
-      <nav id="gnb">
-        <h2 class="hidden">펀웹주요이용메뉴</h2>
-        <ul>
-          <li><a href="CarSell.jsp">내차 팔기</a></li>
-          <li><a href="CarBuy.jsp">내차 사기</a></li>
-          <li><a href="Notice.do">고객센터</a></li>
-          <li><a href="#">브랜드인증관</a></li>
-          <li><a href="#">전국직영점</a></li>
-        </ul>
-      </nav>
-    </header>
-    <hr>
- <main style="width: auto; height: auto; position: static;" >
-      <section id="contactUs"style="width:100%; height: 100%;position: static;">
-        <h2 class="hidden">contact us</h2>
-        
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width:100%; height: 100%;position: static;">
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
- <div class="carousel-indicators" style="position: static;" >
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    
-  </div>
-  <div class="carousel-inner" style="width:100%; height: auto;position: static;">
-    <div class="carousel-item active" style="width:100%; height: auto;position: static;">
-      <img src="images/mobility-hero.webp" class="d-block" style="width:100%; height:auto; position: static;" alt="바닷가 도로를 달리는 흰색 전기차">
-    </div>
-    <div class="carousel-item" style="width:100%; height: auto;position: static;">
-       <img src="images/car-suv.webp" class="d-block" style="width:100%; height:auto; position: static;" alt="밝은 스튜디오의 하늘색 SUV">
-    </div>
-  </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-</div>
-</section>
-<section style="display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%; height: 500px">
-<form action ="Carinfo_modify.do" method="post">
-<table>
-    
-	<tr>
-	   
-		<td>차종<input type="hidden" name="member_id" value="${sessionID}" style="width: 200px; height: 30px;"></td>
-		<td><input type="text" name="member_car" style="width: 200px; height: 30px;"></td>
-	
-	
-
-	</tr>
-	
-	<tr>
-		<td>차량 번호</td>
-		<td><input type="text" name="car_Num"style="width: 200px; height: 30px;"></td>
-	</tr>
-	<tr>
-		<td>주행거리</td>
-		<td><input type="text" name="car_kM" style="width: 200px; height: 30px;"></td>
-	</tr>	
-	<tr>
-		<td>생산년도</td>
-		<td><input type="text" name="car_ProductY" style="width: 200px; height: 30px;"></td>
-	</tr>
-	<tr>
-		<td>색상</td>
-		<td><input type="text" name="car_color" style="width: 200px; height: 30px;"></td>
-	</tr>
-	<tr>
-		<td>제조사</td>
-		<td><input type="text" name="car_brand" style="width: 200px; height: 30px;"></td>
-	</tr>
-	<tr>
-	<td style="width: 70px; height: 34px;">타입</td>
-	</tr>
-	</table>
-	<table  style="width: 45px; height: 21px;">
-	<tr>
-	
-		
-		<td style="width: 45px; height: 21px;"><input style="width: 45px; height: 21px;" type="radio" name="car_type" value="경차" id="SS">경차</td>
-	    <td style="width: 45px; height: 21px;"><input style="width: 45px; height: 21px;" type="radio" name="car_type" value="소형" id="S">소형</td>
-   	    <td style="width: 45px; height: 21px;"><input style="width: 45px; height: 21px;" type="radio" name="car_type" value="중형" id="M">중형</td>
-  	    <td style="width: 45px; height: 21px;"><input style="width: 45px; height: 21px;" type="radio" name="car_type" value="대형" id="L">대형</td>
-  	    
-	</tr>
-</table>
-<table  style="margin:20px 30px 0 0">
-	
-	<tr>
-		<td>사고 유/무</td>
-		<td><input  style="margin: 0 0 0 30px " type="radio" name="car_Accident" value="Yes" id="yes">Y</td>
-		<td><input style="margin: 0 0 0 30px "type="radio" name="car_Accident" value="No" id="no">N</td>
-	</tr>
-</table>
-<table>
-	<tr>
-		<td><input style="width: 200px; height: 30px; margin:30px 0 0 50px;
-  color: #fff;
-  border: none;
-  max-width: 120px;
-  cursor: pointer;
-  font-weight: 500; background: #e91e63;" type="submit" value="확인" > </td>
-	</tr>
-</table>
-</form>
-</section>
-</main>
- <div id="footerWrap">
-      <footer id="footer">
-        <div class="info">
-          <small class="copyright">All contents Copyright 2011 FunWeb Inc. all rights reserved</small>
-          <address>Contact mail : funweb@funwebbiz.com Tel: +82 64 123 4315 Fax +82 64 123 4321</address>
+  <body class="blue-page">
+    <%@ include file="WEB-INF/jspf/site-header.jspf" %>
+    <main>
+      <%@ include file="WEB-INF/jspf/compact-hero.jspf" %>
+      <section class="workspace-section">
+        <div class="editor-page">
+          <div class="editor-heading"><span class="blue-eyebrow">VEHICLE DETAILS</span><h2>차량 정보 관리</h2><p>현재 차량 정보를 확인하고 필요한 항목을 수정하세요.</p></div>
+          <form class="editor-card profile-editor" action="Carinfo_modify.do" method="post">
+            <input type="hidden" name="member_id" value="${sessionID}">
+            <div class="editor-grid">
+              <div class="blue-field"><label for="member_car">차량명 <span>*</span></label><input id="member_car" name="member_car" type="text" value="${Carinfo_view.member_car}" required></div>
+              <div class="blue-field"><label for="car_brand">제조사 <span>*</span></label><input id="car_brand" name="car_brand" type="text" value="${Carinfo_view.car_brand}" required></div>
+              <div class="blue-field"><label for="car_Num">차량번호 <span>*</span></label><input id="car_Num" name="car_Num" type="text" maxlength="8" value="${Carinfo_view.car_Num}" required></div>
+              <div class="blue-field"><label for="car_ProductY">생산연도 <span>*</span></label><input id="car_ProductY" name="car_ProductY" type="text" maxlength="4" inputmode="numeric" pattern="[0-9]{4}" value="${Carinfo_view.car_ProductY}" required></div>
+              <div class="blue-field"><label for="car_kM">주행거리 <span>*</span></label><div class="blue-field__unit"><input id="car_kM" name="car_kM" type="text" inputmode="numeric" pattern="[0-9]*" value="${Carinfo_view.car_kM}" required><span>km</span></div></div>
+              <div class="blue-field"><label for="car_color">색상 <span>*</span></label><input id="car_color" name="car_color" type="text" value="${Carinfo_view.car_color}" required></div>
+              <fieldset class="choice-field editor-grid__wide"><legend>차종 <span>*</span></legend><div class="choice-field--four"><label><input type="radio" name="car_type" value="경차" ${Carinfo_view.car_type == '경차' ? 'checked' : ''} required> 경차</label><label><input type="radio" name="car_type" value="소형" ${Carinfo_view.car_type == '소형' ? 'checked' : ''}> 소형</label><label><input type="radio" name="car_type" value="준중형" ${Carinfo_view.car_type == '준중형' ? 'checked' : ''}> 준중형</label><label><input type="radio" name="car_type" value="중형" ${Carinfo_view.car_type == '중형' ? 'checked' : ''}> 중형</label><label><input type="radio" name="car_type" value="대형" ${Carinfo_view.car_type == '대형' ? 'checked' : ''}> 대형</label><label><input type="radio" name="car_type" value="SUV" ${Carinfo_view.car_type == 'SUV' ? 'checked' : ''}> SUV</label></div></fieldset>
+              <fieldset class="choice-field editor-grid__wide"><legend>사고 여부 <span>*</span></legend><div><label><input type="radio" name="car_Accident" value="무사고" ${Carinfo_view.car_Accident == '무사고' ? 'checked' : ''} required> 무사고</label><label><input type="radio" name="car_Accident" value="사고이력 있음" ${Carinfo_view.car_Accident != '무사고' ? 'checked' : ''}> 사고이력 있음</label></div></fieldset>
+            </div>
+            <div class="editor-actions"><a class="button-secondary" href="Carinfo_view.do?member_id=${sessionID}">취소</a><button class="button-primary" type="submit">변경사항 저장</button></div>
+          </form>
         </div>
-        <ul class="sns">
-          <li class="facebook"><a href="#">페이스북 바로가기</a></li>
-          <li class="twitter"><a href="#">트위터 바로가기</a></li>
-        </ul>
-      </footer>
-    </div>
-</body>
+      </section>
+    </main>
+    <%@ include file="WEB-INF/jspf/site-footer.jspf" %>
+  </body>
 </html>

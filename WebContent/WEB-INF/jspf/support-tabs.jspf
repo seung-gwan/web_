@@ -1,0 +1,6 @@
+<%@ page pageEncoding="UTF-8" %>
+<nav class="support-tabs" aria-label="고객센터 메뉴">
+  <a href="Notice.do" aria-current="${supportTab == 'notice' ? 'page' : 'false'}">공지사항</a>
+  <a href="BuyReview.do" aria-current="${supportTab == 'buy' ? 'page' : 'false'}">구매후기</a>
+  <a href="SellReview.do" aria-current="${supportTab == 'sell' ? 'page' : 'false'}">판매후기</a>
+</nav>

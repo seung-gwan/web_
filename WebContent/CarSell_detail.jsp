@@ -1,179 +1,58 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="navSection" value="buy" />
+<c:set var="pageEyebrow" value="CAR DETAILS" />
+<c:set var="pageTitle" value="차량 상세 정보" />
+<c:set var="pageDescription" value="차량의 주요 정보와 판매 가격을 자세히 확인하세요." />
 <!DOCTYPE html>
-<html>
-<style>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-</style>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-
-<head>
-<meta charset="UTF-8">
-<title>판매 신청</title>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>차량 상세 | RentCar</title>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/blue-pages.css">
   </head>
-  <body>
-    <header id="header">
-      <h1><a href="index.jsp">RentCar</a></h1>
-      <nav id="membership">
-        <h2 class="hidden">멤버쉽네비게이션</h2>
-        <ul>
-          <li class="goLogin">
-          <c:if test="${sessionID != null }">
-	        ${sessionID }
-	        <a href="logout.do">로그아웃</a>
-            </c:if>
-          <c:if test="${sessionID == null }">
-          	<a href="Login.jsp">로그인</a>
-          </c:if>
-          </li>
-          <li class="goJoin">
-          <c:if test="${sessionID != null }">
-            	<a href="info_view.do?member_id=${sessionID}">개인정보</a>
-            </c:if>
-            <c:if test="${sessionID ==null }">
-            	<a href="join.jsp">회원가입</a>
-            </c:if>
-          </li>
-        </ul>
-      </nav>
-      <nav id="gnb">
-        <h2 class="hidden">펀웹주요이용메뉴</h2>
-        <ul>
-          <li><a href="CarSell.jsp">내차 팔기</a></li>
-          <li><a href="CarBuy.jsp">내차 사기</a></li>
-          <li><a href="Notice.do">고객센터</a></li>
-          <li><a href="#">브랜드인증관</a></li>
-          <li><a href="#">전국직영점</a></li>
-        </ul>
-      </nav>
-    </header>
-    <hr>
-     <main style="width: auto; height: auto; position: static;" >
-      <section id="contactUs"style="width:100%; height: 100%;position: static;">
-        <h2 class="hidden">contact us</h2>
-        
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width:100%; height: 100%;position: static;">
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
- <div class="carousel-indicators" style="position: static;" >
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    
-  </div>
-  <div class="carousel-inner" style="width:100%; height: auto;position: static;">
-    <div class="carousel-item active" style="width:100%; height: auto;position: static;">
-      <img src="images/mobility-hero.webp" class="d-block" style="width:100%; height:auto; position: static;" alt="바닷가 도로를 달리는 흰색 전기차">
-    </div>
-    <div class="carousel-item" style="width:100%; height: auto;position: static;">
-       <img src="images/car-suv.webp" class="d-block" style="width:100%; height:auto; position: static;" alt="밝은 스튜디오의 하늘색 SUV">
-    </div>
-  </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-</div>
-</section>
-<section>
-<form action="SellList_update.do?sNum=${SellList_detail.sNum }" method="post">
-	<table style="display: flex;
-  justify-content: center;
-  align-items: center;
-   height: 400px">
-	
-	<tr>
-		<td>차종</td>
-		<td>${SellList_detail.sCar }</td>
-	</tr>
-	<tr>
-		<td>차량번호</td>
-		<td>${SellList_detail.sCar_Num }</td>
-	</tr>
-	<tr>
-		<td>주행거리</td>
-		<td>${SellList_detail.sCar_kM }</td>
-	</tr>
-	<tr>
-		<td>생산년도</td>
-		<td>${SellList_detail.sCar_ProductY }</td>
-	</tr>
-	<tr>
-		<td>색상</td>
-		<td>${SellList_detail.sCar_color }</td>
-	</tr>
-	<tr>
-		<td>브랜드</td>
-		<td>${SellList_detail.sCar_brand }</td>
-	</tr>
-	<tr>
-		<td>타입</td>
-		<td>${SellList_detail.sCar_type }</td>
-	</tr>
-	<tr>
-		<td>사고유/무</td>
-		<td>${SellList_detail.sCar_Accident }</td>
-	</tr>
-	<tr>
-		<td>원가</td>
-		<c:if test="${SellList_detail.sCar_Price == 0 }">
-		<td><input type="text" name="sCar_Price"></td>
-		</c:if>
-		<c:if test="${SellList_detail.sCar_Price != 0 }">
-		<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${SellList_detail.sCar_Price }" /></td>
-		</c:if> 
-	</tr>
-	<tr>
-		<td>할인가</td>
-		<c:if test="${SellList_detail.sCar_salePrice == 0 }">
-		<td><input type="text" name="sCar_salePrice"></td>
-		</c:if>
-		<c:if test="${SellList_detail.sCar_salePrice != 0 }">
-		<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${SellList_detail.sCar_salePrice }" /></td>
-		</c:if> 
-	</tr>
-	<tr>
-	<c:if test="${SellList_detail.sCar_Price == 0 }">
-		<td><input type="submit" value="추가"></td>
-	</c:if>
-	</tr>
-	<tr>	
-	<td>
-	<a href = "index.jsp">홈으로</a>
-	</td>
-	</tr>
-	
-
-	
-</table>
-
-</form>
-</section>
-</main>
-
- <div id="footerWrap">
-      <footer id="footer">
-        <div class="info">
-          <small class="copyright">All contents Copyright 2011 FunWeb Inc. all rights reserved</small>
-          <address>Contact mail : funweb@funwebbiz.com Tel: +82 64 123 4315 Fax +82 64 123 4321</address>
+  <body class="blue-page">
+    <%@ include file="WEB-INF/jspf/site-header.jspf" %>
+    <main>
+      <%@ include file="WEB-INF/jspf/compact-hero.jspf" %>
+      <section class="workspace-section">
+        <div class="car-detail-page">
+          <a class="content-back" href="CarBuy.do">← 차량 목록</a>
+          <article class="car-detail-card">
+            <div class="car-detail-card__image"><img src="images/car-sedan.webp" alt="${SellList_detail.sCar} 차량 이미지"><span>AVAILABLE</span></div>
+            <div class="car-detail-card__body">
+              <span class="blue-eyebrow"><c:out value="${SellList_detail.sCar_brand}" /></span>
+              <div class="car-detail-card__heading"><h2><c:out value="${SellList_detail.sCar}" /></h2><span>${SellList_detail.sCar_ProductY}</span></div>
+              <dl class="car-spec-grid">
+                <div><dt>차량번호</dt><dd><c:out value="${SellList_detail.sCar_Num}" /></dd></div>
+                <div><dt>주행거리</dt><dd><c:out value="${SellList_detail.sCar_kM}" /> km</dd></div>
+                <div><dt>차종</dt><dd><c:out value="${SellList_detail.sCar_type}" /></dd></div>
+                <div><dt>색상</dt><dd><c:out value="${SellList_detail.sCar_color}" /></dd></div>
+                <div class="car-spec-grid__wide"><dt>사고 여부</dt><dd><c:out value="${SellList_detail.sCar_Accident}" /></dd></div>
+              </dl>
+              <div class="car-price-box">
+                <span>판매가</span>
+                <c:choose>
+                  <c:when test="${SellList_detail.sCar_salePrice > 0}"><strong><fmt:formatNumber value="${SellList_detail.sCar_salePrice}" />원</strong><c:if test="${SellList_detail.sCar_Price > SellList_detail.sCar_salePrice}"><del><fmt:formatNumber value="${SellList_detail.sCar_Price}" />원</del></c:if></c:when>
+                  <c:when test="${SellList_detail.sCar_Price > 0}"><strong><fmt:formatNumber value="${SellList_detail.sCar_Price}" />원</strong></c:when>
+                  <c:otherwise><strong>가격 상담</strong></c:otherwise>
+                </c:choose>
+              </div>
+              <c:if test="${SellList_detail.sCar_Price == 0}">
+                <form class="price-editor" action="SellList_update.do?sNum=${SellList_detail.sNum}" method="post">
+                  <div><label for="sCar_Price">정상가</label><input type="number" id="sCar_Price" name="sCar_Price" min="0" placeholder="정상가를 입력하세요" required></div>
+                  <div><label for="sCar_salePrice">판매가</label><input type="number" id="sCar_salePrice" name="sCar_salePrice" min="0" placeholder="판매가를 입력하세요" required></div>
+                  <button type="submit">가격 등록</button>
+                </form>
+              </c:if>
+            </div>
+          </article>
         </div>
-        <ul class="sns">
-          <li class="facebook"><a href="#">페이스북 바로가기</a></li>
-          <li class="twitter"><a href="#">트위터 바로가기</a></li>
-        </ul>
-      </footer>
-    </div>
-
-</body>
+      </section>
+    </main>
+    <%@ include file="WEB-INF/jspf/site-footer.jspf" %>
+  </body>
 </html>

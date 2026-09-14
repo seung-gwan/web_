@@ -1,0 +1,8 @@
+<%@ page pageEncoding="UTF-8" %>
+<section class="blue-page-hero blue-page-hero--support">
+  <div class="blue-page-hero__content">
+    <span>HELP CENTER</span>
+    <h2>필요한 안내를<br>빠르게 확인하세요</h2>
+    <p>차량 이용과 판매·구매에 필요한 소식을 한곳에서 안내해 드립니다.</p>
+  </div>
+</section>

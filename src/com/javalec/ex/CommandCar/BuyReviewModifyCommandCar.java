@@ -12,6 +12,7 @@ public class BuyReviewModifyCommandCar implements CommandCar {
 		String bRId = request.getParameter("bRId");
 		String bRTitle = request.getParameter("bRTitle");
 		String bRContent = request.getParameter("bRContent");
+		String bRCar = request.getParameter("bRCar");
 		String bRNum = request.getParameter("bRNum");
 		System.out.println("bRId="+bRId);
 		System.out.println("bRTitle="+bRTitle);
@@ -19,7 +20,7 @@ public class BuyReviewModifyCommandCar implements CommandCar {
 		System.out.println("bRNum="+bRNum);
 		BDao dao = new BDao();
 		
-		dao.BuyReview_modify(bRId,bRTitle,bRContent,bRNum);
+		dao.BuyReview_modify(bRId,bRTitle,bRContent,bRCar,bRNum);
 
 	}
 

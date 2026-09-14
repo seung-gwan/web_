@@ -1,135 +1,55 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="navSection" value="support" />
+<c:set var="supportTab" value="sell" />
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
-    <title>Customer Service</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>판매후기 작성 | RentCar</title>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/sub.css">
+    <link rel="stylesheet" href="css/blue-pages.css">
   </head>
-  <body>
-    <header id="header">
-      <h1><a href="index.jsp">RentCar</a></h1>
-      <nav id="membership">
-        <h2 class="hidden">멤버쉽네비게이션</h2>
-        <ul>
-          <li class="goLogin">
-          <c:if test="${sessionID != null }">
-	        ${sessionID }
-	        <a href="logout.do">로그아웃</a>
-            </c:if>
-          <c:if test="${sessionID == null }">
-          	<a href="Login.jsp">로그인</a>
-          </c:if>
-          </li>
-          <li class="goJoin">
-          <c:if test="${sessionID != null }">
-            	<a href="info_view.do?member_id=${sessionID}">개인정보</a>
-            </c:if>
-            <c:if test="${sessionID ==null }">
-            	<a href="join.jsp">회원가입</a>
-            </c:if>
-          </li>
-        </ul>
-      </nav>
-      <nav id="gnb">
-        <h2 class="hidden">펀웹주요이용메뉴</h2>
-        <ul>
-          <li><a href="CarSell.do?member_id=${sessionID }">내차 팔기</a></li>
-          <li><a href="CarBuy.do">내차 사기</a></li>
-          <li><a href="Notice.do">고객센터</a></li>
-          <li><a href="#">브랜드인증관</a></li>
-          <li><a href="#">전국직영점</a></li>
-        </ul>
-      </nav>
-    </header>
+  <body class="blue-page">
+    <%@ include file="WEB-INF/jspf/site-header.jspf" %>
     <main>
-      <section id="container">
-        <header class="headerCustomer">
-          <h2>customer center</h2>
-        </header>
-        <div id="subWrap">
-        <nav id="snb">
-          <h3>고객 센터<span class="hidden">submenu</span></h3>
-          <ul>
-            <li><a href="Notice.do">공지사항</a></li>
-            <li><a href="BuyReview.do">구매후기</a></li>
-            <li><a href="SellReview.do">판매후기</a></li>
-            <li><a href="#">개인보호정책</a></li>
-          </ul>
-        </nav>
-        <article id="subContent">
-            <h3>판매후기</h3>
-      <form action="SellReview_write.do" method="POST">     
-       <input type="hidden" name="sRNum" value="${SellReview_view.sRNum }">   
-<table>
- 
-  
-		<tr>
-			<td>글쓴이</td>
-			<td><input tye="text" name="sRId"> </td>
-		</tr>
-		<tr>
-			<td>제목</td>
-			<td><input tye="text" name="sRTitle"> </td>
-		</tr>
-		<tr>
-			<td>차종</td>
-			<td><input type="text"name="sRCar"></td>
-		</tr>
-		<tr>
-			<td>내용</td>
-			<td><textarea style="width: 171px" rows="10" name="sRContent"></textarea>  </td>
-		</tr>
-		<tr>
-			<td colspan="2"> <input type="submit" value="확인">
-			
-		</tr>
-	
-	
-</table>
-</form>
-            <form id="noticeSearch">
-              <fieldset>
-                <legend class="hidden">공지사항검색</legend>
-                <label for="searchBox" class="hidden">검색어입력창</label>
-                <input type="text" id="searchBox">
-                <label for="searchBtn" class="hidden">검색버튼</label>
-                <input type="button"id="searchBtn" value="Search">
-              </fieldset>
-            </form>
-            <div id="pageControl">
-              <a href="#">Prev</a>
-              <a href="#">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <a href="#">6</a>
-              <a href="#">7</a>
-              <a href="#">8</a>
-              <a href="#">9</a>
-              <a href="#">10</a>
-              <a href="#">Next</a>
+      <%@ include file="WEB-INF/jspf/support-hero.jspf" %>
+      <section class="support-section">
+        <%@ include file="WEB-INF/jspf/support-tabs.jspf" %>
+        <div class="editor-page">
+          <div class="editor-heading">
+            <span class="blue-eyebrow">WRITE A SELL STORY</span>
+            <h2>판매 경험을 들려주세요</h2>
+            <p>다른 고객에게 도움이 될 수 있도록 솔직한 후기를 남겨주세요.</p>
+          </div>
+          <form class="editor-card" action="SellReview_write.do" method="post">
+            <div class="editor-grid">
+              <div class="blue-field">
+                <label for="sRId">작성자 <span>*</span></label>
+                <input type="text" id="sRId" name="sRId" value="${sessionID}" placeholder="작성자 이름" required>
+              </div>
+              <div class="blue-field">
+                <label for="sRCar">차량명 <span>*</span></label>
+                <input type="text" id="sRCar" name="sRCar" placeholder="예: 아반떼" required>
+              </div>
+              <div class="blue-field editor-grid__wide">
+                <label for="sRTitle">제목 <span>*</span></label>
+                <input type="text" id="sRTitle" name="sRTitle" placeholder="후기 제목을 입력해 주세요" required>
+              </div>
+              <div class="blue-field editor-grid__wide">
+                <label for="sRContent">후기 내용 <span>*</span></label>
+                <textarea id="sRContent" name="sRContent" rows="10" placeholder="판매 과정에서 경험한 내용을 작성해 주세요" required></textarea>
+              </div>
             </div>
-        </article>
+            <div class="editor-actions">
+              <a class="button-secondary" href="SellReview.do">취소</a>
+              <button class="button-primary" type="submit">후기 등록하기</button>
+            </div>
+          </form>
         </div>
       </section>
     </main>
-    <div id="footerWrap">
-      <footer id="footer">
-        <div class="info">
-          <small class="copyright">All contents Copyright 2011 FunWeb Inc. all rights reserved</small>
-          <address>Contact mail : funweb@funwebbiz.com Tel: +82 64 123 4315 Fax +82 64 123 4321</address>
-        </div>
-        <ul class="sns">
-          <li class="facebook"><a href="#">페이스북 바로가기</a></li>
-          <li class="twitter"><a href="#">트위터 바로가기</a></li>
-        </ul>
-      </footer>
-    </div>
+    <%@ include file="WEB-INF/jspf/site-footer.jspf" %>
   </body>
 </html>

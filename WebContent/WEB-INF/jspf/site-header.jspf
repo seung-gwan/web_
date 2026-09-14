@@ -1,0 +1,28 @@
+<%@ page pageEncoding="UTF-8" %>
+<header id="header">
+  <h1><a href="index.jsp">RentCar</a></h1>
+  <nav id="membership" aria-label="회원 메뉴">
+    <ul>
+      <li class="goLogin">
+        <c:choose>
+          <c:when test="${sessionID != null}">${sessionID} <a href="logout.do">로그아웃</a></c:when>
+          <c:otherwise><a href="Login.jsp">로그인</a></c:otherwise>
+        </c:choose>
+      </li>
+      <li class="goJoin">
+        <c:choose>
+          <c:when test="${sessionID != null}"><a href="info_view.do?member_id=${sessionID}">개인정보</a></c:when>
+          <c:otherwise><a href="join.jsp">회원가입</a></c:otherwise>
+        </c:choose>
+      </li>
+    </ul>
+  </nav>
+  <nav id="gnb" aria-label="주요 메뉴">
+    <ul>
+      <li><a href="CarSell.do?member_id=${sessionID}" aria-current="${navSection == 'sell' ? 'page' : 'false'}">내차 팔기</a></li>
+      <li><a href="CarBuy.do" aria-current="${navSection == 'buy' ? 'page' : 'false'}">내차 사기</a></li>
+      <li><a href="Notice.do" aria-current="${navSection == 'support' ? 'page' : 'false'}">고객센터</a></li>
+      <li><a href="index.jsp#car-search">차량 검색</a></li>
+    </ul>
+  </nav>
+</header>

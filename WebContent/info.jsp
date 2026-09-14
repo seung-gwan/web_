@@ -1,160 +1,61 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="navSection" value="account" />
+<c:set var="pageEyebrow" value="MY RENTCAR" />
+<c:set var="pageTitle" value="내 정보" />
+<c:set var="pageDescription" value="회원 정보와 등록 차량을 한곳에서 확인하고 관리하세요." />
 <!DOCTYPE html>
-<html>
-<head>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 정보 | RentCar</title>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/blue-pages.css">
   </head>
-  <body>
-    <header id="header">
-      <h1><a href="index.jsp">RentCar</a></h1>
-      <nav id="membership">
-        <h2 class="hidden">멤버쉽네비게이션</h2>
-        <ul>
-          <li class="goLogin">
-          <c:if test="${sessionID != null }">
-	        ${sessionID }
-	        <a href="logout.do">로그아웃</a>
-            </c:if>
-          <c:if test="${sessionID == null }">
-          	<a href="Login.jsp">로그인</a>
-          </c:if>
-          </li>
-          <li class="goJoin">
-          <c:if test="${sessionID != null }">
-            	<a href="info_view.do?member_id=${sessionID}">개인정보</a>
-            </c:if>
-            <c:if test="${sessionID ==null }">
-            	<a href="join.jsp">회원가입</a>
-            </c:if>
-          </li>
-        </ul>
-      </nav>
-      <nav id="gnb">
-        <h2 class="hidden">펀웹주요이용메뉴</h2>
-        <ul>
-          <li><a href="CarSell.do?member_id=${sessionID }">내차 팔기</a></li>
-          <li><a href="CarBuy.do">내차 사기</a></li>
-          <li><a href="Notice.do">고객센터</a></li>
-          <li><a href="#">브랜드인증관</a></li>
-          <li><a href="#">전국직영점</a></li>
-        </ul>
-      </nav>
-    </header>
-    <hr>
-    <main style="width: auto; height: auto; position: static;" >
-      <section id="contactUs"style="width:100%; height: 100%;position: static;">
-        <h2 class="hidden">contact us</h2>
-        
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width:100%; height: 100%;position: static;">
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
- <div class="carousel-indicators" style="position: static;" >
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    
-  </div>
-  <div class="carousel-inner" style="width:100%; height: auto;position: static;">
-    <div class="carousel-item active" style="width:100%; height: auto;position: static;">
-      <img src="images/mobility-hero.webp" class="d-block" style="width:100%; height:auto; position: static;" alt="바닷가 도로를 달리는 흰색 전기차">
-    </div>
-    <div class="carousel-item" style="width:100%; height: auto;position: static;">
-       <img src="images/car-suv.webp" class="d-block" style="width:100%; height:auto; position: static;" alt="밝은 스튜디오의 하늘색 SUV">
-    </div>
-  </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-</div>
-</section>
-
-   
-   <section>
-<form style="display: flex;
-  justify-content: center;
-  align-items: center;
- height: 400px">
-   <input type="hidden" name="member_id" value="${infoList_view.member_id }">
-   <table>
-		<tr>
-			<td>아이디</td>
-			<td>${infoList_view.member_id }</td>
-		</tr>
-		<tr>
-			<td>비밀번호</td>
-			<td>${infoList_view.member_pw } </td>
-		</tr>
-		<tr>
-			<td>이름</td>
-			<td>${infoList_view.member_name } </td>
-		</tr>
-		<tr>
-			<td>주소</td>
-			<td>${infoList_view.member_address} </td>
-		</tr>
-		<tr>
-			<td>우편번호</td>
-			<td>${infoList_view.member_address_num} </td>
-		</tr>
-		<tr>
-			<td>상세주소1</td>
-			<td>${infoList_view.member_address_detail1} </td>
-		</tr>
-		<tr>
-			<td>상세주소2</td>
-			<td>${infoList_view.member_address_detail2}</td>
-		</tr>
-		<tr>
-			<td>성별</td>
-			<td>${infoList_view.member_gender}</td>
-		</tr>
-		<tr>
-			<td>차종</td>
-			<td>${infoList_view.member_car}<a href ="Carinfo_view.do?member_id=${sessionID }">내차량 상세정보</a></td>
-		</tr>
-		<tr>
-			<td>이메일주소</td>
-			<td>${infoList_view.member_email}</td>
-		</tr>
-		<tr>
-			<td colspan="2"><a style="width: 200px; height: 30px; margin:30px 0 0 50px;
-  color: #fff;
-  border: none;
-  max-width: 120px;
-  cursor: pointer;
-  font-weight: 500; background: #e91e63;" href="info_modfiy_view.do?member_id=${sessionID }">회원정보 수정</a>
-		</tr>
-
-</table>
-</form>
-</section>
-
-</main>
-<div id="footerWrap">
-      <footer id="footer">
-        <div class="info">
-          <small class="copyright">All contents Copyright 2011 FunWeb Inc. all rights reserved</small>
-          <address>Contact mail : funweb@funwebbiz.com Tel: +82 64 123 4315 Fax +82 64 123 4321</address>
-        </div>
-        <ul class="sns">
-          <li class="facebook"><a href="#">페이스북 바로가기</a></li>
-          <li class="twitter"><a href="#">트위터 바로가기</a></li>
-        </ul>
-      </footer>
-    </div>
-</body>
-
+  <body class="blue-page">
+    <%@ include file="WEB-INF/jspf/site-header.jspf" %>
+    <main>
+      <%@ include file="WEB-INF/jspf/compact-hero.jspf" %>
+      <section class="workspace-section">
+        <c:choose>
+          <c:when test="${empty infoList_view}">
+            <div class="blue-empty-state">
+              <span>MEMBER ONLY</span>
+              <h2>회원 정보를 찾을 수 없습니다.</h2>
+              <p>로그인한 뒤 다시 확인해 주세요.</p>
+              <a class="button-primary" href="Login.jsp">로그인하기</a>
+            </div>
+          </c:when>
+          <c:otherwise>
+            <div class="profile-layout">
+              <aside class="profile-summary">
+                <div class="profile-avatar" aria-hidden="true">R</div>
+                <span>MEMBER</span>
+                <h2><c:out value="${infoList_view.member_name}" />님</h2>
+                <p><c:out value="${infoList_view.member_email}" /></p>
+                <a href="Carinfo_view.do?member_id=${infoList_view.member_id}">내 차량 정보 보기 →</a>
+              </aside>
+              <article class="profile-card">
+                <div class="profile-card__heading">
+                  <div><span class="blue-eyebrow">ACCOUNT DETAILS</span><h2>회원 정보</h2></div>
+                  <a class="button-primary" href="info_modfiy_view.do?member_id=${infoList_view.member_id}">정보 수정</a>
+                </div>
+                <dl class="profile-data">
+                  <div><dt>아이디</dt><dd><c:out value="${infoList_view.member_id}" /></dd></div>
+                  <div><dt>이름</dt><dd><c:out value="${infoList_view.member_name}" /></dd></div>
+                  <div><dt>이메일</dt><dd><c:out value="${infoList_view.member_email}" /></dd></div>
+                  <div><dt>성별</dt><dd><c:out value="${infoList_view.member_gender}" /></dd></div>
+                  <div><dt>보유 차량</dt><dd><c:out value="${infoList_view.member_car}" /></dd></div>
+                  <div><dt>우편번호</dt><dd>${infoList_view.member_address_num}</dd></div>
+                  <div class="profile-data__wide"><dt>주소</dt><dd><c:out value="${infoList_view.member_address}" /> <c:out value="${infoList_view.member_address_detail1}" /> <c:out value="${infoList_view.member_address_detail2}" /></dd></div>
+                </dl>
+              </article>
+            </div>
+          </c:otherwise>
+        </c:choose>
+      </section>
+    </main>
+    <%@ include file="WEB-INF/jspf/site-footer.jspf" %>
+  </body>
 </html>

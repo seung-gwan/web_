@@ -1,0 +1,9 @@
+<%@ page pageEncoding="UTF-8" %>
+<div id="footerWrap">
+  <footer id="footer">
+    <div class="info">
+      <small class="copyright">All contents Copyright 2011 FunWeb Inc. all rights reserved</small>
+      <address>Contact mail : funweb@funwebbiz.com Tel: +82 64 123 4315</address>
+    </div>
+  </footer>
+</div>

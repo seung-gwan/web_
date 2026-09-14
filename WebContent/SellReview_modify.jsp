@@ -1,155 +1,63 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="navSection" value="support" />
+<c:set var="supportTab" value="sell" />
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
+<html lang="ko">
   <head>
     <meta charset="utf-8">
-    <title>Customer Service</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>판매후기 수정 | RentCar</title>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/sub.css">
+    <link rel="stylesheet" href="css/blue-pages.css">
   </head>
-  <body>
-     <header id="header">
-      <h1><a href="index.jsp">RentCar</a></h1>
-      <nav id="membership">
-        <h2 class="hidden">멤버쉽네비게이션</h2>
-        <ul>
-          <li class="goLogin">
-          <c:if test="${sessionID != null }">
-	        ${sessionID }
-	        <a href="logout.do">로그아웃</a>
-            </c:if>
-          <c:if test="${sessionID == null }">
-          	<a href="Login.jsp">로그인</a>
-          </c:if>
-          </li>
-          <li class="goJoin">
-          <c:if test="${sessionID != null }">
-            	<a href="info_view.do?member_id=${sessionID}">개인정보</a>
-            </c:if>
-            <c:if test="${sessionID ==null }">
-            	<a href="join.jsp">회원가입</a>
-            </c:if>
-          </li>
-        </ul>
-      </nav>
-      <nav id="gnb">
-        <h2 class="hidden">펀웹주요이용메뉴</h2>
-        <ul>
-          <li><a href="CarSell.do?member_id=${sessionID }">내차 팔기</a></li>
-          <li><a href="CarBuy.do">내차 사기</a></li>
-          <li><a href="Notice.do">고객센터</a></li>
-          <li><a href="#">브랜드인증관</a></li>
-          <li><a href="#">전국직영점</a></li>
-        </ul>
-      </nav>
-    </header>
+  <body class="blue-page">
+    <%@ include file="WEB-INF/jspf/site-header.jspf" %>
     <main>
-      <section id="container">
-        <header class="headerCustomer">
-          <h2>customer center</h2>
-        </header>
-        <div id="subWrap">
-        <nav id="snb">
-          <h3>고객 센터<span class="hidden">submenu</span></h3>
-          <ul>
-            <li><a href="Notice.do">공지사항</a></li>
-            <li><a href="BuyReview.do">구매후기</a></li>
-            <li><a href="SellReview.do">판매후기</a></li>
-            <li><a href="#">개인보호정책</a></li>
-          </ul>
-        </nav>
-        <article id="subContent">
-            <h3>판매후기</h3>
-<section style="display: flex;
-  align-items: center;
-   ">  
-
-   <form action="SellReview_modify.do">
-   <input type="hidden" name="sRNum" value="${SellReview_view.sRNum }">
-   <table>
-   
-		<tr>
-			<td>번호</td>
-			<td>${SellReview_view.sRNum }</td>
-		</tr>
-		<tr>
-			<td>조회수</td>
-			<td>${SellReview_view.sRHit } </td>
-		</tr>
-		<tr>
-			<td>글쓴이</td>
-			<td><input tye="text" name="sRId" value="${SellReview_view.sRId}"> </td>
-		</tr>
-		<tr>
-			<td>제목</td>
-			<td><input tye="text" name="sRTitle" value="${SellReview_view.sRTitle}"> </td>
-		</tr>
-		<tr>
-			<td>차종</td>
-			<td>${SellReview_view.sRCar}</td>
-		</tr>
-		<tr>
-			<td>내용</td>
-			<td><textarea rows="9" name="sRContent" style="width: 170px;">${SellReview_view.sRContent}</textarea>  </td>
-		</tr>
-		<tr>
-			<td colspan="2"> <input style="
-  color: #fff;
-  border: none;
-  max-width: 120px;
-  cursor: pointer;
-  font-weight: 500; background: #e91e63;" type="submit" value="확인">
-			&nbsp;&nbsp;<a href="SellReview.do">목록보기</a>
-			&nbsp;&nbsp;<a href="SellReview_delete.do?sRNum=${SellReview_view.sRNum}">삭제</a>
-			
-		</tr>
-	</table>
-	</form>
-
-</section>  
-<section>
-            <form id="noticeSearch">
-              <fieldset>
-                <legend class="hidden">공지사항검색</legend>
-                <label for="searchBox" class="hidden">검색어입력창</label>
-                <input type="text" id="searchBox">
-                <label for="searchBtn" class="hidden">검색버튼</label>
-                <input type="button"id="searchBtn" value="Search">
-              </fieldset>
-            </form>
-            <div id="pageControl">
-              <a href="#">Prev</a>
-              <a href="#">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">4</a>
-              <a href="#">5</a>
-              <a href="#">6</a>
-              <a href="#">7</a>
-              <a href="#">8</a>
-              <a href="#">9</a>
-              <a href="#">10</a>
-              <a href="#">Next</a>
+      <%@ include file="WEB-INF/jspf/support-hero.jspf" %>
+      <section class="support-section">
+        <%@ include file="WEB-INF/jspf/support-tabs.jspf" %>
+        <div class="editor-page">
+          <div class="editor-heading">
+            <span class="blue-eyebrow">EDIT SELL STORY</span>
+            <h2>판매후기 수정</h2>
+            <p>작성한 후기의 제목과 내용을 수정할 수 있습니다.</p>
+          </div>
+          <form class="editor-card" action="SellReview_modify.do" method="post">
+            <input type="hidden" name="sRNum" value="${SellReview_view.sRNum}">
+            <div class="editor-summary">
+              <span>후기 번호 ${SellReview_view.sRNum}</span>
+              <span>조회 ${SellReview_view.sRHit}</span>
             </div>
-</section>
-        </article>
+            <div class="editor-grid">
+              <div class="blue-field">
+                <label for="sRId">작성자 <span>*</span></label>
+                <input type="text" id="sRId" name="sRId" value="${SellReview_view.sRId}" required>
+              </div>
+              <div class="blue-field">
+                <label for="sRCar">차량명</label>
+                <input type="text" id="sRCar" value="${SellReview_view.sRCar}" readonly>
+              </div>
+              <div class="blue-field editor-grid__wide">
+                <label for="sRTitle">제목 <span>*</span></label>
+                <input type="text" id="sRTitle" name="sRTitle" value="${SellReview_view.sRTitle}" required>
+              </div>
+              <div class="blue-field editor-grid__wide">
+                <label for="sRContent">후기 내용 <span>*</span></label>
+                <textarea id="sRContent" name="sRContent" rows="10" required>${SellReview_view.sRContent}</textarea>
+              </div>
+            </div>
+            <div class="editor-actions editor-actions--spread">
+              <a class="button-danger" href="SellReview_delete.do?sRNum=${SellReview_view.sRNum}" onclick="return confirm('이 판매후기를 삭제하시겠어요?');">후기 삭제</a>
+              <div>
+                <a class="button-secondary" href="SellReview_view.do?sRNum=${SellReview_view.sRNum}">취소</a>
+                <button class="button-primary" type="submit">수정 완료</button>
+              </div>
+            </div>
+          </form>
         </div>
       </section>
     </main>
-    <div id="footerWrap">
-      <footer id="footer">
-        <div class="info">
-          <small class="copyright">All contents Copyright 2011 FunWeb Inc. all rights reserved</small>
-          <address>Contact mail : funweb@funwebbiz.com Tel: +82 64 123 4315 Fax +82 64 123 4321</address>
-        </div>
-        <ul class="sns">
-          <li class="facebook"><a href="#">페이스북 바로가기</a></li>
-          <li class="twitter"><a href="#">트위터 바로가기</a></li>
-        </ul>
-      </footer>
-    </div>
+    <%@ include file="WEB-INF/jspf/site-footer.jspf" %>
   </body>
 </html>

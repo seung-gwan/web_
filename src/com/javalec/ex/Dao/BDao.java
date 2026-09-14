@@ -196,7 +196,9 @@ public class BDao {
 			e.printStackTrace();
 		}finally {
 			try {
-				
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
 			}catch(Exception e2){
 				e2.printStackTrace();
 			}
@@ -306,7 +308,9 @@ public class BDao {
 			e.printStackTrace();
 		}finally {
 			try {
-				
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
 			}catch(Exception e2){
 				e2.printStackTrace();
 			}
@@ -370,7 +374,9 @@ public class BDao {
 			e.printStackTrace();
 		}finally {
 			try {
-				
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
 			}catch(Exception e2){
 				e2.printStackTrace();
 			}
@@ -539,7 +545,9 @@ public class BDao {
 			e.printStackTrace();
 		}finally {
 			try {
-				
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
 			}catch(Exception e2){
 				e2.printStackTrace();
 			}
@@ -603,7 +611,9 @@ public class BDao {
 			e.printStackTrace();
 		}finally {
 			try {
-				
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
 			}catch(Exception e2){
 				e2.printStackTrace();
 			}
@@ -613,11 +623,11 @@ public class BDao {
 		return dto;
 	}
 	
-	public void BuyReview_modify(String bRId, String bRTitle, String bRContent, String bRNum) {
+	public void BuyReview_modify(String bRId, String bRTitle, String bRContent, String bRCar, String bRNum) {
 		try {
 			conn = datasource.getConnection();
 			
-			String sql = "update Buy_Review set bRId=?, bRTitle=?, bRContent=? where bRNum=?";
+			String sql = "update Buy_Review set bRId=?, bRTitle=?, bRContent=?, bRCar=? where bRNum=?";
 			
 			pstmt = conn.prepareStatement(sql);
 			
@@ -626,7 +636,8 @@ public class BDao {
 			pstmt.setString(1,bRId);
 			pstmt.setString(2,bRTitle);
 			pstmt.setString(3,bRContent);
-			pstmt.setInt(4,Integer.parseInt(bRNum));
+			pstmt.setString(4,bRCar);
+			pstmt.setInt(5,Integer.parseInt(bRNum));
 			pstmt.executeUpdate();
 			
 		}catch(Exception e) {
@@ -779,7 +790,9 @@ public class BDao {
 			e.printStackTrace();
 		}finally {
 			try {
-				
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
 			}catch(Exception e2){
 				e2.printStackTrace();
 			}
@@ -824,7 +837,9 @@ public BDto info_modify_view(String member_id) {
 			e.printStackTrace();
 		}finally {
 			try {
-				
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
 			}catch(Exception e2){
 				e2.printStackTrace();
 			}
@@ -992,7 +1007,9 @@ public BDto info_modify_view(String member_id) {
 			e.printStackTrace();
 		}finally {
 			try {
-				
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
 			}catch(Exception e2){
 				e2.printStackTrace();
 			}
@@ -1221,7 +1238,9 @@ public BDto info_modify_view(String member_id) {
 			e.printStackTrace();
 		}finally {
 			try {
-				
+				if (rs != null) rs.close();
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
 			}catch(Exception e2){
 				e2.printStackTrace();
 			}

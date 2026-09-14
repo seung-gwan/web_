@@ -191,7 +191,11 @@ public class FrontController extends HttpServlet {
 			System.out.println("start!");
 			command = new CarInfoListViewCommandCar();
 			command.execute(request, response);
-			viewPage="Carinfo.do";
+			viewPage="CarInfo.jsp";
+		} else if(com.equals("/Carinfo_modify_view.do")) {
+			command = new CarInfoListViewCommandCar();
+			command.execute(request, response);
+			viewPage="CarInfo_modify.jsp";
 		} else if(com.equals("/Carinfo_modify.do")) {
 			command = new CarinfoModifyCommandCar();
 			command.execute(request, response);

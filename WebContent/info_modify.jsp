@@ -1,214 +1,91 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="navSection" value="account" />
+<c:set var="pageEyebrow" value="EDIT PROFILE" />
+<c:set var="pageTitle" value="회원 정보 수정" />
+<c:set var="pageDescription" value="변경된 회원 정보와 주소를 정확하게 입력해 주세요." />
 <!DOCTYPE html>
-
-<html>
-<style>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-</style>
-<head>
- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-<meta charset="UTF-8">
-<script language="javascript">
-// opener관련 오류가 발생하는 경우 아래 주석을 해지하고, 사용자의 도메인정보를 입력합니다. ("팝업API 호출 소스"도 동일하게 적용시켜야 합니다.)
-//document.domain = "abc.go.kr";
-
-function goPopup(){
-	// 호출된 페이지(jusoPopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-     var pop = window.open("/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
-    
-	// 모바일 웹인 경우, 호출된 페이지(jusoPopup.jsp)에서 실제 주소검색URL(https://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
-    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
-}
-/** API 서비스 제공항목 확대 (2017.02) **/
-function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn
-						, detBdNmList, bdNm, bdKdcd, siNm, sggNm, emdNm, liNm, rn, udrtYn, buldMnnm, buldSlno, mtYn, lnbrMnnm, lnbrSlno, emdNo){
-	// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
-	document.form.roadAddrPart1.value = roadAddrPart1;
-	document.form.roadAddrPart2.value = roadAddrPart2;
-	document.form.addrDetail.value = addrDetail;
-	document.form.zipNo.value = zipNo;
-}
-
-</script>
-<title>Insert title here</title>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원 정보 수정 | RentCar</title>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/blue-pages.css">
+    <script>
+      function goPopup() {
+        window.open('jusoPopup.jsp', 'addressSearch', 'width=570,height=520,scrollbars=yes,resizable=yes');
+      }
+      function jusoCallBack(roadFullAddr, roadAddrPart1, addrDetail, roadAddrPart2, engAddr, jibunAddr, zipNo) {
+        document.form.member_address.value = roadAddrPart1 || roadFullAddr;
+        document.form.member_address_detail2.value = roadAddrPart2 || '';
+        document.form.member_address_detail1.value = addrDetail || '';
+        document.form.member_address_num.value = zipNo || '';
+      }
+    </script>
   </head>
-  <body>
-     <header id="header">
-      <h1><a href="index.jsp">RentCar</a></h1>
-      <nav id="membership">
-        <h2 class="hidden">멤버쉽네비게이션</h2>
-        <ul>
-          <li class="goLogin">
-          <c:if test="${sessionID != null }">
-	        ${sessionID }
-	        <a href="logout.do">로그아웃</a>
-            </c:if>
-          <c:if test="${sessionID == null }">
-          	<a href="Login.jsp">로그인</a>
-          </c:if>
-          </li>
-          <li class="goJoin">
-          <c:if test="${sessionID != null }">
-            	<a href="info_view.do?member_id=${sessionID}">개인정보</a>
-            </c:if>
-            <c:if test="${sessionID ==null }">
-            	<a href="join.jsp">회원가입</a>
-            </c:if>
-          </li>
-        </ul>
-      </nav>
-      <nav id="gnb">
-        <h2 class="hidden">펀웹주요이용메뉴</h2>
-        <ul>
-          <li><a href="CarSell.do?member_id=${sessionID }">내차 팔기</a></li>
-          <li><a href="CarBuy.do">내차 사기</a></li>
-          <li><a href="Notice.do">고객센터</a></li>
-          <li><a href="#">브랜드인증관</a></li>
-          <li><a href="#">전국직영점</a></li>
-        </ul>
-      </nav>
-    </header>
-    <hr>
-     <main style="width: auto; height: auto; position: static;" >
-      <section id="contactUs"style="width:100%; height: 100%;position: static;">
-        <h2 class="hidden">contact us</h2>
-        
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width:100%; height: 100%;position: static;">
-<div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
- <div class="carousel-indicators" style="position: static;" >
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    
-  </div>
-  <div class="carousel-inner" style="width:100%; height: auto;position: static;">
-    <div class="carousel-item active" style="width:100%; height: auto;position: static;">
-      <img src="images/mobility-hero.webp" class="d-block" style="width:100%; height:auto; position: static;" alt="바닷가 도로를 달리는 흰색 전기차">
-    </div>
-    <div class="carousel-item" style="width:100%; height: auto;position: static;">
-       <img src="images/car-suv.webp" class="d-block" style="width:100%; height:auto; position: static;" alt="밝은 스튜디오의 하늘색 SUV">
-    </div>
-  </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-</div>
-</section>
-<section style="width: 100%; height: 100%;">
-<form action="info_modify.do" method="POST" name="form" id="form"  style="display: flex;
-  justify-content: center;
-  align-items: center;
-   height: 400px;">
-
-
- 
- <input type="hidden" name="member_id" value="${infoList_view.member_id }">
- 
- <table>
-		<tr>
-			<td>아이디</td>
-			<td>${infoList_view.member_id }</td>
-		</tr>
-		<tr>
-			<td>비밀번호</td>
-			<td><input type="text" name="member_pw" value="${infoList_view.member_pw }"></td>
-		</tr>
-		<tr>
-			<td>이름</td>
-			<td><input type="text" name="member_name" value="${infoList_view.member_name }"></td>
-		</tr>
-		<tr>
-			<td>차종</td> 
-			<td><input type="text" name="member_car" value="${infoList_view.member_car }"></td>
-		</tr>
-		<tr>
-			<td>이메일주소</td>
-			<td><input type="text" name="member_email" value="${infoList_view.member_email }"></td>
-		</tr>
-		 <tr class="form-check">
-		 <td>
-	 <input  class="form-check-input" type="radio" name="member_gender"  value="남자" id="Man"checked>
-	  <label style="height: 20px; width: 80px" class="form-check-label1" for="flexRadioDefault1">
-	    Man
-	  </label>	
-	  </td>
-	  
-	  <td>
-	  <input class="form-check-input" type="radio" name="member_gender" value="여자" id="Woman">
-	  <label style="height: 20px;  width: 80px" class="form-check-label2" for="flexRadioDefault2">
-	    Woman
-	  </label>	
-	   </td> 
-	</tr>
-		</table>
-
-<div class="form-check">
-
-	<table>
-			<colgroup>
-				<col style="width:20%"><col>
-			</colgroup>
-			<tbody>
-				<tr style="height: 30px">
-					<th>우편번호</th>
-					<td>
-					    <input type="hidden" id="confmKey" name="confmKey" value=""  >
-						<input type="text" id="zipNo" name="member_address_num" readonly style="width:100px" value="${infoList_view.member_address_num }">
-						<input type="button"  value="주소검색" onclick="goPopup();">
-					</td>
-				</tr>
-				<tr  style="height: 30px">
-					<th>도로명주소</th>
-					<td><input type="text" id="roadAddrPart1" name="member_address" style="width:85%" value="${infoList_view.member_address }"></td>
-				</tr>
-				<tr  style="height: 30px">
-					<th>상세주소</th>
-					<td>
-						<input type="text" id="addrDetail" name="member_address_detail1" style="width:40%" value="${infoList_view.member_address_detail1 }">
-						<input type="text" id="roadAddrPart2" name="member_address_detail2"  style="width:40%" value="${infoList_view.member_address_detail2 }">
-					</td>
-				</tr>
-			</tbody>
-		
-	
-		<tr>
-			<td colspan="2"><input type="submit" value="수정">
-		</tr>
-		
-		
-	</table>
-</div>
-	</form>	
-
-</section>
-	
-
-
-</main>
- <div id="footerWrap">
-      <footer id="footer">
-        <div class="info">
-          <small class="copyright">All contents Copyright 2011 FunWeb Inc. all rights reserved</small>
-          <address>Contact mail : funweb@funwebbiz.com Tel: +82 64 123 4315 Fax +82 64 123 4321</address>
+  <body class="blue-page">
+    <%@ include file="WEB-INF/jspf/site-header.jspf" %>
+    <main>
+      <%@ include file="WEB-INF/jspf/compact-hero.jspf" %>
+      <section class="workspace-section">
+        <div class="editor-page">
+          <div class="editor-heading">
+            <span class="blue-eyebrow">ACCOUNT DETAILS</span>
+            <h2>내 정보 관리</h2>
+            <p>회원 정보는 서비스 안내와 차량 상담에 사용됩니다.</p>
+          </div>
+          <form class="editor-card profile-editor" action="info_modify.do" method="post" name="form" id="form">
+            <input type="hidden" name="member_id" value="${infoList_view.member_id}">
+            <div class="editor-grid">
+              <div class="blue-field">
+                <label for="member_id_view">아이디</label>
+                <input type="text" id="member_id_view" value="${infoList_view.member_id}" readonly>
+              </div>
+              <div class="blue-field">
+                <label for="member_name">이름 <span>*</span></label>
+                <input type="text" id="member_name" name="member_name" value="${infoList_view.member_name}" required>
+              </div>
+              <div class="blue-field">
+                <label for="member_pw">비밀번호 <span>*</span></label>
+                <input type="password" id="member_pw" name="member_pw" value="${infoList_view.member_pw}" required>
+              </div>
+              <div class="blue-field">
+                <label for="member_email">이메일 <span>*</span></label>
+                <input type="email" id="member_email" name="member_email" value="${infoList_view.member_email}" required>
+              </div>
+              <div class="blue-field editor-grid__wide">
+                <label for="member_car">보유 차량</label>
+                <input type="text" id="member_car" name="member_car" value="${infoList_view.member_car}">
+              </div>
+              <fieldset class="choice-field editor-grid__wide">
+                <legend>성별</legend>
+                <div>
+                  <label><input type="radio" name="member_gender" value="남자" ${infoList_view.member_gender == '남자' ? 'checked' : ''}> 남자</label>
+                  <label><input type="radio" name="member_gender" value="여자" ${infoList_view.member_gender == '여자' ? 'checked' : ''}> 여자</label>
+                </div>
+              </fieldset>
+              <fieldset class="address-field editor-grid__wide">
+                <legend>주소</legend>
+                <div class="address-field__zip">
+                  <input type="text" name="member_address_num" value="${infoList_view.member_address_num}" placeholder="우편번호" readonly>
+                  <button type="button" onclick="goPopup();">주소 검색</button>
+                </div>
+                <input type="text" name="member_address" value="${infoList_view.member_address}" placeholder="도로명주소" required>
+                <div class="address-field__detail">
+                  <input type="text" name="member_address_detail1" value="${infoList_view.member_address_detail1}" placeholder="상세주소">
+                  <input type="text" name="member_address_detail2" value="${infoList_view.member_address_detail2}" placeholder="참고항목" readonly>
+                </div>
+              </fieldset>
+            </div>
+            <div class="editor-actions">
+              <a class="button-secondary" href="info_view.do?member_id=${infoList_view.member_id}">취소</a>
+              <button class="button-primary" type="submit">정보 저장</button>
+            </div>
+          </form>
         </div>
-        <ul class="sns">
-          <li class="facebook"><a href="#">페이스북 바로가기</a></li>
-          <li class="twitter"><a href="#">트위터 바로가기</a></li>
-        </ul>
-      </footer>
-    </div>
-</body>
+      </section>
+    </main>
+    <%@ include file="WEB-INF/jspf/site-footer.jspf" %>
+  </body>
 </html>
