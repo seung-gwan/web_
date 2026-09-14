@@ -92,10 +92,10 @@ input {
             <input type="text" placeholder="아이디" name="Id" required style="height:30px; width: 380px" /><br />
             <input type="password" placeholder="비밀번호" name="Pw" required style="height:30px; width: 380px" /><br />
             <input type="submit" value="로그인" class="login"/>
-            <button onclick="location.href='Index.jsp';" class="login" >HOME</button>
+            <button type="button" onclick="location.href='index.jsp';" class="login" >HOME</button>
         </form>
         <hr />
-        <p><a href="join.do"><input type="button" value="회원가입" id="signup" /></a></p>
+        <p><a href="join.jsp"><input type="button" value="회원가입" id="signup" /></a></p>
     </div>
 </body>
 </html>

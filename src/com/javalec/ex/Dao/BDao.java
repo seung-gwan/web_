@@ -88,7 +88,7 @@ public class BDao {
 		try {
 			conn = datasource.getConnection();
 			String query = "insert into Car_member(member_id, member_pw, member_name, member_address, member_address_detail1,member_address_detail2, member_address_num"
-					+ ",member_email, member_gender, member_car) value(?,?,?,?,?,?,?,?,?,?) ";
+					+ ",member_email, member_gender, member_car) values(?,?,?,?,?,?,?,?,?,?) ";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, member_id);
 			pstmt.setString(2, member_pw);
@@ -189,7 +189,7 @@ public class BDao {
 				int bHit = rs.getInt("bHit");
 				System.out.println(bNum);
 				
-				dto = new BDto2(bNum, bName, bTitle, bContent, bDate, bHit);
+				dto = new BDto2(bNum, bTitle, bContent, bName, bDate, bHit);
 			}
 			
 		}catch(Exception e) {
@@ -439,7 +439,7 @@ public class BDao {
 	public void SellReview_write(String sRId, String sRTitle, String sRContent , String sRCar) {
 		try {
 			conn=datasource.getConnection();
-			String sql = "insert into Sell_Review(sRNum,sRTitle,sRContent,sRHit,sRCar,sRId) values(nextval('Sell_Review'),?,?,0,?,?)";
+			String sql = "insert into Sell_Review(sRTitle,sRContent,sRHit,sRCar,sRId) values(?,?,0,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, sRTitle);
@@ -645,7 +645,7 @@ public class BDao {
 	public void BuyReview_delete(String bRNum) {
 		try {
 			conn = datasource.getConnection();
-			String sql = "delete from Buyy_Review where bRNum=?";
+			String sql = "delete from Buy_Review where bRNum=?";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, Integer.parseInt(bRNum));
@@ -669,7 +669,7 @@ public class BDao {
 	public void BuyReview_write(String bRId, String bRTitle, String bRContent , String bRCar) {
 		try {
 			conn=datasource.getConnection();
-			String sql = "insert into Buy_Review(bRNum,bRTitle,bRContent,bRHit,bRCar,bRId) values(nextval('Buy_Review'),?,?,0,?,?)";
+			String sql = "insert into Buy_Review(bRTitle,bRContent,bRHit,bRCar,bRId) values(?,?,0,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, bRTitle);
@@ -1085,7 +1085,7 @@ public BDto info_modify_view(String member_id) {
 		
 		try {
 			conn=datasource.getConnection();
-			String sql = "insert into Car_SellList(sNum,sCar,sCar_Num,sCar_kM,sCar_ProductY,sCar_color,sCar_brand,sCar_type,sCar_Accident) values(nextval('Car_SellList'),?,?,?,?,?,?,?,?)";
+			String sql = "insert into Car_SellList(sCar,sCar_Num,sCar_kM,sCar_ProductY,sCar_color,sCar_brand,sCar_type,sCar_Accident) values(?,?,?,?,?,?,?,?)";
 			
 			pstmt = conn.prepareStatement(sql);
 			
