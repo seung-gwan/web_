@@ -1,278 +1,152 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="ko" dir="ltr">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<html lang="ko">
   <head>
     <meta charset="utf-8">
-    <title>Sell</title>
-    
- 
-    
-  <style>  
-    *{
-  margin: 0;
-  padding: 0;
-}  
-#main2 {
-  display: flex;
-  justify-content: center;
-  align-items: top;
-  min-height: 10vh;
-  width: 100%;
-  height: 100%
-
-}
-.container {
-  position: relative;
-  padding: 70px 70px 50px 70px ;
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
-   width: 640px;
-  
-  
-  
-}
-.container #h2{
-  color: #111;
-  margin-bottom: 45px;
-  line-height: 1em;
-  font-weight: 500;
-  padding-left: 10px;
-  border-left: 5px solid #e91e63;
-  
-}
-.container .inputBox {
-  position: relative;
-  width: 300px;
-  height: 46px;
-  margin-bottom: 35px;
-}
-.container .inputbox:last-child {
-  margin-bottom: 0;
- 
-}
-.container  .input2   {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  padding: 10px;
-  border-radius: 4px;
-  box-sizing: border-box;
-  outline: none;
-  font-size: 16px;
-  font-weight: 300;
-
-  
-
-}
-.inputBox .container
-{
-border: 1px solid #111;
-}
-.container .inputBox  #span {
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  padding: 10px;
-  display: inline-block;
-  font-size: 16px;
-  color: #111;
-  font-weight: 300;
-  transition: 0.5s;
-  pointer-events: none;
-
-}
-.container .inputBox .input2:focus ~ #span,
-.container .inputBox .input2:valid ~ #span{
-  transform: translate(-10px, -32px);
-  font-size: 12px;
-
-}
-.container .inputBox .input2[type="submit"] {
-  background: #2196f3;
-  color: #fff;
-  border: none;
-  max-width: 120px;
-  cursor: pointer;
-  font-weight: 500;
-
-}
-.input2[type="button"] {
-  background: #2196f3;
-  color: #fff;
-  border: none;
-  max-width: 120px;
-  cursor: pointer;
-  font-weight: 500;
-}
-.container .inputBox .input2[type="submit"]:hover {
-  background: #e91e63;
-
-}
-.input2[type="button"]:hover
-{
- background: #e91e63;
-
-
-}
-
-</style> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내차 팔기 | RentCar</title>
     <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/sub.css">
-
-
+    <link rel="stylesheet" href="css/blue-pages.css">
   </head>
-  <body>
-     <header id="header">
+  <body class="blue-page">
+    <header id="header">
       <h1><a href="index.jsp">RentCar</a></h1>
-      <nav id="membership">
-        <h2 class="hidden">멤버쉽네비게이션</h2>
+      <nav id="membership" aria-label="회원 메뉴">
         <ul>
           <li class="goLogin">
-          <c:if test="${sessionID != null }">
-	        ${sessionID }
-	        <a href="logout.do">로그아웃</a>
-            </c:if>
-          <c:if test="${sessionID == null }">
-          	<a href="Login.jsp">로그인</a>
-          </c:if>
+            <c:choose>
+              <c:when test="${sessionID != null}">${sessionID} <a href="logout.do">로그아웃</a></c:when>
+              <c:otherwise><a href="Login.jsp">로그인</a></c:otherwise>
+            </c:choose>
           </li>
           <li class="goJoin">
-          <c:if test="${sessionID != null }">
-            	<a href="info_view.do?member_id=${sessionID}">개인정보</a>
-            </c:if>
-            <c:if test="${sessionID ==null }">
-            	<a href="join.jsp">회원가입</a>
-            </c:if>
+            <c:choose>
+              <c:when test="${sessionID != null}"><a href="info_view.do?member_id=${sessionID}">개인정보</a></c:when>
+              <c:otherwise><a href="join.jsp">회원가입</a></c:otherwise>
+            </c:choose>
           </li>
         </ul>
       </nav>
-      <nav id="gnb">
-        <h2 class="hidden">펀웹주요이용메뉴</h2>
+      <nav id="gnb" aria-label="주요 메뉴">
         <ul>
-          <li><a href="CarSell.do?member_id=${sessionID }">내차 팔기</a></li>
+          <li><a href="CarSell.do?member_id=${sessionID}" aria-current="page">내차 팔기</a></li>
           <li><a href="CarBuy.do">내차 사기</a></li>
           <li><a href="Notice.do">고객센터</a></li>
-          <li><a href="#">브랜드인증관</a></li>
-          <li><a href="#">전국직영점</a></li>
+          <li><a href="index.jsp#car-search">차량 검색</a></li>
         </ul>
       </nav>
     </header>
+
     <main>
-      <section id="container">
-        <header class="headerCustomer">
-          <h2>Sell</h2>
-        </header>
-        <div id="subWrap">
-        <nav id="snb">
-          <h3>내차 팔기<span class="hidden">submenu</span></h3>
-         
-        </nav>
-        
+      <section class="blue-page-hero blue-page-hero--sell">
+        <div class="blue-page-hero__content">
+          <span>SELL YOUR CAR</span>
+          <h2>내 차 판매,<br>가볍게 시작하세요</h2>
+          <p>차량 정보만 남겨주시면 확인 후 편리하게 상담받을 수 있습니다.</p>
         </div>
       </section>
-      <div style="text-align:center; padding:0 0 70px 0;">
-      <h1>내차팔기 신청하기</h1>
-      <span>간편하게 접수하고, 간편하게 판매신청 해보세요.</span>
-      </div>
-      </main>
-      <main id="main2">
-      
-      
-	<div class="container">
-	  <h2 id="h2">자세한 상담을 위해 차량 정보를 입력해주세요.</h2>
-	  <form action="SellList_insert.do" method="Post" name="form" id="form">
-	    <div class="inputBox">
-	      <input class="input2" type="text" name="sCar" id="member_car" value="${Carinfo_view.member_car }" required >
-	      <span id="span">차량명<span style="color:red;">*</span></span>
-	    </div>
-	    <div class="inputBox">
-	      <input class="input2" type="text" name="sCar_kM" id="car_kM" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)' value="${Carinfo_view.car_kM}"required>
-	      <span id="span">주행거리(km)<span style="color:red">*</span></span>
-	    </div>
-	    <div class="inputBox">
-	      <input class="input2" type="text"  maxlength="8" name="sCar_Num" id="sCar_Num" value="${Carinfo_view.car_Num}" required>
-	      <span id="span">차량번호<span style="color:red">*</span></span>
-	    </div>
-	     <div class="inputBox">
-	      <input class="input2" type="text" maxlength="4" onkeydown='return onlyNumber(event)' value="${Carinfo_view.car_ProductY }" onkeyup='removeChar(event)' name="sCar_ProductY" id="car_ProductY" required>
-	      <span id="span">생산년도<span style="color:red">*</span></span>
-	    </div>	    
-	    <div class="inputBox">
-	      <input class="input2" type="text" name="sCar_brand" id="car_brand" value="${Carinfo_view.car_brand }" required>
-	      <span id="span">브랜드<span style="color:red">*</span></span>
-	    </div>
-	     <div class="inputBox">
-	      <input class="input2" type="text" name="sCar_type" id="car_type" value="${Carinfo_view.car_type }" required>
-	      <span id="span">타입<span style="color:red">*</span></span>
-	    </div>
-	    <div class="inputBox">
-	      <input class="input2" type="text" name="sCar_Accident" id="sCar_Accident" value="${Carinfo_view.car_Accident }" required>
-	      <span id="span">사고유무 Yes/No<span style="color:red">*</span></span>
-	    </div>
-	    <div class="inputBox">
-	      <input class="input2" type="text" name="sCar_color" id="sCar_color" value="${Carinfo_view.car_color }" required>
-	      <span id="span">색상<span style="color:red">*</span></span>
-	    </div>
-	    
-	     <div class="form-check_privacy, inputBox" style="height: 70px">
-	  <input class="form-check-input" type="checkbox" name="ok"  value="개인정보" id="privacy" required>
-	  <label class="form-check-label" for="flexcheckboxDefault1">
-	    [필수] 개인정보 수집/이용 동의
-	  </label>
-	  <br>
-	  <input class="form-check-input" type="checkbox" name="ok" value="마케팅" id="marketing">
-	  <label class="form-check-label" for="flexcheckboxDefault2">
-	    [선택] 마케팅활용 동의(문자메세지)<br>
-	  <span style="color:red">(※ 이벤트 참여 시 필수!)</span>
-	  </label>
-	  </div>
-	  <div class="inputBox"  style="height: 30px; margin:10px">
-      <input class="input2" type="submit" value="판매신청">
-    </div>
-     
-	    
-	  <div class="inputBox"  style="height: 30px; margin:10px; padding:10px 0 0 0">
-     <input class="input2" type="button" value="내 판매 목록" onClick="location.href='SellList.do';">
-    </div>
- </form>
-</div>
-    <script>
-    function onlyNumber(event){
-      event = event || window.event;
-      var keyID = (event.which) ? event.which : event.keyCode;
-      if ( (keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105) || keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 )
-        return;
-      else
-        return false;
-    }
-    function removeChar(event) {
-      event = event || window.event;
-      var keyID = (event.which) ? event.which : event.keyCode;
-      if ( keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39 )
-        return;
-      else
-        event.target.value = event.target.value.replace(/[^0-9]/g, "");
-    }
-  </script>  
+
+      <section class="sell-section" aria-labelledby="sell-form-title">
+        <div class="sell-layout">
+          <aside class="sell-guide">
+            <span class="blue-eyebrow">SIMPLE PROCESS</span>
+            <h2>복잡하지 않게<br>세 단계로 진행돼요</h2>
+            <ol>
+              <li><strong>01</strong><div><b>차량 정보 입력</b><p>기본 정보를 정확하게 알려주세요.</p></div></li>
+              <li><strong>02</strong><div><b>정보 확인</b><p>등록한 차량 내용을 확인합니다.</p></div></li>
+              <li><strong>03</strong><div><b>판매 상담</b><p>차량 상태에 맞춰 상담을 진행합니다.</p></div></li>
+            </ol>
+            <div class="sell-guide__note">
+              <span>TIP</span>
+              차량번호와 주행거리를 정확하게 입력하면 더 원활하게 확인할 수 있어요.
+            </div>
+          </aside>
+
+          <div class="sell-form-card">
+            <div class="sell-form-card__heading">
+              <span class="blue-eyebrow">CAR INFORMATION</span>
+              <h2 id="sell-form-title">판매할 차량을 알려주세요</h2>
+              <p><span>*</span> 표시는 필수 입력 항목입니다.</p>
+            </div>
+
+            <form class="sell-form" action="SellList_insert.do" method="post" name="form" id="form">
+              <div class="blue-field">
+                <label for="member_car">차량명 <span>*</span></label>
+                <input type="text" name="sCar" id="member_car" value="${Carinfo_view.member_car}" placeholder="예: 쏘나타" required>
+              </div>
+              <div class="blue-field">
+                <label for="car_brand">제조사 <span>*</span></label>
+                <input type="text" name="sCar_brand" id="car_brand" value="${Carinfo_view.car_brand}" placeholder="예: 현대" required>
+              </div>
+              <div class="blue-field">
+                <label for="sCar_Num">차량번호 <span>*</span></label>
+                <input type="text" maxlength="8" name="sCar_Num" id="sCar_Num" value="${Carinfo_view.car_Num}" placeholder="예: 12가3456" required>
+              </div>
+              <div class="blue-field">
+                <label for="car_ProductY">생산연도 <span>*</span></label>
+                <input type="text" maxlength="4" inputmode="numeric" pattern="[0-9]{4}" name="sCar_ProductY" id="car_ProductY" value="${Carinfo_view.car_ProductY}" placeholder="예: 2022" required>
+              </div>
+              <div class="blue-field">
+                <label for="car_kM">주행거리 <span>*</span></label>
+                <div class="blue-field__unit">
+                  <input type="text" inputmode="numeric" pattern="[0-9]*" name="sCar_kM" id="car_kM" value="${Carinfo_view.car_kM}" placeholder="예: 38000" required>
+                  <span>km</span>
+                </div>
+              </div>
+              <div class="blue-field">
+                <label for="car_type">차종 <span>*</span></label>
+                <input type="text" name="sCar_type" id="car_type" value="${Carinfo_view.car_type}" placeholder="예: 중형, SUV" required>
+              </div>
+              <div class="blue-field">
+                <label for="sCar_color">색상 <span>*</span></label>
+                <input type="text" name="sCar_color" id="sCar_color" value="${Carinfo_view.car_color}" placeholder="예: white" required>
+              </div>
+              <div class="blue-field">
+                <label for="sCar_Accident">사고 여부 <span>*</span></label>
+                <select name="sCar_Accident" id="sCar_Accident" required>
+                  <option value="">선택해 주세요</option>
+                  <option value="무사고" ${Carinfo_view.car_Accident == '무사고' ? 'selected' : ''}>무사고</option>
+                  <option value="사고이력 있음" ${Carinfo_view.car_Accident == '사고이력 있음' ? 'selected' : ''}>사고이력 있음</option>
+                </select>
+              </div>
+
+              <div class="sell-consent">
+                <label>
+                  <input type="checkbox" name="ok" value="개인정보" required>
+                  <span><strong>[필수]</strong> 개인정보 수집·이용 동의</span>
+                </label>
+                <label>
+                  <input type="checkbox" name="ok" value="마케팅">
+                  <span>[선택] 마케팅 활용 동의</span>
+                </label>
+              </div>
+
+              <div class="sell-form__actions">
+                <button type="submit">판매 신청하기</button>
+                <a href="SellList.do">내 판매 목록</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
     </main>
-    <main>
+
     <div id="footerWrap">
       <footer id="footer">
         <div class="info">
           <small class="copyright">All contents Copyright 2011 FunWeb Inc. all rights reserved</small>
-          <address>Contact mail : funweb@funwebbiz.com Tel: +82 64 123 4315 Fax +82 64 123 4321</address>
+          <address>Contact mail : funweb@funwebbiz.com Tel: +82 64 123 4315</address>
         </div>
-        <ul class="sns">
-          <li class="facebook"><a href="#">페이스북 바로가기</a></li>
-          <li class="twitter"><a href="#">트위터 바로가기</a></li>
-        </ul>
       </footer>
     </div>
-</main>
+
+    <script>
+      document.querySelectorAll('input[inputmode="numeric"]').forEach(function (input) {
+        input.addEventListener('input', function () {
+          this.value = this.value.replace(/[^0-9]/g, '');
+        });
+      });
+    </script>
   </body>
 </html>
