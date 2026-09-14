@@ -821,5 +821,3 @@
 }
 .auth-message { margin: 20px 0; padding: 13px 15px; border-radius: 11px; font-size: 13px; font-weight: 700; line-height: 1.55; }
 .auth-message--error { border: 1px solid #ffd0d0; background: #fff4f4; color: #b42332; }
-.demo-account { display: flex; align-items: center; justify-content: center; gap: 7px; margin-top: 18px; padding: 12px; border-radius: 11px; background: #f2f9ff; color: var(--page-muted); font-size: 12px; }
-.demo-account strong { color: var(--page-blue-dark); font-size: 13px; }

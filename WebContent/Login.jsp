@@ -43,12 +43,6 @@
             </div>
             <button class="auth-submit" type="submit">로그인</button>
           </form>
-          <div class="demo-account" aria-label="테스트 계정">
-            <span>테스트 계정</span>
-            <strong>1234</strong>
-            <span>/</span>
-            <strong>1234</strong>
-          </div>
           <div class="auth-switch">
             <span>아직 계정이 없으신가요?</span>
             <a href="join.jsp">회원가입</a>
